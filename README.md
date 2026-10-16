@@ -14,6 +14,10 @@ The home and Explore pages explain the value for young people, parents, schools/
 
 The product position is a trusted, organized community for sport, reading, and learning: professional organization pages and communications, with playful matchday energy rather than an endless feed. The stakeholder guide is explicit that child-safety reporting, staffed moderation, verified role workflows, consent, and privacy compliance must be built and reviewed before a public launch.
 
+## Community study resources
+
+Study notes, handouts, images, and short videos are part of each group's **Community** space, with quick links from Explore and Courses. Resources can optionally be associated with a course and opened from its discussion. The prototype accepts PDF, text, Office documents, common image formats, and MP4/WebM video up to 15 MB; it saves resource records and file blobs in this browser's IndexedDB only. This is a local interaction demo, not collaboration between students or devices. Do not upload real children's personal, confidential, or identifying information. A real shared library requires authenticated membership, managed object storage, malware/content checks, moderation and retention rules, quotas, and a reviewed safeguarding workflow.
+
 ## Prototype content storage and growth
 
 Community posts, demo organizations, and feed interests are saved in browser storage (up to the latest 250 posts) and restored after refresh on that same browser. This is a prototype convenience, not shared storage: posts are not synchronized between visitors or devices, browser data can be cleared, and the browser is not a secure database. The demo profile, follows, and learning progress are not connected to real user accounts. Do not store private information or use this storage for real children's accounts.
