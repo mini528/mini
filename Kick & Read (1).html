@@ -45,8 +45,7 @@ button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}
 .ac{display:flex;gap:4px;flex-wrap:wrap}.ac button{border:0;background:none;color:var(--mu);padding:6px 10px;border-radius:99px;font-weight:600}.ac button:hover{background:var(--bg)}
 .ac button[aria-pressed="true"]{color:var(--pk)}
 .sh{display:inline-flex;gap:6px;align-items:center;flex-wrap:wrap;font-weight:600}.sh a,.sh button{color:var(--br);border:0;background:none;padding:6px 8px;border-radius:99px;text-decoration:none;font-weight:600}.sh a:hover,.sh button:hover{background:var(--bg);text-decoration:underline}
-.wa-share{display:inline-flex;align-items:center;gap:6px;margin:4px 4px 4px 0;padding:7px 12px;border-radius:99px;background:#168a50;color:#fff;text-decoration:none;font-weight:700}.wa-share:hover{background:#116f40}.wa-share:focus-visible{outline-color:#168a50}
-.top-actions{display:flex;align-items:center;gap:8px}.site-share-menu{display:flex;justify-content:flex-end;margin:-2px 4px 8px}.site-share-menu:empty{display:none}
+.top-actions{display:flex;align-items:center;gap:8px}
 .th{margin-top:8px;border-left:3px solid var(--ln);padding-left:12px}
 .cm{display:flex;gap:10px;margin:8px 0}.cm .av{width:32px;height:32px;font-size:.75rem}.cm p{margin:0}
 .fld{display:flex;gap:8px;margin:8px 0}.fld input{flex:1;min-width:0}
@@ -93,17 +92,49 @@ table{width:100%;border-collapse:collapse}td,th{padding:6px 4px;text-align:right
 .mid{padding-bottom:84px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+/* Keep the main feed calm and aligned while preserving the playful brand accents. */
+.app{grid-template-columns:210px minmax(0,650px) 280px;gap:24px;max-width:1240px}
+.site .app{grid-template-columns:210px minmax(0,920px);gap:24px;max-width:1240px}
+.col,.card{border-radius:16px}
+.top{padding:16px 4px 12px}
+.top h1{font-size:1.4rem;letter-spacing:-.02em}
+.nav button{border-radius:12px;font-size:1rem}
+.nav button.on{background:var(--s);color:var(--pk);box-shadow:inset 3px 0 var(--pk)}
+.p,.cmp{padding:18px}
+.ac{align-items:center;gap:6px}
+.ac button{min-height:38px}
+.cmp .pb{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
+.cmp select,.cmp textarea{grid-column:1/-1;margin:0}
+.cmp .btn{justify-self:end}
+.share-dialog{width:min(520px,calc(100vw - 32px));max-width:none;max-height:min(85vh,720px);padding:0;border:1px solid var(--ln);border-radius:20px;background:var(--s);color:var(--ink);box-shadow:0 24px 80px #10144040}
+.share-dialog::backdrop{background:#10144080;backdrop-filter:blur(2px)}
+.share-dialog-inner{padding:24px}
+.share-dialog-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:6px}
+.share-dialog-head h2{margin:0;font:800 1.3rem var(--hd)}
+.share-dialog-head p{margin:4px 0 0;color:var(--mu);font-size:.9rem}
+.share-close{width:40px;height:40px;flex:none;border:0;border-radius:50%;background:var(--bg);font-size:1.3rem}
+.share-preview{margin:18px 0;padding:12px 14px;border:1px solid var(--ln);border-radius:12px;background:var(--bg);color:var(--mu);font-size:.9rem;white-space:pre-wrap;overflow-wrap:anywhere;max-height:150px;overflow:auto}
+.share-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.share-option{display:flex;align-items:center;gap:10px;min-height:54px;padding:11px 14px;border:1px solid var(--ln);border-radius:12px;background:var(--s);color:var(--ink);text-decoration:none;font-weight:700;text-align:left}
+.share-option:hover{border-color:var(--pk);background:var(--bg)}
+.share-option.primary{grid-column:1/-1;background:#168a50;border-color:#168a50;color:#fff}
+.share-option.primary:hover{background:#116f40}
+.share-option.copy{width:100%;margin-top:10px;justify-content:center}
+.share-footnote{margin:14px 0 0;color:var(--mu);font-size:.82rem}
+@media (max-width:920px){.app,.site .app{grid-template-columns:minmax(0,1fr);max-width:700px;gap:0}.nav button.on{box-shadow:inset 0 3px var(--pk)}}
+@media (max-width:640px){.top{padding:12px 4px 10px}.top-actions{gap:6px}.top-actions .pill{padding:5px 9px;font-size:.82rem}.p,.cmp{padding:14px}.share-dialog-inner{padding:18px}.share-options{grid-template-columns:1fr}.share-option.primary{grid-column:auto}}
 </style>
 </head>
 <body>
-<div class="app"><nav class="nav" id="nav" aria-label="Main"></nav><div class="mid"><header class="top"><h1 id="ttl"></h1><div class="top-actions"><button class="pill" data-a="share-site" aria-expanded="false">Share site</button><button class="pill" id="role" data-a="role"></button></div></header><div class="site-share-menu" id="site-share-menu"></div><main id="main"></main></div><aside class="rail" id="rail"></aside></div>
+<div class="app"><nav class="nav" id="nav" aria-label="Main"></nav><div class="mid"><header class="top"><h1 id="ttl"></h1><div class="top-actions"><button class="pill" data-a="share-site" aria-haspopup="dialog">Share site</button><button class="pill" id="role" data-a="role"></button></div></header><main id="main"></main></div><aside class="rail" id="rail"></aside></div>
+<dialog class="share-dialog" id="share-dialog" aria-labelledby="share-title"></dialog>
 <div id="toast" role="status" aria-live="polite"></div>
 <script>
 (function(){
 var $=function(s){return document.querySelector(s)},base=location.href.split("#")[0],tt;
 var orgs=[{id:"stars",n:"Mamelodi Stars",k:"Club",cat:"sport",c:"#ff7aa8",a:"Coach Thabo",fl:214,b:"Under-15 football. Boots on, books out."},{id:"hill",n:"Hillcrest High",k:"School",cat:"sport",c:"#5eead4",a:"Mr Naidoo",fl:530,b:"Trials, fixtures and school news."},{id:"sun",n:"Sunrise Primary",k:"School",cat:"read",c:"#ffd23f",a:"Ms Dlamini",fl:402,b:"Reading champions since day one."},{id:"lib",n:"Pretoria Central Library",k:"Library",cat:"read",c:"#9db0ff",a:"Mrs Khumalo",fl:318,b:"Books, story hours and free study space."},{id:"lions",n:"Little Lions ECD",k:"ECD",cat:"read",c:"#ffb366",a:"Teacher Zoe",fl:96,b:"Little learners, big roars."}];
 var O=function(id){return orgs.filter(function(o){return o.id===id})[0]};
-var S={view:"home",tab:"all",admin:false,fnd:false,quiet:true,pin:"Every group here is verified by the Foundation. Play hard, read harder, be kind.",prof:null,org:null,orgTab:"home",orgLevel:"all",orgTopic:"all",orgQuery:"",un:0,notes:[],open:{},sh:{},siteShare:false,nid:20,pages:0,pts:0,pk:{},j:{},f:{lib:1,stars:1},rs:{},draft:"",g:""};
+var S={view:"home",tab:"all",admin:false,fnd:false,quiet:true,pin:"Every group here is verified by the Foundation. Play hard, read harder, be kind.",prof:null,org:null,orgTab:"home",orgLevel:"all",orgTopic:"all",orgQuery:"",un:0,notes:[],open:{},nid:20,pages:0,pts:0,pk:{},j:{},f:{lib:1,stars:1},rs:{},draft:"",g:""};
 var posts=[
 {id:1,o:"stars",n:"Mamelodi Stars",r:"Official \u2713",t:"Training moves to 3pm Thursday. Bring your book: 10 pages before kickoff!",l:12,ts:"2h",c:[{n:"Thandi K.",t:"Can I bring my little brother?"},{n:"Mamelodi Stars",o:"stars",t:"Yes Thandi, siblings are welcome. Bring a water bottle."}]},
 {id:2,o:"stars",n:"Mamelodi Stars",r:"Official \u2713",t:"Kickoff: Stars v Hillcrest. Post-match talk on video at 14:00.",e:"Sat 7 Nov, 10:00",l:40,ts:"3h",c:[]},
@@ -120,13 +151,15 @@ function toast(m){var e=$("#toast");e.textContent=m;clearTimeout(tt);tt=setTimeo
 function note(m){S.notes.unshift(m);S.un++;toast(m)}
 function need(){if(S.admin)return 1;if(!S.prof){toast("Create your page first to join in");S.view="profile";S.org=null;return 0}if(S.prof.age==="u13"&&!S.prof.ok){toast("Waiting for parent or school sign-off");S.view="profile";S.org=null;return 0}return 1}
 function who(){return S.admin?{n:"Coach Thabo",r:"Admin \u2713"}:{n:S.prof.name,r:"Member"}}
-function shareLinks(url,text,title,scope,id,skipWhatsApp){var enc=function(s){return encodeURIComponent(s).replace(/'/g,"%27")},u=enc(url),x=enc(text),extra=' data-scope="'+scope+'"'+(scope==="post"?' data-id="'+id+'"':'');return '<span class="sh" role="group" aria-label="Share options"><a href="https://www.facebook.com/sharer/sharer.php?u='+u+'" target="_blank" rel="noopener noreferrer">Facebook</a>'+(skipWhatsApp?'':'<a href="https://wa.me/?text='+enc(text+" "+url)+'" target="_blank" rel="noopener noreferrer">WhatsApp</a>')+'<a href="https://twitter.com/intent/tweet?text='+x+'&amp;url='+u+'" target="_blank" rel="noopener noreferrer">X</a><a href="https://t.me/share/url?url='+u+'&amp;text='+x+'" target="_blank" rel="noopener noreferrer">Telegram</a><a href="https://www.linkedin.com/sharing/share-offsite/?url='+u+'" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="mailto:?subject='+enc(title)+'&amp;body='+enc(text+" "+url)+'">Email</a><button data-a="share-native"'+extra+'>More apps</button><button data-a="cp"'+extra+'>Copy link</button></span>'}
-function P(p){var o=O(p.o),L=base+"#post-"+p.id,text="See this update from "+o.n+" on Kick & Read.",waText=["Kick & Read | "+o.n,"",p.t].concat(p.e?["","Event: "+p.e]:[]).concat(["","View this post on Kick & Read:",L]).join("\n"),c=p.c;
+function shareLinks(url,text,title,scope,id){var enc=function(s){return encodeURIComponent(s).replace(/'/g,"%27")},u=enc(url),body=enc(text),tweet=enc(text.replace(/\n\nView this post on Kick & Read:\n[\s\S]*$/,"")),extra=' data-scope="'+scope+'"'+(scope==="post"?' data-id="'+id+'"':'');return '<div class="share-dialog-inner"><div class="share-dialog-head"><div><h2 id="share-title">Share '+(scope==="post"?"this post":"Kick & Read")+'</h2><p>Choose where you would like to share it.</p></div><button class="share-close" type="button" data-a="share-close" aria-label="Close share dialog">×</button></div><div class="share-preview">'+esc(text)+'</div><div class="share-options" aria-label="Choose a sharing platform"><a class="share-option primary" href="https://wa.me/?text='+body+'" target="_blank" rel="noopener noreferrer">WhatsApp <span aria-hidden="true">↗</span></a><a class="share-option" href="https://www.facebook.com/sharer/sharer.php?u='+u+'" target="_blank" rel="noopener noreferrer">Facebook <span aria-hidden="true">↗</span></a><a class="share-option" href="https://twitter.com/intent/tweet?text='+tweet+'&amp;url='+u+'" target="_blank" rel="noopener noreferrer">X <span aria-hidden="true">↗</span></a><a class="share-option" href="https://t.me/share/url?url='+u+'&amp;text='+body+'" target="_blank" rel="noopener noreferrer">Telegram <span aria-hidden="true">↗</span></a><a class="share-option" href="https://www.linkedin.com/sharing/share-offsite/?url='+u+'" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a><a class="share-option" href="mailto:?subject='+enc(title)+'&amp;body='+body+'">Email</a></div><button class="share-option copy" type="button" data-a="cp"'+extra+'>Copy link</button><p class="share-footnote">Sharing opens in a new tab where possible. Your post stays open here.</p><div class="share-options"><button class="share-option" type="button" data-a="share-native"'+extra+'>More apps on this device</button></div></div>'}
+function openShare(url,text,title,scope,id){var d=$("#share-dialog");d.innerHTML=shareLinks(url,text,title,scope,id);d.showModal();var close=d.querySelector('[data-a="share-close"]');if(close)close.focus();shareReturn={scope:scope,id:id}}
+var shareReturn={scope:"site",id:0};
+function postShareText(p){var o=O(p.o),L=base+"#post-"+p.id;return ["Kick & Read | "+o.n,"",p.t].concat(p.e?["","Event: "+p.e]:[]).concat(["","View this post on Kick & Read:",L]).join("\n")}
+function P(p){var o=O(p.o),c=p.c;
 return '<article class="p" id="post-'+p.id+'">'+A(ini(p.n),o.c)+'<div class="pb"><div class="hd"><button class="nm" data-a="org" data-o="'+o.id+'">'+esc(p.n)+'</button>'+(/\u2713/.test(p.r)?'<span class="vf">'+p.r.replace(" \u2713","")+' \u2713</span>':'<span class="mu">'+p.r+'</span>')+'<span class="mu">'+(p.pg?'own page, ':p.n!==o.n?o.n+', ':'')+p.ts+'</span></div><p>'+esc(p.t)+'</p>'
 +(p.v?'<div class="vid" aria-hidden="true">'+ICON.play+'</div>':'')
 +(p.e?'<div class="ev"><b>'+p.e+'</b><button class="pill" data-a="rs" data-id="'+p.id+'" aria-pressed="'+!!S.rs[p.id]+'">'+(S.rs[p.id]?"Going":"I'm in")+'</button><button class="pill" data-a="join">Join link</button></div>':'')
-+'<div class="ac"><button data-a="cm" data-id="'+p.id+'">Reply '+c.length+'</button><button data-a="lk" data-id="'+p.id+'" aria-pressed="'+!!p.m+'">'+ICON.heart+' '+p.l+'</button><a class="wa-share" href="https://wa.me/?text='+encodeURIComponent(waText).replace(/'/g,"%27")+'" target="_blank" rel="noopener noreferrer" aria-label="Share this post on WhatsApp in a new tab">WhatsApp ↗</a><button data-a="sh" data-id="'+p.id+'" aria-expanded="'+!!S.sh[p.id]+'">More share options</button>'
-+(S.sh[p.id]?shareLinks(L,text,"Kick & Read update", "post",p.id,true):'')
++'<div class="ac"><button data-a="cm" data-id="'+p.id+'">Reply '+c.length+'</button><button data-a="lk" data-id="'+p.id+'" aria-pressed="'+!!p.m+'">'+ICON.heart+' '+p.l+'</button><button data-a="sh" data-id="'+p.id+'" aria-haspopup="dialog">Share post</button>'
 +'<button data-a="rp" data-id="'+p.id+'">'+(p.x?"Reported":"Report")+'</button>'+((S.fnd||(S.admin&&p.o==="stars"))?'<button data-a="del" data-id="'+p.id+'">Remove</button>':'')+'</div>'
 +(S.open[p.id]?'<div class="th">'+c.map(function(x){return '<div class="cm">'+A(ini(x.n),x.o?O(x.o).c:"#c9ccff")+'<div><b>'+esc(x.n)+'</b> '+(x.o?'<span class="vf">Official reply</span>':'')+'<p>'+esc(x.t)+'</p></div></div>'}).join("")+'<div class="fld"><input id="ci'+p.id+'" maxlength="140" placeholder="'+(S.admin?"Reply as Mamelodi Stars":"Add your reply")+'" aria-label="Reply"><button class="pill on" data-a="send" data-id="'+p.id+'">Reply</button></div></div>':'')
 +'</div></article>'}
@@ -159,12 +192,11 @@ if(!S.admin&&!S.fnd&&S.view==="admin")S.view="home";
 var items=[["home","\ud83c\udfe0","Home"],["courses","📚","Courses"],["explore","\ud83d\udd0e","Explore"],["match","\u26bd","Matchday"],["lib","\ud83c\udfac","Library"],["ev","\ud83d\udcc5","Events"],["alerts","\ud83d\udd14","Alerts"],["profile","\ud83d\udc64","You"]];if(S.admin||S.fnd)items.push(["admin","\ud83d\udee1","Admin"]);
 $("#nav").innerHTML='<div class="logo">Kick<i>&amp;</i>Read</div>'+items.map(function(i){return '<button data-a="go" data-v="'+i[0]+'" class="'+(S.view===i[0]?"on":"")+'"><span class="ic">'+i[1]+'</span>'+i[2]+(i[0]==="alerts"&&S.un?'<span class="bd">'+S.un+'</span>':'')+'</button>'}).join("");
 $("#ttl").textContent=S.view==="org"?O(S.org).n:T[S.view];$("#role").textContent=S.fnd?"Foundation view":S.admin?"Admin view":"Member view";
-document.querySelector('[data-a="share-site"]').setAttribute("aria-expanded",String(S.siteShare));$("#site-share-menu").innerHTML=S.siteShare?shareLinks(base,"Join Kick & Read for sport, reading and verified community spaces.","Kick & Read","site",0):"";
 $("#main").innerHTML=V();$("#rail").innerHTML=W()}
 document.addEventListener("click",function(e){var t=e.target.closest("[data-a]");if(!t)return;var a=t.dataset.a,id=+t.dataset.id,o=O(t.dataset.o),p=posts.filter(function(x){return x.id===id})[0];
 if(a==="go"){S.view=t.dataset.v;S.org=null;if(S.view==="alerts")S.un=0}
 if(a==="role"){if(!S.admin&&!S.fnd)S.admin=true;else if(S.admin){S.admin=false;S.fnd=true}else S.fnd=false;toast(S.fnd?"Foundation view: full control":S.admin?"Admin view: Mamelodi Stars":"Member view")}
-if(a==="share-site")S.siteShare=!S.siteShare;
+if(a==="share-site")openShare(base,"Join Kick & Read for sport, reading and verified community spaces.\n\nVisit Kick & Read:\n"+base,"Kick & Read","site",0);
 if(a==="tab")S.tab=t.dataset.v;
 if(a==="org"){S.view="org";S.org=t.dataset.o;S.orgTab="home";S.orgLevel="all";S.orgTopic="all";S.orgQuery="";scrollTo(0,0)}
 if(a==="org-tab"){S.orgTab=t.dataset.tab;S.view="org";scrollTo(0,0)}
@@ -179,9 +211,10 @@ if(a==="np"){var v=$("#np").value.trim(),gg=$("#grp").value,k=$("#kind")?$("#kin
 if(a==="lk"&&p&&need()){p.m=!p.m;p.l+=p.m?1:-1}
 if(a==="cm")S.open[id]=!S.open[id];
 if(a==="send"&&p&&need()){var i=$("#ci"+id),x=i.value.trim();if(x){var wo=who();p.c.push(S.admin?{n:O(p.o).n,o:"stars",t:x}:{n:wo.n,t:x});if(S.admin&&S.prof&&p.c.some(function(q){return q.n===S.prof.name}))note("Mamelodi Stars replied to you: "+x.slice(0,50));else toast("Reply sent")}}
-if(a==="sh")S.sh[id]=!S.sh[id];
+if(a==="sh"&&p)openShare(base+"#post-"+id,postShareText(p),"Kick & Read post","post",id);
 if(a==="cp"){var copyUrl=t.dataset.scope==="site"?base:base+"#post-"+id;try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(copyUrl).then(function(){toast("Link copied")},function(){copyFallback(copyUrl)})}else copyFallback(copyUrl)}catch(err){copyFallback(copyUrl)}}
-if(a==="share-native"){var shareUrl=t.dataset.scope==="site"?base:base+"#post-"+id,shareData={title:"Kick & Read",text:t.dataset.scope==="site"?"Join Kick & Read for sport, reading and verified community spaces.":"See this update on Kick & Read.",url:shareUrl};if(navigator.share){try{navigator.share(shareData).catch(function(err){if(err.name!=="AbortError")toast("Sharing failed. Choose an app or copy the link instead.")})}catch(err){toast("Sharing failed. Choose an app or copy the link instead.")}}else toast("Your browser does not offer system sharing. Choose an app or copy the link.")}
+if(a==="share-close")$("#share-dialog").close();
+if(a==="share-native"){var shareData={title:"Kick & Read",text:$("#share-dialog .share-preview").textContent};if(navigator.share){try{navigator.share(shareData).catch(function(err){if(err.name!=="AbortError")toast("Sharing failed. Choose an app or copy the link instead.")})}catch(err){toast("Sharing failed. Choose an app or copy the link instead.")}}else toast("Your browser does not offer system sharing. Choose an app or copy the link.")}
 if(a==="rp"&&p&&!p.x){p.x=1;queue.push(p);toast("Reported. A moderator will review it")}
 if(a==="del"&&p){posts.splice(posts.indexOf(p),1);toast("Removed")}
 if(a==="rs"){S.rs[id]=!S.rs[id];toast(S.rs[id]?"See you there":"RSVP removed")}
@@ -196,6 +229,8 @@ if(a==="ans"){var it=inbox.filter(function(z){return z.id===id})[0],an=$("#an"+i
 if(a==="ok"){queue[+t.dataset.i].x=0;queue.splice(+t.dataset.i,1)}
 if(a==="rm"){var rp=queue[+t.dataset.i];posts.splice(posts.indexOf(rp),1);queue.splice(+t.dataset.i,1);toast("Removed")}
 render()});
+$("#share-dialog").addEventListener("click",function(e){if(e.target===$("#share-dialog"))$("#share-dialog").close()});
+$("#share-dialog").addEventListener("close",function(){setTimeout(function(){var trigger=shareReturn.scope==="post"?'[data-a="sh"][data-id="'+shareReturn.id+'"]':'[data-a="share-site"]',el=$(trigger);if(el)el.focus()},0)});
 function copyFallback(text){var input=document.createElement("textarea");input.value=text;input.setAttribute("readonly","");input.style.position="fixed";input.style.opacity="0";document.body.appendChild(input);input.select();try{if(document.execCommand("copy"))toast("Link copied");else toast("Couldn't copy the link. Copy the page address instead.")}catch(err){toast("Couldn't copy the link. Copy the page address instead.")}document.body.removeChild(input)}
 var APPS=[{n:'Soweto Chess Club',k:'Club'},{n:'Rosebank Reading Circle',k:'Library'},{n:'Dube Netball Academy',k:'Club'}],OPP=[{t:'Free book club at Hillcrest',at:20},{t:'Mentor chat with a Stars coach',at:50},{t:'Regional scouting day invite',at:100}],LINK=/https?:|www\.|\.(com|co|org|net)\b/i;
 function need(){if(S.admin||S.fnd)return 1;if(!S.prof){toast('Create your page first to join in');S.view='profile';S.org=null;return 0}if(S.prof.age==='u13'&&!S.prof.ok){toast('Waiting for parent or school sign-off');S.view='profile';S.org=null;return 0}return 1}
