@@ -1,6 +1,6 @@
 # Mini Circle
 
-The site uses the Mini Circle name and the supplied brand direction: a turquoise-to-blue gradient with red and yellow overlapping arcs. The reusable vector logo is [`mini-circle-logo.svg`](./mini-circle-logo.svg); the application applies the same blue/cyan palette to controls and highlights. The platform keeps its sport, reading, and learning community purpose under this brand.
+The site uses the Mini Circle name and the supplied brand direction: a turquoise-to-blue gradient with red and yellow overlapping arcs. The reusable vector logo is [`mini-circle-logo.svg`](./mini-circle-logo.svg); the interface uses clean blue/cyan selected states, subtle color accents, and restrained motion while reserving red and yellow for small brand highlights. The platform keeps its sport, reading, and learning community purpose under this brand.
 
 ## Social sharing
 
