@@ -4,6 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Kick &amp; Read</title>
+<meta name="description" content="Kick &amp; Read brings sport, reading and verified community spaces together for young people and families.">
+<meta name="theme-color" content="#f5f6f8">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kick &amp; Read">
+<meta property="og:description" content="Sport, reading and verified community spaces for young people and families.">
+<meta name="twitter:card" content="summary">
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{color-scheme:light;--bg:#f5f6f8;--s:#fff;--ink:#1a1d23;--mu:#6b7280;--ln:#e6e8ec;--br:#2f5fd0;--pk:#2f5fd0;--sn:#f3dd9a;--mn:#bfe6d6;--hd:"Figtree",system-ui,sans-serif;--bd:"Figtree",system-ui,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -38,7 +44,8 @@ button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}
 .ev{display:flex;gap:8px;align-items:center;flex-wrap:wrap;border:2px dashed var(--ln);border-radius:14px;padding:10px;margin-bottom:10px}
 .ac{display:flex;gap:4px;flex-wrap:wrap}.ac button{border:0;background:none;color:var(--mu);padding:6px 10px;border-radius:99px;font-weight:600}.ac button:hover{background:var(--bg)}
 .ac button[aria-pressed="true"]{color:var(--pk)}
-.sh{display:inline-flex;gap:10px;align-items:center;font-weight:600}.sh a{color:var(--br)}
+.sh{display:inline-flex;gap:6px;align-items:center;flex-wrap:wrap;font-weight:600}.sh a,.sh button{color:var(--br);border:0;background:none;padding:6px 8px;border-radius:99px;text-decoration:none;font-weight:600}.sh a:hover,.sh button:hover{background:var(--bg);text-decoration:underline}
+.top-actions{display:flex;align-items:center;gap:8px}.site-share-menu{display:flex;justify-content:flex-end;margin:-2px 4px 8px}.site-share-menu:empty{display:none}
 .th{margin-top:8px;border-left:3px solid var(--ln);padding-left:12px}
 .cm{display:flex;gap:10px;margin:8px 0}.cm .av{width:32px;height:32px;font-size:.75rem}.cm p{margin:0}
 .fld{display:flex;gap:8px;margin:8px 0}.fld input{flex:1;min-width:0}
@@ -88,14 +95,14 @@ table{width:100%;border-collapse:collapse}td,th{padding:6px 4px;text-align:right
 </style>
 </head>
 <body>
-<div class="app"><nav class="nav" id="nav" aria-label="Main"></nav><div class="mid"><header class="top"><h1 id="ttl"></h1><button class="pill" id="role" data-a="role"></button></header><main id="main"></main></div><aside class="rail" id="rail"></aside></div>
+<div class="app"><nav class="nav" id="nav" aria-label="Main"></nav><div class="mid"><header class="top"><h1 id="ttl"></h1><div class="top-actions"><button class="pill" data-a="share-site" aria-expanded="false">Share site</button><button class="pill" id="role" data-a="role"></button></div></header><div class="site-share-menu" id="site-share-menu"></div><main id="main"></main></div><aside class="rail" id="rail"></aside></div>
 <div id="toast" role="status" aria-live="polite"></div>
 <script>
 (function(){
 var $=function(s){return document.querySelector(s)},base=location.href.split("#")[0],tt;
 var orgs=[{id:"stars",n:"Mamelodi Stars",k:"Club",cat:"sport",c:"#ff7aa8",a:"Coach Thabo",fl:214,b:"Under-15 football. Boots on, books out."},{id:"hill",n:"Hillcrest High",k:"School",cat:"sport",c:"#5eead4",a:"Mr Naidoo",fl:530,b:"Trials, fixtures and school news."},{id:"sun",n:"Sunrise Primary",k:"School",cat:"read",c:"#ffd23f",a:"Ms Dlamini",fl:402,b:"Reading champions since day one."},{id:"lib",n:"Pretoria Central Library",k:"Library",cat:"read",c:"#9db0ff",a:"Mrs Khumalo",fl:318,b:"Books, story hours and free study space."},{id:"lions",n:"Little Lions ECD",k:"ECD",cat:"read",c:"#ffb366",a:"Teacher Zoe",fl:96,b:"Little learners, big roars."}];
 var O=function(id){return orgs.filter(function(o){return o.id===id})[0]};
-var S={view:"home",tab:"all",admin:false,fnd:false,quiet:true,pin:"Every group here is verified by the Foundation. Play hard, read harder, be kind.",prof:null,org:null,orgTab:"home",orgLevel:"all",orgTopic:"all",orgQuery:"",un:0,notes:[],open:{},sh:{},nid:20,pages:0,pts:0,pk:{},j:{},f:{lib:1,stars:1},rs:{},draft:"",g:""};
+var S={view:"home",tab:"all",admin:false,fnd:false,quiet:true,pin:"Every group here is verified by the Foundation. Play hard, read harder, be kind.",prof:null,org:null,orgTab:"home",orgLevel:"all",orgTopic:"all",orgQuery:"",un:0,notes:[],open:{},sh:{},siteShare:false,nid:20,pages:0,pts:0,pk:{},j:{},f:{lib:1,stars:1},rs:{},draft:"",g:""};
 var posts=[
 {id:1,o:"stars",n:"Mamelodi Stars",r:"Official \u2713",t:"Training moves to 3pm Thursday. Bring your book: 10 pages before kickoff!",l:12,ts:"2h",c:[{n:"Thandi K.",t:"Can I bring my little brother?"},{n:"Mamelodi Stars",o:"stars",t:"Yes Thandi, siblings are welcome. Bring a water bottle."}]},
 {id:2,o:"stars",n:"Mamelodi Stars",r:"Official \u2713",t:"Kickoff: Stars v Hillcrest. Post-match talk on video at 14:00.",e:"Sat 7 Nov, 10:00",l:40,ts:"3h",c:[]},
@@ -112,12 +119,13 @@ function toast(m){var e=$("#toast");e.textContent=m;clearTimeout(tt);tt=setTimeo
 function note(m){S.notes.unshift(m);S.un++;toast(m)}
 function need(){if(S.admin)return 1;if(!S.prof){toast("Create your page first to join in");S.view="profile";S.org=null;return 0}if(S.prof.age==="u13"&&!S.prof.ok){toast("Waiting for parent or school sign-off");S.view="profile";S.org=null;return 0}return 1}
 function who(){return S.admin?{n:"Coach Thabo",r:"Admin \u2713"}:{n:S.prof.name,r:"Member"}}
-function P(p){var o=O(p.o),L=base+"#post-"+p.id,tx=encodeURIComponent(p.t.slice(0,90)+" via Kick&Read "+L),c=p.c;
+function shareLinks(url,text,title,scope,id){var enc=function(s){return encodeURIComponent(s).replace(/'/g,"%27")},u=enc(url),x=enc(text),extra=' data-scope="'+scope+'"'+(scope==="post"?' data-id="'+id+'"':'');return '<span class="sh" role="group" aria-label="Share options"><a href="https://www.facebook.com/sharer/sharer.php?u='+u+'" target="_blank" rel="noopener noreferrer">Facebook</a><a href="https://wa.me/?text='+enc(text+" "+url)+'" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="https://twitter.com/intent/tweet?text='+x+'&amp;url='+u+'" target="_blank" rel="noopener noreferrer">X</a><a href="https://t.me/share/url?url='+u+'&amp;text='+x+'" target="_blank" rel="noopener noreferrer">Telegram</a><a href="https://www.linkedin.com/sharing/share-offsite/?url='+u+'" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="mailto:?subject='+enc(title)+'&amp;body='+enc(text+" "+url)+'">Email</a><button data-a="share-native"'+extra+'>More apps</button><button data-a="cp"'+extra+'>Copy link</button></span>'}
+function P(p){var o=O(p.o),L=base+"#post-"+p.id,text="See this update from "+o.n+" on Kick & Read.",c=p.c;
 return '<article class="p" id="post-'+p.id+'">'+A(ini(p.n),o.c)+'<div class="pb"><div class="hd"><button class="nm" data-a="org" data-o="'+o.id+'">'+esc(p.n)+'</button>'+(/\u2713/.test(p.r)?'<span class="vf">'+p.r.replace(" \u2713","")+' \u2713</span>':'<span class="mu">'+p.r+'</span>')+'<span class="mu">'+(p.pg?'own page, ':p.n!==o.n?o.n+', ':'')+p.ts+'</span></div><p>'+esc(p.t)+'</p>'
 +(p.v?'<div class="vid" aria-hidden="true">'+ICON.play+'</div>':'')
 +(p.e?'<div class="ev"><b>'+p.e+'</b><button class="pill" data-a="rs" data-id="'+p.id+'" aria-pressed="'+!!S.rs[p.id]+'">'+(S.rs[p.id]?"Going":"I'm in")+'</button><button class="pill" data-a="join">Join link</button></div>':'')
-+'<div class="ac"><button data-a="cm" data-id="'+p.id+'">Reply '+c.length+'</button><button data-a="lk" data-id="'+p.id+'" aria-pressed="'+!!p.m+'">'+ICON.heart+' '+p.l+'</button><button data-a="sh" data-id="'+p.id+'">Share</button>'
-+(S.sh[p.id]?'<span class="sh"><a href="https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(L)+'" target="_blank" rel="noopener">Facebook</a><a href="https://wa.me/?text='+tx+'" target="_blank" rel="noopener">WhatsApp</a><button data-a="cp" data-id="'+p.id+'">Copy link</button></span>':'')
++'<div class="ac"><button data-a="cm" data-id="'+p.id+'">Reply '+c.length+'</button><button data-a="lk" data-id="'+p.id+'" aria-pressed="'+!!p.m+'">'+ICON.heart+' '+p.l+'</button><button data-a="sh" data-id="'+p.id+'" aria-expanded="'+!!S.sh[p.id]+'">Share</button>'
++(S.sh[p.id]?shareLinks(L,text,"Kick & Read update", "post",p.id):'')
 +'<button data-a="rp" data-id="'+p.id+'">'+(p.x?"Reported":"Report")+'</button>'+((S.fnd||(S.admin&&p.o==="stars"))?'<button data-a="del" data-id="'+p.id+'">Remove</button>':'')+'</div>'
 +(S.open[p.id]?'<div class="th">'+c.map(function(x){return '<div class="cm">'+A(ini(x.n),x.o?O(x.o).c:"#c9ccff")+'<div><b>'+esc(x.n)+'</b> '+(x.o?'<span class="vf">Official reply</span>':'')+'<p>'+esc(x.t)+'</p></div></div>'}).join("")+'<div class="fld"><input id="ci'+p.id+'" maxlength="140" placeholder="'+(S.admin?"Reply as Mamelodi Stars":"Add your reply")+'" aria-label="Reply"><button class="pill on" data-a="send" data-id="'+p.id+'">Reply</button></div></div>':'')
 +'</div></article>'}
@@ -150,10 +158,12 @@ if(!S.admin&&!S.fnd&&S.view==="admin")S.view="home";
 var items=[["home","\ud83c\udfe0","Home"],["courses","📚","Courses"],["explore","\ud83d\udd0e","Explore"],["match","\u26bd","Matchday"],["lib","\ud83c\udfac","Library"],["ev","\ud83d\udcc5","Events"],["alerts","\ud83d\udd14","Alerts"],["profile","\ud83d\udc64","You"]];if(S.admin||S.fnd)items.push(["admin","\ud83d\udee1","Admin"]);
 $("#nav").innerHTML='<div class="logo">Kick<i>&amp;</i>Read</div>'+items.map(function(i){return '<button data-a="go" data-v="'+i[0]+'" class="'+(S.view===i[0]?"on":"")+'"><span class="ic">'+i[1]+'</span>'+i[2]+(i[0]==="alerts"&&S.un?'<span class="bd">'+S.un+'</span>':'')+'</button>'}).join("");
 $("#ttl").textContent=S.view==="org"?O(S.org).n:T[S.view];$("#role").textContent=S.fnd?"Foundation view":S.admin?"Admin view":"Member view";
+document.querySelector('[data-a="share-site"]').setAttribute("aria-expanded",String(S.siteShare));$("#site-share-menu").innerHTML=S.siteShare?shareLinks(base,"Join Kick & Read for sport, reading and verified community spaces.","Kick & Read","site",0):"";
 $("#main").innerHTML=V();$("#rail").innerHTML=W()}
 document.addEventListener("click",function(e){var t=e.target.closest("[data-a]");if(!t)return;var a=t.dataset.a,id=+t.dataset.id,o=O(t.dataset.o),p=posts.filter(function(x){return x.id===id})[0];
 if(a==="go"){S.view=t.dataset.v;S.org=null;if(S.view==="alerts")S.un=0}
 if(a==="role"){if(!S.admin&&!S.fnd)S.admin=true;else if(S.admin){S.admin=false;S.fnd=true}else S.fnd=false;toast(S.fnd?"Foundation view: full control":S.admin?"Admin view: Mamelodi Stars":"Member view")}
+if(a==="share-site")S.siteShare=!S.siteShare;
 if(a==="tab")S.tab=t.dataset.v;
 if(a==="org"){S.view="org";S.org=t.dataset.o;S.orgTab="home";S.orgLevel="all";S.orgTopic="all";S.orgQuery="";scrollTo(0,0)}
 if(a==="org-tab"){S.orgTab=t.dataset.tab;S.view="org";scrollTo(0,0)}
@@ -169,7 +179,8 @@ if(a==="lk"&&p&&need()){p.m=!p.m;p.l+=p.m?1:-1}
 if(a==="cm")S.open[id]=!S.open[id];
 if(a==="send"&&p&&need()){var i=$("#ci"+id),x=i.value.trim();if(x){var wo=who();p.c.push(S.admin?{n:O(p.o).n,o:"stars",t:x}:{n:wo.n,t:x});if(S.admin&&S.prof&&p.c.some(function(q){return q.n===S.prof.name}))note("Mamelodi Stars replied to you: "+x.slice(0,50));else toast("Reply sent")}}
 if(a==="sh")S.sh[id]=!S.sh[id];
-if(a==="cp"){try{navigator.clipboard.writeText(base+"#post-"+id);toast("Link copied")}catch(x2){toast("Copy the page address to share")}}
+if(a==="cp"){var copyUrl=t.dataset.scope==="site"?base:base+"#post-"+id;try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(copyUrl).then(function(){toast("Link copied")},function(){copyFallback(copyUrl)})}else copyFallback(copyUrl)}catch(err){copyFallback(copyUrl)}}
+if(a==="share-native"){var shareUrl=t.dataset.scope==="site"?base:base+"#post-"+id,shareData={title:"Kick & Read",text:t.dataset.scope==="site"?"Join Kick & Read for sport, reading and verified community spaces.":"See this update on Kick & Read.",url:shareUrl};if(navigator.share){try{navigator.share(shareData).catch(function(err){if(err.name!=="AbortError")toast("Sharing failed. Choose an app or copy the link instead.")})}catch(err){toast("Sharing failed. Choose an app or copy the link instead.")}}else toast("Your browser does not offer system sharing. Choose an app or copy the link.")}
 if(a==="rp"&&p&&!p.x){p.x=1;queue.push(p);toast("Reported. A moderator will review it")}
 if(a==="del"&&p){posts.splice(posts.indexOf(p),1);toast("Removed")}
 if(a==="rs"){S.rs[id]=!S.rs[id];toast(S.rs[id]?"See you there":"RSVP removed")}
@@ -184,6 +195,7 @@ if(a==="ans"){var it=inbox.filter(function(z){return z.id===id})[0],an=$("#an"+i
 if(a==="ok"){queue[+t.dataset.i].x=0;queue.splice(+t.dataset.i,1)}
 if(a==="rm"){var rp=queue[+t.dataset.i];posts.splice(posts.indexOf(rp),1);queue.splice(+t.dataset.i,1);toast("Removed")}
 render()});
+function copyFallback(text){var input=document.createElement("textarea");input.value=text;input.setAttribute("readonly","");input.style.position="fixed";input.style.opacity="0";document.body.appendChild(input);input.select();try{if(document.execCommand("copy"))toast("Link copied");else toast("Couldn't copy the link. Copy the page address instead.")}catch(err){toast("Couldn't copy the link. Copy the page address instead.")}document.body.removeChild(input)}
 var APPS=[{n:'Soweto Chess Club',k:'Club'},{n:'Rosebank Reading Circle',k:'Library'},{n:'Dube Netball Academy',k:'Club'}],OPP=[{t:'Free book club at Hillcrest',at:20},{t:'Mentor chat with a Stars coach',at:50},{t:'Regional scouting day invite',at:100}],LINK=/https?:|www\.|\.(com|co|org|net)\b/i;
 function need(){if(S.admin||S.fnd)return 1;if(!S.prof){toast('Create your page first to join in');S.view='profile';S.org=null;return 0}if(S.prof.age==='u13'&&!S.prof.ok){toast('Waiting for parent or school sign-off');S.view='profile';S.org=null;return 0}return 1}
 function who(){return S.fnd?{n:'The Foundation',r:'Foundation ✓'}:S.admin?{n:'Coach Thabo',r:'Admin ✓'}:{n:S.prof.name,r:'Member'}}
