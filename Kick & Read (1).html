@@ -282,6 +282,19 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{border-color:var
 @media(hover:none){.btn:hover,.guide-card:hover,.org-course:hover,.org-person:hover,.org-event:hover{transform:none;box-shadow:none}}
 @media(prefers-reduced-motion:reduce){button,a,.card,.guide-card,.org-course,.org-person,.org-event,.share-option,input,select,textarea{transition:none}}
 .hero2 h2,.site .top h1,.org-logo,.org-heading h1,.org-content h2,.org-stat b,.org-course h3{font-family:var(--bd)}
+.hero2,.guide-safety,.org-stat,.org-feature,.org-course-banner,.org-safety{border-left:1px solid var(--ln)}
+.guide-safety,.org-safety{border:1px solid var(--ln)}
+.orgview .org-safety{border:1px solid var(--ln)}
+.org-site{border-top:1px solid var(--ln)}
+.league-highlight{border-top:1px solid var(--ln)}
+.nav button.on{background:var(--brand-blue-soft);color:var(--brand-blue);box-shadow:none}
+.nav button.on::after{content:none}
+.tabs button[aria-selected="true"]{border-bottom:2px solid var(--brand-blue);box-shadow:none}
+.pg li.on{box-shadow:none}
+.orgview .org-menu button{border-bottom:3px solid transparent;box-shadow:none}
+.orgview .org-menu button[aria-current="page"]{border-bottom-color:var(--org-accent);box-shadow:none}
+.welcome::before{content:"";height:4px}
+.guide-hero::before{content:none}
 </style>
 </head>
 <body>

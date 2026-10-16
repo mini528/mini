@@ -24,6 +24,12 @@ The Courses page and each organization Community page include a tutoring hub. In
 
 Session listings and requests are stored only in the current browser's local storage. They do not reach a tutor or another learner, and the demo organization/tutor roles are not verified. Use no real child information or personal meeting links. A production tutoring service needs a shared authenticated scheduling backend, verified educator permissions, guardian-visible session details and consent, moderator/reporting workflows, reliable capacity and cancellation handling, and legal/privacy review (including POPIA where applicable). Google sign-in is not configured; if added later, it should be transparent, optional authentication rather than covert tracking.
 
+## Local leagues
+
+Matchday keeps the built-in **Mini Circle League** fixtures and table at the top as the featured competition. Clubs can register a local league with a founding club; other clubs can request entry, and the league administrator can approve them. League administrators can schedule and edit fixtures. The demo also lets the league administrator switch to a registered club-admin role, which can update only fixtures involving that club. Saved scores calculate played, win/draw/loss, goal difference, and points automatically (3 for a win, 1 for a draw). Fixture and result updates create posts under both clubs, so they appear in the social feed and in the Following feed for members who follow those clubs.
+
+This is a browser-local prototype: leagues, roles, fixtures, results, and posts are not synchronized across users or devices. The role switch is a demonstration, not authentication or proof of club authority; generated feed posts and any follower alert are also local to this browser. Before a real league launch, add verified club registration, authenticated league and club permissions, server-side fixture/result history, dispute/correction handling, and shared feed/notification delivery.
+
 ## Prototype content storage and growth
 
 Community posts, demo organizations, and feed interests are saved in browser storage (up to the latest 250 posts) and restored after refresh on that same browser. This is a prototype convenience, not shared storage: posts are not synchronized between visitors or devices, browser data can be cleared, and the browser is not a secure database. The demo profile, follows, and learning progress are not connected to real user accounts. Do not store private information or use this storage for real children's accounts.
