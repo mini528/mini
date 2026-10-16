@@ -5,16 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Kick &amp; Read</title>
 <meta name="description" content="Kick &amp; Read brings sport, reading and verified community spaces together for young people and families.">
-<meta name="theme-color" content="#f5f6f8">
+<meta name="theme-color" content="#ffffff">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Kick &amp; Read">
 <meta property="og:description" content="Sport, reading and verified community spaces for young people and families.">
 <meta name="twitter:card" content="summary">
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
 <style>
-:root{color-scheme:light;--bg:#f5f6f8;--s:#fff;--ink:#1a1d23;--mu:#6b7280;--ln:#e6e8ec;--br:#2f5fd0;--pk:#2f5fd0;--sn:#f3dd9a;--mn:#bfe6d6;--hd:"Figtree",system-ui,sans-serif;--bd:"Figtree",system-ui,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0f1218;--s:#171b23;--ink:#eceef2;--mu:#99a1b0;--ln:#262b36;--br:#6c93ff;--pk:#6c93ff}}
-:root[data-theme="dark"]{color-scheme:dark;--bg:#0f1218;--s:#171b23;--ink:#eceef2;--mu:#99a1b0;--ln:#262b36;--br:#6c93ff;--pk:#6c93ff}
+:root{color-scheme:light;--bg:#f7f8fa;--s:#fff;--ink:#24272d;--mu:#707782;--ln:#e8eaee;--br:#3867d6;--pk:#3867d6;--sn:#ffe3a3;--mn:#c8eddf;--hd:system-ui,-apple-system,"Segoe UI",sans-serif;--bd:system-ui,-apple-system,"Segoe UI",sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *,*::before,*::after{box-sizing:inherit}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.5 var(--bd)}
@@ -26,7 +23,7 @@ button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}
 .logo{font:800 1.6rem var(--hd);letter-spacing:-.04em;padding:6px 14px 14px}.logo i{font-style:normal;color:var(--pk)}
 .nav button{display:flex;gap:12px;align-items:center;border:0;background:none;padding:11px 14px;border-radius:99px;font:600 1.05rem var(--bd);text-align:left;position:relative}
 .nav button:hover{background:var(--s)}.nav button.on{background:var(--ink);color:var(--bg)}
-.bd{background:var(--pk);color:#fff;border-radius:99px;font-size:.75rem;padding:0 7px;margin-left:auto}
+.bd{background:var(--pk);color:#fff;border-radius:99px;font-size:.72rem;padding:0 6px;margin-left:5px}.bd[hidden]{display:none}
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);display:flex;justify-content:space-between;align-items:center;padding:14px 4px 10px}
 .top h1{font:800 1.5rem var(--hd);letter-spacing:-.03em;margin:0}
 .col{background:var(--s);border:1px solid var(--ln);border-radius:22px;overflow:hidden;margin-bottom:14px}
@@ -40,7 +37,7 @@ button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}
 .nm{border:0;background:none;padding:0;font-weight:800}.nm:hover{text-decoration:underline}
 .vf{background:var(--br);color:#fff;border-radius:99px;font-size:.72rem;padding:1px 8px;font-weight:600}
 .p p{margin:4px 0 10px;overflow-wrap:anywhere}
-.vid{aspect-ratio:16/9;border-radius:16px;background:var(--br);display:grid;place-items:center;font-size:2.4rem;color:#fff;margin-bottom:10px}
+.vid{aspect-ratio:4/5;max-height:560px;max-width:420px;border-radius:16px;background:linear-gradient(145deg,#dce8ff,#e9f7f2 58%,#ffe8ef);display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;font-size:2.4rem;color:var(--br);margin:12px auto}.vid span{font-size:.85rem;font-weight:700}
 .ev{display:flex;gap:8px;align-items:center;flex-wrap:wrap;border:2px dashed var(--ln);border-radius:14px;padding:10px;margin-bottom:10px}
 .ac{display:flex;gap:4px;flex-wrap:wrap}.ac button{border:0;background:none;color:var(--mu);padding:6px 10px;border-radius:99px;font-weight:600}.ac button:hover{background:var(--bg)}
 .ac button[aria-pressed="true"]{color:var(--pk)}
@@ -66,7 +63,7 @@ textarea{resize:vertical;min-height:64px;margin:8px 0}
 table{width:100%;border-collapse:collapse}td,th{padding:6px 4px;text-align:right}td:first-child,th:first-child{text-align:left}th{color:var(--mu);font-weight:600}
 .stat{display:inline-block;margin-right:20px}.stat b{display:block;font:800 1.6rem var(--hd)}
 .pg{list-style:none;padding:0;margin:8px 0 0}.pg li{padding:6px 10px;border-radius:10px;background:var(--bg);color:var(--mu);margin-bottom:6px;font-size:.9rem}.pg li.on{background:var(--mn);color:#06301f;font-weight:600}
-.hl{outline:3px solid var(--pk)}.nav [data-v="lib"],.nav [data-v="ev"]{display:none}.certp{border:2px solid var(--br);border-radius:16px;padding:22px;text-align:center;margin:12px 0}.certp h2{margin:4px 0}
+.hl{outline:3px solid var(--pk)}.certp{border:2px solid var(--br);border-radius:16px;padding:22px;text-align:center;margin:12px 0}.certp h2{margin:4px 0}
 .crumb{display:flex;align-items:center;gap:2px;border:0;background:none;padding:0;margin-bottom:6px;color:var(--mu);font:600 .85rem var(--bd)}.crumb:hover{color:var(--br)}.crumb svg{width:16px;height:16px}
 .hero2{background:var(--s);border:1px solid var(--ln);border-left:4px solid var(--br);border-radius:12px;padding:24px;margin-bottom:16px}.hero2 h2{font:700 1.7rem/1.2 "Source Serif 4",Georgia,serif;margin:0 0 8px}.hero2 p{margin:0 0 14px;color:var(--mu);max-width:56ch}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}.grid2>.card,.grid2>section{margin:0}.grid2>p{grid-column:1/-1;margin:0}
@@ -92,20 +89,23 @@ table{width:100%;border-collapse:collapse}td,th{padding:6px 4px;text-align:right
 .mid{padding-bottom:84px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
-/* Keep the main feed calm and aligned while preserving the playful brand accents. */
-.app{grid-template-columns:210px minmax(0,650px) 280px;gap:24px;max-width:1240px}
-.site .app{grid-template-columns:210px minmax(0,920px);gap:24px;max-width:1240px}
-.col,.card{border-radius:16px}
+/* Light, low-data feed with one clear navigation path. */
+.app{grid-template-columns:210px minmax(0,640px) 280px;gap:24px;max-width:1220px}
+.site .app{grid-template-columns:210px minmax(0,900px);gap:24px;max-width:1220px}
+.col,.card{border-radius:14px}
 .top{padding:16px 4px 12px}
 .top h1{font-size:1.4rem;letter-spacing:-.02em}
 .nav button{border-radius:12px;font-size:1rem}
 .nav button.on{background:var(--s);color:var(--pk);box-shadow:inset 3px 0 var(--pk)}
-.p,.cmp{padding:18px}
+.p,.cmp{padding:16px}
 .ac{align-items:center;gap:6px}
 .ac button{min-height:38px}
 .cmp .pb{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
 .cmp select,.cmp textarea{grid-column:1/-1;margin:0}
 .cmp .btn{justify-self:end}
+.storage-note{padding:10px 14px;border-radius:10px;background:#fff8e7;color:#695222;font-size:.82rem}
+.load-more{display:flex;justify-content:center;padding:14px;border-top:1px solid var(--ln)}
+.feed-count{padding:10px 16px;color:var(--mu);font-size:.82rem}
 .share-dialog{width:min(520px,calc(100vw - 32px));max-width:none;max-height:min(85vh,720px);padding:0;border:1px solid var(--ln);border-radius:20px;background:var(--s);color:var(--ink);box-shadow:0 24px 80px #10144040}
 .share-dialog::backdrop{background:#10144080;backdrop-filter:blur(2px)}
 .share-dialog-inner{padding:24px}
@@ -121,12 +121,12 @@ table{width:100%;border-collapse:collapse}td,th{padding:6px 4px;text-align:right
 .share-option.primary:hover{background:#116f40}
 .share-option.copy{width:100%;margin-top:10px;justify-content:center}
 .share-footnote{margin:14px 0 0;color:var(--mu);font-size:.82rem}
-@media (max-width:920px){.app,.site .app{grid-template-columns:minmax(0,1fr);max-width:700px;gap:0}.nav button.on{box-shadow:inset 0 3px var(--pk)}}
-@media (max-width:640px){.top{padding:12px 4px 10px}.top-actions{gap:6px}.top-actions .pill{padding:5px 9px;font-size:.82rem}.p,.cmp{padding:14px}.share-dialog-inner{padding:18px}.share-options{grid-template-columns:1fr}.share-option.primary{grid-column:auto}}
+@media (max-width:920px){.app,.site .app{grid-template-columns:minmax(0,1fr);max-width:700px;gap:0}.nav button.on{box-shadow:inset 0 3px var(--pk)}.rail{display:none}}
+@media (max-width:640px){.app{padding:0 8px}.top{padding:12px 4px 10px}.top-actions{gap:6px}.top-actions .pill{padding:5px 9px;font-size:.82rem}.top-actions [data-a="role"]{display:none}.p,.cmp{padding:14px}.share-dialog-inner{padding:18px}.share-options{grid-template-columns:1fr}.share-option.primary{grid-column:auto}.nav button{font-size:.7rem}}
 </style>
 </head>
 <body>
-<div class="app"><nav class="nav" id="nav" aria-label="Main"></nav><div class="mid"><header class="top"><h1 id="ttl"></h1><div class="top-actions"><button class="pill" data-a="share-site" aria-haspopup="dialog">Share site</button><button class="pill" id="role" data-a="role"></button></div></header><main id="main"></main></div><aside class="rail" id="rail"></aside></div>
+<div class="app"><nav class="nav" id="nav" aria-label="Main"></nav><div class="mid"><header class="top"><h1 id="ttl"></h1><div class="top-actions"><button class="pill" data-a="go" data-v="alerts" aria-label="Alerts">Alerts<span class="bd" id="alert-badge" hidden></span></button><button class="pill" data-a="share-site" aria-haspopup="dialog">Share</button><button class="pill" id="role" data-a="role"></button></div></header><main id="main"></main></div><aside class="rail" id="rail"></aside></div>
 <dialog class="share-dialog" id="share-dialog" aria-labelledby="share-title"></dialog>
 <div id="toast" role="status" aria-live="polite"></div>
 <script>
@@ -134,7 +134,7 @@ table{width:100%;border-collapse:collapse}td,th{padding:6px 4px;text-align:right
 var $=function(s){return document.querySelector(s)},base=location.href.split("#")[0],tt;
 var orgs=[{id:"stars",n:"Mamelodi Stars",k:"Club",cat:"sport",c:"#ff7aa8",a:"Coach Thabo",fl:214,b:"Under-15 football. Boots on, books out."},{id:"hill",n:"Hillcrest High",k:"School",cat:"sport",c:"#5eead4",a:"Mr Naidoo",fl:530,b:"Trials, fixtures and school news."},{id:"sun",n:"Sunrise Primary",k:"School",cat:"read",c:"#ffd23f",a:"Ms Dlamini",fl:402,b:"Reading champions since day one."},{id:"lib",n:"Pretoria Central Library",k:"Library",cat:"read",c:"#9db0ff",a:"Mrs Khumalo",fl:318,b:"Books, story hours and free study space."},{id:"lions",n:"Little Lions ECD",k:"ECD",cat:"read",c:"#ffb366",a:"Teacher Zoe",fl:96,b:"Little learners, big roars."}];
 var O=function(id){return orgs.filter(function(o){return o.id===id})[0]};
-var S={view:"home",tab:"all",admin:false,fnd:false,quiet:true,pin:"Every group here is verified by the Foundation. Play hard, read harder, be kind.",prof:null,org:null,orgTab:"home",orgLevel:"all",orgTopic:"all",orgQuery:"",un:0,notes:[],open:{},nid:20,pages:0,pts:0,pk:{},j:{},f:{lib:1,stars:1},rs:{},draft:"",g:""};
+var S={view:"home",tab:"all",admin:false,fnd:false,quiet:true,pin:"Every group here is verified by the Foundation. Play hard, read harder, be kind.",prof:null,org:null,orgTab:"home",orgLevel:"all",orgTopic:"all",orgQuery:"",un:0,notes:[],open:{},nid:20,pages:0,pts:0,pk:{},j:{},f:{lib:1,stars:1},rs:{},draft:"",g:"",feedLimit:8,storageFailed:false};
 var posts=[
 {id:1,o:"stars",n:"Mamelodi Stars",r:"Official \u2713",t:"Training moves to 3pm Thursday. Bring your book: 10 pages before kickoff!",l:12,ts:"2h",c:[{n:"Thandi K.",t:"Can I bring my little brother?"},{n:"Mamelodi Stars",o:"stars",t:"Yes Thandi, siblings are welcome. Bring a water bottle."}]},
 {id:2,o:"stars",n:"Mamelodi Stars",r:"Official \u2713",t:"Kickoff: Stars v Hillcrest. Post-match talk on video at 14:00.",e:"Sat 7 Nov, 10:00",l:40,ts:"3h",c:[]},
@@ -143,6 +143,12 @@ var posts=[
 {id:5,o:"hill",n:"Lerato",r:"Fan",t:"Who's calling Stars v Hillcrest? I say 2-1.",l:7,ts:"1d",c:[]},
 {id:6,o:"lib",n:"Pretoria Central Library",r:"Official \u2713",t:"Story hour for all ages, then walk over for the match.",e:"Sat 7 Nov, 09:00",l:22,ts:"1d",c:[]},
 {id:7,o:"stars",n:"Coach Thabo",r:"Coach \u2713",t:"Replay: Stars v Lions, second half. Tell us your man of the match.",v:1,l:27,ts:"2d",c:[]}];
+var POST_STORE="kick-read-content-v2";
+function validStoredOrg(o){return o&&typeof o.id==="string"&&/^g\d+$/.test(o.id)&&typeof o.n==="string"&&o.n.length<=80&&["Club","School","Library","ECD"].indexOf(o.k)>-1&&["sport","read"].indexOf(o.cat)>-1&&typeof o.c==="string"&&/^#[0-9a-f]{6}$/i.test(o.c)&&typeof o.a==="string"&&o.a.length<=60&&Number.isSafeInteger(o.fl)&&o.fl>=0&&typeof o.b==="string"&&o.b.length<=200}
+function validStoredPost(p){return p&&Number.isSafeInteger(p.id)&&typeof p.o==="string"&&!!O(p.o)&&typeof p.n==="string"&&p.n.length<=60&&typeof p.r==="string"&&p.r.length<=50&&typeof p.ts==="string"&&p.ts.length<=30&&typeof p.t==="string"&&p.t.length<=500&&(!p.e||typeof p.e==="string"&&p.e.length<=120)&&Array.isArray(p.c)&&p.c.length<=50&&p.c.every(function(c){return c&&typeof c.n==="string"&&c.n.length<=60&&typeof c.t==="string"&&c.t.length<=500&&(!c.o||!!O(c.o))})}
+function restorePosts(){try{var saved=localStorage.getItem(POST_STORE);if(!saved)return;var data=JSON.parse(saved);if(!data||!Array.isArray(data.posts)||!Array.isArray(data.orgs))throw new Error("Saved community content has an invalid shape");var orgIds={};data.orgs.filter(validStoredOrg).forEach(function(o){if(!orgIds[o.id]){orgIds[o.id]=1;orgs.push(o)}});var seen={},restored=data.posts.filter(function(p){if(!validStoredPost(p)||seen[p.id])return false;seen[p.id]=1;return true}).slice(0,250);if(restored.length){posts.splice.apply(posts,[0,posts.length].concat(restored));S.nid=Math.max(S.nid,restored.reduce(function(max,p){return Math.max(max,p.id+1)},S.nid))}orgs.forEach(function(o){var m=o.id.match(/^g(\d+)$/);if(m)S.nid=Math.max(S.nid,+m[1]+1)})}catch(err){console.error("Could not restore Kick & Read demo posts",err)}}
+function savePosts(){if(S.storageFailed)return;try{localStorage.setItem(POST_STORE,JSON.stringify({posts:posts.slice(0,250),orgs:orgs.filter(function(o){return /^g\d+$/.test(o.id)&&validStoredOrg(o)})}))}catch(err){S.storageFailed=true;console.error("Could not save Kick & Read demo posts in this browser",err);toast("This browser couldn't save posts. Your changes may be lost when you leave.")}}
+restorePosts();
 var inbox=[{id:1,o:"stars",n:"Thandi K.",q:"Can Grade 6 girls try out for the Stars?",a:""}],queue=[];
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function ini(n){return n.split(" ").map(function(w){return w[0]}).slice(0,2).join("").toUpperCase()}
@@ -156,14 +162,14 @@ function openShare(url,text,title,scope,id){var d=$("#share-dialog");d.innerHTML
 var shareReturn={scope:"site",id:0};
 function postShareText(p){var o=O(p.o),L=base+"#post-"+p.id;return ["Kick & Read | "+o.n,"",p.t].concat(p.e?["","Event: "+p.e]:[]).concat(["","View this post on Kick & Read:",L]).join("\n")}
 function P(p){var o=O(p.o),c=p.c;
-return '<article class="p" id="post-'+p.id+'">'+A(ini(p.n),o.c)+'<div class="pb"><div class="hd"><button class="nm" data-a="org" data-o="'+o.id+'">'+esc(p.n)+'</button>'+(/\u2713/.test(p.r)?'<span class="vf">'+p.r.replace(" \u2713","")+' \u2713</span>':'<span class="mu">'+p.r+'</span>')+'<span class="mu">'+(p.pg?'own page, ':p.n!==o.n?o.n+', ':'')+p.ts+'</span></div><p>'+esc(p.t)+'</p>'
-+(p.v?'<div class="vid" aria-hidden="true">'+ICON.play+'</div>':'')
-+(p.e?'<div class="ev"><b>'+p.e+'</b><button class="pill" data-a="rs" data-id="'+p.id+'" aria-pressed="'+!!S.rs[p.id]+'">'+(S.rs[p.id]?"Going":"I'm in")+'</button><button class="pill" data-a="join">Join link</button></div>':'')
+return '<article class="p" id="post-'+p.id+'">'+A(ini(p.n),o.c)+'<div class="pb"><div class="hd"><button class="nm" data-a="org" data-o="'+o.id+'">'+esc(p.n)+'</button>'+(/\u2713/.test(p.r)?'<span class="vf">'+esc(p.r.replace(" \u2713",""))+' \u2713</span>':'<span class="mu">'+esc(p.r)+'</span>')+'<span class="mu">'+(p.pg?'own page, ':p.n!==o.n?o.n+', ':'')+esc(p.ts)+'</span></div><p>'+esc(p.t)+'</p>'
++(p.v?'<div class="vid" aria-label="Video preview; playback is not connected">'+ICON.play+'<span>Video preview</span></div>':'')
++(p.e?'<div class="ev"><b>'+esc(p.e)+'</b><button class="pill" data-a="rs" data-id="'+p.id+'" aria-pressed="'+!!S.rs[p.id]+'">'+(S.rs[p.id]?"Going":"I'm in")+'</button><button class="pill" data-a="join">Join link</button></div>':'')
 +'<div class="ac"><button data-a="cm" data-id="'+p.id+'">Reply '+c.length+'</button><button data-a="lk" data-id="'+p.id+'" aria-pressed="'+!!p.m+'">'+ICON.heart+' '+p.l+'</button><button data-a="sh" data-id="'+p.id+'" aria-haspopup="dialog">Share post</button>'
 +'<button data-a="rp" data-id="'+p.id+'">'+(p.x?"Reported":"Report")+'</button>'+((S.fnd||(S.admin&&p.o==="stars"))?'<button data-a="del" data-id="'+p.id+'">Remove</button>':'')+'</div>'
 +(S.open[p.id]?'<div class="th">'+c.map(function(x){return '<div class="cm">'+A(ini(x.n),x.o?O(x.o).c:"#c9ccff")+'<div><b>'+esc(x.n)+'</b> '+(x.o?'<span class="vf">Official reply</span>':'')+'<p>'+esc(x.t)+'</p></div></div>'}).join("")+'<div class="fld"><input id="ci'+p.id+'" maxlength="140" placeholder="'+(S.admin?"Reply as Mamelodi Stars":"Add your reply")+'" aria-label="Reply"><button class="pill on" data-a="send" data-id="'+p.id+'">Reply</button></div></div>':'')
 +'</div></article>'}
-function feed(l){return l.length?l.map(P).join(""):'<p class="mu" style="padding:16px">Nothing here yet. Follow groups in Explore.</p>'}
+function feed(l){if(!l.length)return '<p class="mu" style="padding:16px">Nothing here yet. Follow groups in Explore.</p>';var shown=l.slice(0,S.feedLimit);return shown.map(P).join("")+(l.length>shown.length?'<div class="load-more"><button class="pill" data-a="load-more">Load more</button></div>':'')+'<div class="feed-count">Showing '+shown.length+' of '+l.length+'</div>'}
 function composer(){var j=orgs.filter(function(o){return S.fnd||(S.admin?o.id==="stars":S.j[o.id])});
 return '<div class="cmp">'+A(S.admin?"MS":S.prof?ini(S.prof.name):"?",S.admin?"#ff7aa8":"#c9ccff")+'<div class="pb"><select id="grp" aria-label="Post to">'+(j.length?j.map(function(o){return '<option value="'+o.id+'"'+(S.g===o.id?" selected":"")+'>'+o.n+'</option>'}).join(""):'<option value="">Join a group to post</option>')+'</select>'+(S.admin?'<select id="kind" aria-label="Post type"><option value="">Update</option><option value="e">Event</option><option value="v">Video</option></select>':'')+'<textarea id="np" maxlength="200" placeholder="'+(S.admin?"Tell your community something, as Mamelodi Stars":"What's happening?")+'" aria-label="New post">'+esc(S.draft)+'</textarea><button class="btn" data-a="np">Post</button></div></div>'}
 function W(){var fx=[["a","Mamelodi Stars","Hillcrest High","Sat 7 Nov, 10:00"],["b","Sunrise Primary","Little Lions ECD","Sat 7 Nov, 12:00"],["c","Hillcrest High","Sunrise Primary","Sat 14 Nov, 10:00"]];
@@ -172,7 +178,7 @@ return '<section class="card"><h2>Fixtures</h2><p class="mu">League starts Sat 7
 +'<section class="card"><h2>Matchday reading</h2><div class="meter"><i style="width:'+Math.min(100,S.pages)+'%"></i></div><span class="mu">'+S.pages+' of 100 pages this month</span><div style="margin-top:8px"><button class="btn" data-a="read">Log 10 pages</button></div><ul class="pg">'+[[20,"Bronze: new card border"],[50,"Silver: match thread shout-out"],[100,"Gold: scouting day invite"]].map(function(x){return '<li class="'+(S.pages>=x[0]?"on":"")+'">'+x[1]+'</li>'}).join("")+'</ul></section>'}
 function follow(o){return '<button class="pill" data-a="fo" data-o="'+o.id+'" aria-pressed="'+!!S.f[o.id]+'">'+(S.f[o.id]?"Following":"Follow")+'</button> <button class="pill" data-a="jn" data-o="'+o.id+'" aria-pressed="'+!!S.j[o.id]+'">'+(S.j[o.id]?"Joined":"Join to post")+'</button>'}
 function V(){var v=S.view;if(v==="courses")return CV();if(v==="course")return CD();if(v==="orgcourse")return orgCoursePage();
-if(v==="home"){var l=posts.filter(function(p){return S.tab==="all"||S.f[p.o]||S.j[p.o]});return '<div class="col">'+pin()+composer()+'<div class="tabs" role="tablist"><button role="tab" data-a="tab" data-v="all" aria-selected="'+(S.tab==="all")+'">For you</button><button role="tab" data-a="tab" data-v="fol" aria-selected="'+(S.tab==="fol")+'">Following</button></div>'+feed(l)+'</div>'}
+if(v==="home"){var l=posts.filter(function(p){return S.tab==="all"||S.f[p.o]||S.j[p.o]});return '<div class="col">'+pin()+composer()+'<div class="tabs" role="tablist"><button role="tab" data-a="tab" data-v="all" aria-selected="'+(S.tab==="all")+'">For you</button><button role="tab" data-a="tab" data-v="fol" aria-selected="'+(S.tab==="fol")+'">Following</button></div>'+feed(l)+'<p class="storage-note">Prototype save: posts stay in this browser only. Avoid sharing private or sensitive details.</p></div>'}
 if(v==="explore")return '<p><button class="pill" data-a="go" data-v="lib">Video library</button> <button class="pill" data-a="go" data-v="ev">Events</button></p>'+orgs.map(function(o){return '<div class="card"><div class="hd">'+A(ini(o.n),o.c)+'<div><button class="nm" data-a="org" data-o="'+o.id+'">'+o.n+'</button> <span class="vf">'+o.k+'</span><div class="mu">'+(o.fl+(S.f[o.id]?1:0))+' followers, admin '+o.a+' \u2713</div></div></div><p>'+o.b+'</p>'+follow(o)+'</div>'}).join("");
 if(v==="match")return W();
 if(v==="lib")return '<div class="col">'+feed(posts.filter(function(p){return p.v}))+'</div>';
@@ -189,15 +195,16 @@ return '<div class="col"><div class="banner"></div><div class="prof">'+A(ini(pr.
 var T={courses:"Courses",course:"Course",orgcourse:"Course",home:"Home",explore:"Explore",match:"Matchday",lib:"Library",ev:"Events",alerts:"Alerts",profile:"Your page",admin:"Admin",org:"Groups"};
 function render(){var d=$("#np");if(d)S.draft=d.value;var g=$("#grp");if(g&&g.value)S.g=g.value;
 if(!S.admin&&!S.fnd&&S.view==="admin")S.view="home";
-var items=[["home","\ud83c\udfe0","Home"],["courses","📚","Courses"],["explore","\ud83d\udd0e","Explore"],["match","\u26bd","Matchday"],["lib","\ud83c\udfac","Library"],["ev","\ud83d\udcc5","Events"],["alerts","\ud83d\udd14","Alerts"],["profile","\ud83d\udc64","You"]];if(S.admin||S.fnd)items.push(["admin","\ud83d\udee1","Admin"]);
-$("#nav").innerHTML='<div class="logo">Kick<i>&amp;</i>Read</div>'+items.map(function(i){return '<button data-a="go" data-v="'+i[0]+'" class="'+(S.view===i[0]?"on":"")+'"><span class="ic">'+i[1]+'</span>'+i[2]+(i[0]==="alerts"&&S.un?'<span class="bd">'+S.un+'</span>':'')+'</button>'}).join("");
-$("#ttl").textContent=S.view==="org"?O(S.org).n:T[S.view];$("#role").textContent=S.fnd?"Foundation view":S.admin?"Admin view":"Member view";
-$("#main").innerHTML=V();$("#rail").innerHTML=W()}
+var items=[["home","\ud83c\udfe0","Home"],["explore","\ud83d\udd0e","Explore"],["match","\u26bd","Matchday"],["courses","📚","Courses"],["profile","\ud83d\udc64","You"]];if(S.admin||S.fnd)items.push(["admin","\ud83d\udee1","Admin"]);
+$("#nav").innerHTML='<div class="logo">Kick<i>&amp;</i>Read</div>'+items.map(function(i){return '<button data-a="go" data-v="'+i[0]+'" class="'+(S.view===i[0]?"on":"")+'"><span class="ic">'+i[1]+'</span>'+i[2]+'</button>'}).join("");
+$("#ttl").textContent=S.view==="org"?O(S.org).n:T[S.view];$("#role").textContent=S.fnd?"Foundation":S.admin?"Admin":"Member";var badge=$("#alert-badge");badge.textContent=S.un;badge.hidden=!S.un;
+$("#main").innerHTML=V();$("#rail").innerHTML=W();savePosts()}
 document.addEventListener("click",function(e){var t=e.target.closest("[data-a]");if(!t)return;var a=t.dataset.a,id=+t.dataset.id,o=O(t.dataset.o),p=posts.filter(function(x){return x.id===id})[0];
-if(a==="go"){S.view=t.dataset.v;S.org=null;if(S.view==="alerts")S.un=0}
+if(a==="go"){S.view=t.dataset.v;S.org=null;S.feedLimit=8;if(S.view==="alerts")S.un=0}
 if(a==="role"){if(!S.admin&&!S.fnd)S.admin=true;else if(S.admin){S.admin=false;S.fnd=true}else S.fnd=false;toast(S.fnd?"Foundation view: full control":S.admin?"Admin view: Mamelodi Stars":"Member view")}
 if(a==="share-site")openShare(base,"Join Kick & Read for sport, reading and verified community spaces.\n\nVisit Kick & Read:\n"+base,"Kick & Read","site",0);
-if(a==="tab")S.tab=t.dataset.v;
+if(a==="tab"){S.tab=t.dataset.v;S.feedLimit=8}
+if(a==="load-more")S.feedLimit+=8;
 if(a==="org"){S.view="org";S.org=t.dataset.o;S.orgTab="home";S.orgLevel="all";S.orgTopic="all";S.orgQuery="";scrollTo(0,0)}
 if(a==="org-tab"){S.orgTab=t.dataset.tab;S.view="org";scrollTo(0,0)}
 if(a==="org-back"){S.view="explore";S.org=null;scrollTo(0,0)}
