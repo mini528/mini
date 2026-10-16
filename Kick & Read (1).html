@@ -177,10 +177,11 @@ table{display:block;max-width:100%;overflow-x:auto;white-space:nowrap}
 :root{--brand-blue-soft:#eaf2fc;--brand-cyan-soft:#e8fbfb;--brand-yellow-soft:#fffbe0;--shadow-card:0 8px 24px #123b6410;--shadow-pop:0 10px 26px #123b641a;--ease-ui:180ms ease}
 button,a,.card,.guide-card,.org-course,.org-person,.org-event,.share-option,input,select,textarea{transition:background-color var(--ease-ui),border-color var(--ease-ui),color var(--ease-ui),box-shadow var(--ease-ui),transform var(--ease-ui)}
 button:disabled{cursor:not-allowed;opacity:.56}
-.nav button{color:var(--ink)}
-.nav button:hover{background:var(--brand-blue-soft);color:var(--brand-blue)}
-.nav button.on{position:relative;background:var(--brand-blue-soft);color:var(--brand-blue);box-shadow:inset 3px 0 var(--brand-blue)}
-.nav button.on::after{content:"";position:absolute;right:10px;width:6px;height:6px;border-radius:50%;background:var(--brand-cyan)}
+.nav button{min-height:44px;border-radius:12px;color:#344054;transition:background-color var(--ease-ui),color var(--ease-ui),box-shadow var(--ease-ui)}
+.nav button:hover{background:#f0f4f8;color:#173f68}
+.nav button.on{position:relative;background:#eaf2fc;color:var(--brand-blue);box-shadow:inset 3px 0 var(--brand-blue);font-weight:750}
+.nav button.on::after{content:"";position:absolute;right:12px;width:5px;height:5px;border-radius:50%;background:var(--brand-cyan)}
+.nav button:focus-visible{outline-offset:1px;background:var(--brand-blue-soft);color:var(--brand-blue)}
 .top{backdrop-filter:saturate(1.15);border-bottom:1px solid transparent}
 .logo img,.brand-mobile img{box-shadow:0 2px 8px #123b6414}
 .col,.card{border-color:#e2e8f0;box-shadow:0 1px 2px #123b6408}
@@ -204,7 +205,7 @@ button:disabled{cursor:not-allowed;opacity:.56}
 .interest-chip[aria-pressed="true"]:hover{background:#06458f}
 .interest-panel{background:#fbfcfe}
 .org-menu button{border-radius:8px 8px 0 0}
-.org-menu button:hover{background:color-mix(in srgb,var(--org-accent) 8%,white)}
+.org-menu button:hover{background:#f1f5f9;color:#344054}
 .orgview .org-menu button[aria-current="page"]{background:color-mix(in srgb,var(--org-accent) 10%,white);color:var(--org-accent);box-shadow:inset 0 -3px var(--org-accent)}
 .orgview .btn{box-shadow:0 2px 6px color-mix(in srgb,var(--org-accent) 24%,transparent)}
 .orgview .btn:hover{filter:brightness(.9);box-shadow:0 5px 14px color-mix(in srgb,var(--org-accent) 30%,transparent)}
@@ -226,8 +227,8 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{border-color:var
 .share-dialog{box-shadow:0 24px 80px #123b6430}
 .orgview .org-course,.orgview .org-person,.orgview .org-event{transition:background-color var(--ease-ui),border-color var(--ease-ui),box-shadow var(--ease-ui),transform var(--ease-ui)}
 @media(min-width:921px){.nav button.on{box-shadow:inset 3px 0 var(--brand-blue)}}
-@media(max-width:920px){.nav button.on{box-shadow:inset 0 3px var(--brand-blue)}.nav button.on::after{top:5px;right:calc(50% - 18px)}}
-@media(max-width:640px){.card{border-radius:12px}.nav button.on{background:var(--brand-blue-soft);color:var(--brand-blue);box-shadow:inset 0 3px var(--brand-blue)}}
+@media(max-width:920px){.nav button:hover{background:transparent;color:var(--ink)}.nav button.on{background:#eaf2fc;color:var(--brand-blue);box-shadow:inset 0 3px var(--brand-blue)}.nav button.on::after{top:5px;right:calc(50% - 18px)}}
+@media(max-width:640px){.card{border-radius:12px}.nav button{border-radius:10px}.nav button.on{background:#eaf2fc;color:var(--brand-blue);box-shadow:inset 0 3px var(--brand-blue)}}
 @media(hover:none){.btn:hover,.guide-card:hover,.org-course:hover,.org-person:hover,.org-event:hover{transform:none;box-shadow:none}}
 @media(prefers-reduced-motion:reduce){button,a,.card,.guide-card,.org-course,.org-person,.org-event,.share-option,input,select,textarea{transition:none}}
 .hero2 h2,.site .top h1,.org-logo,.org-heading h1,.org-content h2,.org-stat b,.org-course h3{font-family:var(--bd)}
