@@ -2,7 +2,7 @@
 
 ## Social sharing
 
-The prototype's **Share site** button and post share actions offer direct share links for Facebook, WhatsApp, X, Telegram, LinkedIn and email, plus the browser's native share sheet (useful for apps such as Instagram and TikTok) and copy-link fallback. Sharing is always initiated by the user; messages do not include a young member's name or post text.
+The prototype's **Share site** button and post share actions offer direct share links for Facebook, WhatsApp, X, Telegram, LinkedIn and email, plus the browser's native share sheet (useful for apps such as Instagram and TikTok) and copy-link fallback. A prominent WhatsApp action on each post opens WhatsApp in a new tab with the organization, post text, event details (when present), and a direct link back to that post, separated with readable line breaks. The original site tab stays open. Individual member names are not added to the prefilled message; post text itself is included when the user chooses to share it.
 
 For useful previews, the page includes basic Open Graph and X card metadata. Before launch, host the site on a public HTTPS domain and replace the generic preview metadata with the approved brand description and a branded preview image. Social platforms read preview metadata from the page HTML on their servers, so JavaScript-only metadata changes are not enough.
 
