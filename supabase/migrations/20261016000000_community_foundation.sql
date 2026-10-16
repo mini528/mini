@@ -110,11 +110,12 @@ create policy "Members can view their own reports"
   using (reporter_id = (select auth.uid()));
 
 grant select on public.organizations to anon, authenticated;
-grant select on public.community_posts, public.post_comments to authenticated;
-grant select (id, organization_id, author_id, body, moderation_status, created_at)
+grant select (id, organization_id, body, moderation_status, created_at)
+  on public.community_posts to authenticated;
+grant select (id, organization_id, body, moderation_status, created_at)
   on public.community_posts to anon;
-grant select (id, post_id, author_id, body, moderation_status, created_at)
-  on public.post_comments to anon;
+grant select (id, post_id, body, moderation_status, created_at)
+  on public.post_comments to anon, authenticated;
 grant select on public.member_safety to authenticated;
 grant select, insert on public.post_reports to authenticated;
 revoke insert, update, delete, truncate, references, trigger
@@ -175,6 +176,10 @@ begin
     raise exception 'Posts can only be sent to verified organizations';
   end if;
 
+  perform pg_catalog.pg_advisory_xact_lock(
+    pg_catalog.hashtextextended(requester::text, 0)
+  );
+
   if (
     select count(*) from public.community_posts p
     where p.author_id = requester
@@ -226,6 +231,10 @@ begin
   ) then
     raise exception 'Comments are only allowed on published posts';
   end if;
+
+  perform pg_catalog.pg_advisory_xact_lock(
+    pg_catalog.hashtextextended(requester::text, 0)
+  );
 
   if (
     select count(*) from public.post_comments c
