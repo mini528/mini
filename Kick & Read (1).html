@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kick &amp; Read</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--bg:#f5f6f8;--s:#fff;--ink:#1a1d23;--mu:#6b7280;--ln:#e6e8ec;--br:#2f5fd0;--pk:#2f5fd0;--sn:#f3dd9a;--mn:#bfe6d6;--hd:"Figtree",system-ui,sans-serif;--bd:"Figtree",system-ui,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0f1218;--s:#171b23;--ink:#eceef2;--mu:#99a1b0;--ln:#262b36;--br:#6c93ff;--pk:#6c93ff}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0f1218;--s:#171b23;--ink:#eceef2;--mu:#99a1b0;--ln:#262b36;--br:#6c93ff;--pk:#6c93ff}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.5 var(--bd)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}
+:focus-visible{outline:3px solid var(--pk);outline-offset:2px}
+.app{display:grid;grid-template-columns:190px minmax(0,600px) 310px;gap:20px;justify-content:center;max-width:1180px;margin:0 auto;padding:0 12px}
+.nav{position:sticky;top:12px;align-self:start;display:flex;flex-direction:column;gap:4px;padding-top:12px}
+.logo{font:800 1.6rem var(--hd);letter-spacing:-.04em;padding:6px 14px 14px}.logo i{font-style:normal;color:var(--pk)}
+.nav button{display:flex;gap:12px;align-items:center;border:0;background:none;padding:11px 14px;border-radius:99px;font:600 1.05rem var(--bd);text-align:left;position:relative}
+.nav button:hover{background:var(--s)}.nav button.on{background:var(--ink);color:var(--bg)}
+.bd{background:var(--pk);color:#fff;border-radius:99px;font-size:.75rem;padding:0 7px;margin-left:auto}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);display:flex;justify-content:space-between;align-items:center;padding:14px 4px 10px}
+.top h1{font:800 1.5rem var(--hd);letter-spacing:-.03em;margin:0}
+.col{background:var(--s);border:1px solid var(--ln);border-radius:22px;overflow:hidden;margin-bottom:14px}
+.card{background:var(--s);border:1px solid var(--ln);border-radius:22px;padding:16px;margin-bottom:14px}
+.card h2,.col h2{font:800 1.2rem var(--hd);letter-spacing:-.02em;margin:0 0 6px}.col>h2,.col>p,.col>.fld{margin-left:16px;margin-right:16px}
+.mu{color:var(--mu);font-size:.9rem}
+.rail{position:sticky;top:12px;align-self:start;padding-top:62px;max-height:100vh;overflow-y:auto}
+.av{filter:saturate(.6);flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font:800 .95rem var(--hd);color:#101440}
+.p,.cmp{display:flex;gap:12px;padding:16px;border-bottom:1px solid var(--ln)}.p:last-child{border-bottom:0}
+.pb{min-width:0;flex:1}.hd{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.nm{border:0;background:none;padding:0;font-weight:800}.nm:hover{text-decoration:underline}
+.vf{background:var(--br);color:#fff;border-radius:99px;font-size:.72rem;padding:1px 8px;font-weight:600}
+.p p{margin:4px 0 10px;overflow-wrap:anywhere}
+.vid{aspect-ratio:16/9;border-radius:16px;background:var(--br);display:grid;place-items:center;font-size:2.4rem;color:#fff;margin-bottom:10px}
+.ev{display:flex;gap:8px;align-items:center;flex-wrap:wrap;border:2px dashed var(--ln);border-radius:14px;padding:10px;margin-bottom:10px}
+.ac{display:flex;gap:4px;flex-wrap:wrap}.ac button{border:0;background:none;color:var(--mu);padding:6px 10px;border-radius:99px;font-weight:600}.ac button:hover{background:var(--bg)}
+.ac button[aria-pressed="true"]{color:var(--pk)}
+.sh{display:inline-flex;gap:10px;align-items:center;font-weight:600}.sh a{color:var(--br)}
+.th{margin-top:8px;border-left:3px solid var(--ln);padding-left:12px}
+.cm{display:flex;gap:10px;margin:8px 0}.cm .av{width:32px;height:32px;font-size:.75rem}.cm p{margin:0}
+.fld{display:flex;gap:8px;margin:8px 0}.fld input{flex:1;min-width:0}
+input,select,textarea{border:2px solid var(--ln);border-radius:14px;padding:9px 12px;background:var(--bg);width:100%}
+select option{color:#101440;background:#fff}
+textarea{resize:vertical;min-height:64px;margin:8px 0}
+.cmp select{width:auto;max-width:100%;margin-right:6px}
+.btn{border:0;border-radius:99px;padding:10px 22px;font-weight:600;background:var(--br);color:#fff}
+.pill{border:2px solid var(--ln);background:none;border-radius:99px;padding:5px 13px;font-weight:600}
+.pill[aria-pressed="true"],.pill.on{background:var(--pk);border-color:var(--pk);color:#fff}
+.tabs{display:flex;border-bottom:1px solid var(--ln)}.tabs button{flex:1;border:0;background:none;padding:14px;font-weight:600;color:var(--mu)}
+.tabs button[aria-selected="true"]{color:var(--ink);box-shadow:inset 0 -4px 0 var(--pk)}
+.banner{height:110px;background:var(--br)}
+.prof{padding:0 16px 16px}.prof .av{width:84px;height:84px;font-size:1.6rem;margin-top:-42px;border:4px solid var(--s)}
+.tag{display:inline-block;background:var(--sn);color:#101440;border-radius:8px;padding:2px 9px;font-size:.85rem;font-weight:600;margin:0 6px 6px 0}
+.fx{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:10px 0;border-top:1px solid var(--ln)}.fx .pill{padding:3px 9px;font-size:.85rem;margin:2px 2px 0 0}
+.meter{height:12px;background:var(--ln);border-radius:99px;overflow:hidden;margin:8px 0}.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--pk),var(--sn))}
+table{width:100%;border-collapse:collapse}td,th{padding:6px 4px;text-align:right}td:first-child,th:first-child{text-align:left}th{color:var(--mu);font-weight:600}
+.stat{display:inline-block;margin-right:20px}.stat b{display:block;font:800 1.6rem var(--hd)}
+.pg{list-style:none;padding:0;margin:8px 0 0}.pg li{padding:6px 10px;border-radius:10px;background:var(--bg);color:var(--mu);margin-bottom:6px;font-size:.9rem}.pg li.on{background:var(--mn);color:#06301f;font-weight:600}
+.hl{outline:3px solid var(--pk)}.nav [data-v="lib"],.nav [data-v="ev"]{display:none}.certp{border:2px solid var(--br);border-radius:16px;padding:22px;text-align:center;margin:12px 0}.certp h2{margin:4px 0}
+.crumb{display:flex;align-items:center;gap:2px;border:0;background:none;padding:0;margin-bottom:6px;color:var(--mu);font:600 .85rem var(--bd)}.crumb:hover{color:var(--br)}.crumb svg{width:16px;height:16px}
+.hero2{background:var(--s);border:1px solid var(--ln);border-left:4px solid var(--br);border-radius:12px;padding:24px;margin-bottom:16px}.hero2 h2{font:700 1.7rem/1.2 "Source Serif 4",Georgia,serif;margin:0 0 8px}.hero2 p{margin:0 0 14px;color:var(--mu);max-width:56ch}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}.grid2>.card,.grid2>section{margin:0}.grid2>p{grid-column:1/-1;margin:0}
+.two{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:16px;align-items:start}.side{position:sticky;top:84px}
+.sfoot{margin:28px 0 12px;padding-top:16px;border-top:1px solid var(--ln);color:var(--mu);font-size:.85rem}
+.site .top h1{font:700 1.9rem/1.15 "Source Serif 4",Georgia,serif;letter-spacing:-.01em}
+.site .card,.site .col{border-radius:12px}.site .banner{height:150px}.site .col h2,.site .card h2{font:700 1.15rem var(--hd)}
+.ac button[aria-pressed="true"] svg{fill:currentColor}
+@media (min-width:921px){.site .app{grid-template-columns:190px minmax(0,920px)}.site .rail{display:none}}
+@media (max-width:760px){.two{grid-template-columns:1fr}.side{position:static}}
+@media print{body *{visibility:hidden}.certp,.certp *{visibility:visible}.certp{position:absolute;left:0;top:0;width:100%}}.pinned{padding:14px 16px;background:var(--br);color:#fff}.pinned p{margin:6px 0 0}.pinned .vf{background:#fff;color:var(--br)}h3{font:800 1rem var(--hd)}
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom,0px));background:#101440;color:var(--mn);padding:10px 18px;border-radius:99px;z-index:40;max-width:90vw;text-align:center}#toast:empty{display:none}
+@media (max-width:920px){
+.app{grid-template-columns:minmax(0,1fr);gap:0}.rail{display:none}
+.nav{position:fixed;left:0;right:0;bottom:0;top:auto;flex-direction:row;justify-content:space-around;background:var(--s);border-top:1px solid var(--ln);padding:4px 4px calc(4px + env(safe-area-inset-bottom,0px));z-index:25;gap:0}
+.nav .logo{display:none}.nav button{flex-direction:column;gap:0;padding:6px 4px;font-size:.68rem;border-radius:12px;flex:1;align-items:center}.nav button span.ic{font-size:1.25rem}.bd{position:absolute;top:0;right:6px;margin:0}
+.mid{padding-bottom:84px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app"><nav class="nav" id="nav" aria-label="Main"></nav><div class="mid"><header class="top"><h1 id="ttl"></h1><button class="pill" id="role" data-a="role"></button></header><main id="main"></main></div><aside class="rail" id="rail"></aside></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)},base=location.href.split("#")[0],tt;
+var orgs=[{id:"stars",n:"Mamelodi Stars",k:"Club",cat:"sport",c:"#ff7aa8",a:"Coach Thabo",fl:214,b:"Under-15 football. Boots on, books out."},{id:"hill",n:"Hillcrest High",k:"School",cat:"sport",c:"#5eead4",a:"Mr Naidoo",fl:530,b:"Trials, fixtures and school news."},{id:"sun",n:"Sunrise Primary",k:"School",cat:"read",c:"#ffd23f",a:"Ms Dlamini",fl:402,b:"Reading champions since day one."},{id:"lib",n:"Pretoria Central Library",k:"Library",cat:"read",c:"#9db0ff",a:"Mrs Khumalo",fl:318,b:"Books, story hours and free study space."},{id:"lions",n:"Little Lions ECD",k:"ECD",cat:"read",c:"#ffb366",a:"Teacher Zoe",fl:96,b:"Little learners, big roars."}];
+var O=function(id){return orgs.filter(function(o){return o.id===id})[0]};
+var S={view:"home",tab:"all",admin:false,fnd:false,quiet:true,pin:"Every group here is verified by the Foundation. Play hard, read harder, be kind.",prof:null,org:null,un:0,notes:[],open:{},sh:{},nid:20,pages:0,pts:0,pk:{},j:{},f:{lib:1,stars:1},rs:{},draft:"",g:""};
+var posts=[
+{id:1,o:"stars",n:"Mamelodi Stars",r:"Official \u2713",t:"Training moves to 3pm Thursday. Bring your book: 10 pages before kickoff!",l:12,ts:"2h",c:[{n:"Thandi K.",t:"Can I bring my little brother?"},{n:"Mamelodi Stars",o:"stars",t:"Yes Thandi, siblings are welcome. Bring a water bottle."}]},
+{id:2,o:"stars",n:"Mamelodi Stars",r:"Official \u2713",t:"Kickoff: Stars v Hillcrest. Post-match talk on video at 14:00.",e:"Sat 7 Nov, 10:00",l:40,ts:"3h",c:[]},
+{id:3,o:"lib",n:"Mrs Khumalo",r:"Librarian \u2713",t:"New tutorial: read faster without losing the story.",v:1,l:19,ts:"5h",c:[{n:"Sipho",t:"Trick 3 actually works"}]},
+{id:4,o:"sun",n:"Ms Dlamini",r:"Teacher \u2713",t:"Grade 4 hit 500 pages this week. Pizza for the winners!",l:31,ts:"8h",c:[]},
+{id:5,o:"hill",n:"Lerato",r:"Fan",t:"Who's calling Stars v Hillcrest? I say 2-1.",l:7,ts:"1d",c:[]},
+{id:6,o:"lib",n:"Pretoria Central Library",r:"Official \u2713",t:"Story hour for all ages, then walk over for the match.",e:"Sat 7 Nov, 09:00",l:22,ts:"1d",c:[]},
+{id:7,o:"stars",n:"Coach Thabo",r:"Coach \u2713",t:"Replay: Stars v Lions, second half. Tell us your man of the match.",v:1,l:27,ts:"2d",c:[]}];
+var inbox=[{id:1,o:"stars",n:"Thandi K.",q:"Can Grade 6 girls try out for the Stars?",a:""}],queue=[];
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function ini(n){return n.split(" ").map(function(w){return w[0]}).slice(0,2).join("").toUpperCase()}
+function A(l,c){return '<span class="av" style="background:'+c+'">'+esc(l)+'</span>'}
+function toast(m){var e=$("#toast");e.textContent=m;clearTimeout(tt);tt=setTimeout(function(){e.textContent=""},3200)}
+function note(m){S.notes.unshift(m);S.un++;toast(m)}
+function need(){if(S.admin)return 1;if(!S.prof){toast("Create your page first to join in");S.view="profile";S.org=null;return 0}if(S.prof.age==="u13"&&!S.prof.ok){toast("Waiting for parent or school sign-off");S.view="profile";S.org=null;return 0}return 1}
+function who(){return S.admin?{n:"Coach Thabo",r:"Admin \u2713"}:{n:S.prof.name,r:"Member"}}
+function P(p){var o=O(p.o),L=base+"#post-"+p.id,tx=encodeURIComponent(p.t.slice(0,90)+" via Kick&Read "+L),c=p.c;
+return '<article class="p" id="post-'+p.id+'">'+A(ini(p.n),o.c)+'<div class="pb"><div class="hd"><button class="nm" data-a="org" data-o="'+o.id+'">'+esc(p.n)+'</button>'+(/\u2713/.test(p.r)?'<span class="vf">'+p.r.replace(" \u2713","")+' \u2713</span>':'<span class="mu">'+p.r+'</span>')+'<span class="mu">'+(p.pg?'own page, ':p.n!==o.n?o.n+', ':'')+p.ts+'</span></div><p>'+esc(p.t)+'</p>'
++(p.v?'<div class="vid" aria-hidden="true">'+ICON.play+'</div>':'')
++(p.e?'<div class="ev"><b>'+p.e+'</b><button class="pill" data-a="rs" data-id="'+p.id+'" aria-pressed="'+!!S.rs[p.id]+'">'+(S.rs[p.id]?"Going":"I'm in")+'</button><button class="pill" data-a="join">Join link</button></div>':'')
++'<div class="ac"><button data-a="cm" data-id="'+p.id+'">Reply '+c.length+'</button><button data-a="lk" data-id="'+p.id+'" aria-pressed="'+!!p.m+'">'+ICON.heart+' '+p.l+'</button><button data-a="sh" data-id="'+p.id+'">Share</button>'
++(S.sh[p.id]?'<span class="sh"><a href="https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(L)+'" target="_blank" rel="noopener">Facebook</a><a href="https://wa.me/?text='+tx+'" target="_blank" rel="noopener">WhatsApp</a><button data-a="cp" data-id="'+p.id+'">Copy link</button></span>':'')
++'<button data-a="rp" data-id="'+p.id+'">'+(p.x?"Reported":"Report")+'</button>'+((S.fnd||(S.admin&&p.o==="stars"))?'<button data-a="del" data-id="'+p.id+'">Remove</button>':'')+'</div>'
++(S.open[p.id]?'<div class="th">'+c.map(function(x){return '<div class="cm">'+A(ini(x.n),x.o?O(x.o).c:"#c9ccff")+'<div><b>'+esc(x.n)+'</b> '+(x.o?'<span class="vf">Official reply</span>':'')+'<p>'+esc(x.t)+'</p></div></div>'}).join("")+'<div class="fld"><input id="ci'+p.id+'" maxlength="140" placeholder="'+(S.admin?"Reply as Mamelodi Stars":"Add your reply")+'" aria-label="Reply"><button class="pill on" data-a="send" data-id="'+p.id+'">Reply</button></div></div>':'')
++'</div></article>'}
+function feed(l){return l.length?l.map(P).join(""):'<p class="mu" style="padding:16px">Nothing here yet. Follow groups in Explore.</p>'}
+function composer(){var j=orgs.filter(function(o){return S.fnd||(S.admin?o.id==="stars":S.j[o.id])});
+return '<div class="cmp">'+A(S.admin?"MS":S.prof?ini(S.prof.name):"?",S.admin?"#ff7aa8":"#c9ccff")+'<div class="pb"><select id="grp" aria-label="Post to">'+(j.length?j.map(function(o){return '<option value="'+o.id+'"'+(S.g===o.id?" selected":"")+'>'+o.n+'</option>'}).join(""):'<option value="">Join a group to post</option>')+'</select>'+(S.admin?'<select id="kind" aria-label="Post type"><option value="">Update</option><option value="e">Event</option><option value="v">Video</option></select>':'')+'<textarea id="np" maxlength="200" placeholder="'+(S.admin?"Tell your community something, as Mamelodi Stars":"What's happening?")+'" aria-label="New post">'+esc(S.draft)+'</textarea><button class="btn" data-a="np">Post</button></div></div>'}
+function W(){var fx=[["a","Mamelodi Stars","Hillcrest High","Sat 7 Nov, 10:00"],["b","Sunrise Primary","Little Lions ECD","Sat 7 Nov, 12:00"],["c","Hillcrest High","Sunrise Primary","Sat 14 Nov, 10:00"]];
+return '<section class="card"><h2>Fixtures</h2><p class="mu">League starts Sat 7 Nov. Call it, earn points.</p>'+fx.map(function(f){return '<div class="fx"><div><b>'+f[1]+' v '+f[2]+'</b><br><span class="mu">'+f[3]+'</span></div><div>'+[["h","Home"],["d","Draw"],["a","Away"]].map(function(b){return '<button class="pill" data-a="pk" data-id="'+f[0]+'" data-v="'+b[0]+'" aria-pressed="'+(S.pk[f[0]]===b[0])+'">'+b[1]+'</button>'}).join("")+'</div></div>'}).join("")+'</section>'
++'<section class="card"><h2>League table</h2><table><tr><th>Club</th><th>P</th><th>W</th><th>Pts</th></tr><tr><td>Sunrise Primary</td><td>4</td><td>3</td><td>10</td></tr><tr><td><b>Mamelodi Stars</b></td><td>4</td><td>3</td><td>9</td></tr><tr><td>Hillcrest High</td><td>4</td><td>2</td><td>7</td></tr><tr><td>Little Lions ECD</td><td>4</td><td>1</td><td>4</td></tr></table></section>'
++'<section class="card"><h2>Matchday reading</h2><div class="meter"><i style="width:'+Math.min(100,S.pages)+'%"></i></div><span class="mu">'+S.pages+' of 100 pages this month</span><div style="margin-top:8px"><button class="btn" data-a="read">Log 10 pages</button></div><ul class="pg">'+[[20,"Bronze: new card border"],[50,"Silver: match thread shout-out"],[100,"Gold: scouting day invite"]].map(function(x){return '<li class="'+(S.pages>=x[0]?"on":"")+'">'+x[1]+'</li>'}).join("")+'</ul></section>'}
+function follow(o){return '<button class="pill" data-a="fo" data-o="'+o.id+'" aria-pressed="'+!!S.f[o.id]+'">'+(S.f[o.id]?"Following":"Follow")+'</button> <button class="pill" data-a="jn" data-o="'+o.id+'" aria-pressed="'+!!S.j[o.id]+'">'+(S.j[o.id]?"Joined":"Join to post")+'</button>'}
+function V(){var v=S.view;if(v==="courses")return CV();if(v==="course")return CD();
+if(v==="home"){var l=posts.filter(function(p){return S.tab==="all"||S.f[p.o]||S.j[p.o]});return '<div class="col">'+pin()+composer()+'<div class="tabs" role="tablist"><button role="tab" data-a="tab" data-v="all" aria-selected="'+(S.tab==="all")+'">For you</button><button role="tab" data-a="tab" data-v="fol" aria-selected="'+(S.tab==="fol")+'">Following</button></div>'+feed(l)+'</div>'}
+if(v==="explore")return '<p><button class="pill" data-a="go" data-v="lib">Video library</button> <button class="pill" data-a="go" data-v="ev">Events</button></p>'+orgs.map(function(o){return '<div class="card"><div class="hd">'+A(ini(o.n),o.c)+'<div><button class="nm" data-a="org" data-o="'+o.id+'">'+o.n+'</button> <span class="vf">'+o.k+'</span><div class="mu">'+(o.fl+(S.f[o.id]?1:0))+' followers, admin '+o.a+' \u2713</div></div></div><p>'+o.b+'</p>'+follow(o)+'</div>'}).join("");
+if(v==="match")return W();
+if(v==="lib")return '<div class="col">'+feed(posts.filter(function(p){return p.v}))+'</div>';
+if(v==="ev")return '<div class="col">'+feed(posts.filter(function(p){return p.e}))+'</div>';
+if(v==="alerts")return '<div class="card"><h2>Alerts</h2>'+(S.notes.length?S.notes.map(function(m){return '<p>'+esc(m)+'</p>'}).join(""):'<p class="mu">Follow groups to hear about games and events the moment they are posted.</p>')+'</div>';
+if(v==="org"){var o=O(S.org),mine=S.admin&&o.id==="stars";return '<div class="col"><div class="banner" style="background:linear-gradient(120deg,'+o.c+',var(--br))"></div><div class="prof">'+A(ini(o.n),o.c)+'<h2>'+o.n+' <span class="vf">'+o.k+' \u2713</span></h2><p>'+o.b+'</p><p class="mu">Admin: '+o.a+', '+(o.fl+(S.f[o.id]?1:0))+' followers</p>'+follow(o)+'<div class="fld"><input id="ask" maxlength="140" placeholder="Ask '+o.n+' a question" aria-label="Question"><button class="pill on" data-a="ask" data-o="'+o.id+'">Ask</button></div>'+(mine?'<p class="mu">You manage this page. Replies to questions are in Admin.</p>':'')+'</div>'+orgCourses(o)+'<h2 style="padding:0 16px">Latest posts</h2>'+feed(posts.filter(function(p){return p.o===o.id}))+'</div>'}
+if(v==="admin"&&S.fnd)return FV();
+if(v==="admin")return '<div class="card"><h2>Mamelodi Stars dashboard</h2><span class="stat"><b>'+(215+(S.f.stars?0:0))+'</b>followers</span><span class="stat"><b>'+posts.filter(function(p){return p.o==="stars"}).length+'</b>posts</span><span class="stat"><b>'+inbox.filter(function(i){return!i.a}).length+'</b>open questions</span></div><div class="card"><h2>Questions from your community</h2>'+(inbox.filter(function(i){return i.o==="stars"}).map(function(i){return '<p><b>'+esc(i.n)+'</b>: '+esc(i.q)+'</p>'+(i.a?'<p class="mu">Answered: '+esc(i.a)+'</p>':'<div class="fld"><input id="an'+i.id+'" maxlength="140" placeholder="Your answer" aria-label="Answer"><button class="pill on" data-a="ans" data-id="'+i.id+'">Send</button></div>')}).join("")||'<p class="mu">No questions yet.</p>')+'</div><div class="card"><h2>Reported posts</h2>'+(queue.length?queue.map(function(p,i){return '<div class="fx"><div><b>'+esc(p.n)+'</b><br><span class="mu">'+esc(p.t)+'</span></div><div><button class="pill" data-a="ok" data-i="'+i+'">Keep</button><button class="pill" data-a="rm" data-i="'+i+'">Remove</button></div></div>'}).join(""):'<p class="mu">Nothing waiting. Reports from any post land here.</p>')+'</div>';
+var pr=S.prof;
+if(!pr)return '<div class="col"><div class="banner"></div><div class="prof"><h2>Create your page</h2><p class="mu">Kick&Read is for ages 13 and over. Parents can make a page to follow their teen’s groups and courses. A page lets you reply, post and join courses.</p><label>Name<input id="pn" maxlength="30" placeholder="Sipho M."></label><label>Age group<select id="pa"><option value="t">13 to 17</option><option value="a">18 and over</option><option value="p">Parent or guardian</option></select></label><label>Your club or school<select id="pc">'+orgs.map(function(o){return '<option value="'+o.id+'">'+o.n+'</option>'}).join("")+'</select></label><p><button class="btn" data-a="setup">Create my page</button></p></div></div>';
+var bg=[];if(S.pages>=20)bg.push("Bronze reader");if(S.pages>=50)bg.push("Silver reader");if(S.pages>=100)bg.push("Gold reader");if(Object.keys(S.pk).length>2)bg.push("Predictor");
+var my=posts.filter(function(p){return p.n===pr.name});
+return '<div class="col"><div class="banner"></div><div class="prof">'+A(ini(pr.name),"#ff7aa8")+'<h2>'+esc(pr.name)+'</h2><p class="mu">'+O(pr.club).n+(pr.age==="u13"?(pr.ok?", sign-off done":", waiting for sign-off"):"")+'</p>'+(pr.age==="u13"&&!pr.ok?'<p><button class="pill" data-a="appr">Demo: parent approves</button></p>':'')+'<p>'+esc(pr.bio||"Add a bio so people know you.")+'</p><div class="fld"><input id="bio" maxlength="90" placeholder="Edit bio" aria-label="Bio"><button class="pill on" data-a="bio">Save</button></div><span class="stat"><b>'+S.pages+'</b>pages</span><span class="stat"><b>'+S.pts+'</b>points</span><div>'+(bg.length?bg.map(function(b){return '<span class="tag">'+b+'</span>'}).join(""):'<span class="mu">Log pages to earn badges. Matched perks unlock as you go.</span>')+'</div>'+oppsV()+pageComp()+'</div><h2 style="padding:0 16px">Your posts</h2>'+feed(my)+'</div>'}
+var T={courses:"Courses",course:"Course",home:"Home",explore:"Explore",match:"Matchday",lib:"Library",ev:"Events",alerts:"Alerts",profile:"Your page",admin:"Admin",org:"Group page"};
+function render(){var d=$("#np");if(d)S.draft=d.value;var g=$("#grp");if(g&&g.value)S.g=g.value;
+if(!S.admin&&!S.fnd&&S.view==="admin")S.view="home";
+var items=[["home","\ud83c\udfe0","Home"],["courses","📚","Courses"],["explore","\ud83d\udd0e","Explore"],["match","\u26bd","Matchday"],["lib","\ud83c\udfac","Library"],["ev","\ud83d\udcc5","Events"],["alerts","\ud83d\udd14","Alerts"],["profile","\ud83d\udc64","You"]];if(S.admin||S.fnd)items.push(["admin","\ud83d\udee1","Admin"]);
+$("#nav").innerHTML='<div class="logo">Kick<i>&amp;</i>Read</div>'+items.map(function(i){return '<button data-a="go" data-v="'+i[0]+'" class="'+(S.view===i[0]?"on":"")+'"><span class="ic">'+i[1]+'</span>'+i[2]+(i[0]==="alerts"&&S.un?'<span class="bd">'+S.un+'</span>':'')+'</button>'}).join("");
+$("#ttl").textContent=S.view==="org"?O(S.org).n:T[S.view];$("#role").textContent=S.fnd?"Foundation view":S.admin?"Admin view":"Member view";
+$("#main").innerHTML=V();$("#rail").innerHTML=W()}
+document.addEventListener("click",function(e){var t=e.target.closest("[data-a]");if(!t)return;var a=t.dataset.a,id=+t.dataset.id,o=O(t.dataset.o),p=posts.filter(function(x){return x.id===id})[0];
+if(a==="go"){S.view=t.dataset.v;S.org=null;if(S.view==="alerts")S.un=0}
+if(a==="role"){if(!S.admin&&!S.fnd)S.admin=true;else if(S.admin){S.admin=false;S.fnd=true}else S.fnd=false;toast(S.fnd?"Foundation view: full control":S.admin?"Admin view: Mamelodi Stars":"Member view")}
+if(a==="tab")S.tab=t.dataset.v;
+if(a==="org"){S.view="org";S.org=t.dataset.o;scrollTo(0,0)}
+if(a==="fo"){S.f[o.id]=S.f[o.id]?0:1;if(!S.f[o.id])S.j[o.id]=0;toast(S.f[o.id]?"Following "+o.n+". You'll get alerts":"Unfollowed "+o.n)}
+if(a==="jn"){if(need()){S.j[o.id]=S.j[o.id]?0:1;if(S.j[o.id])S.f[o.id]=1;toast(S.j[o.id]?"Joined "+o.n+". You can post there":"Left "+o.n)}}
+if(a==="np"){var v=$("#np").value.trim(),gg=$("#grp").value,k=$("#kind")?$("#kind").value:"";if(need()){if(!gg)toast("Join a group first to post");else if(!S.admin&&!S.fnd&&LINK.test(v))toast("Links aren't allowed here. Verified groups share links.");else if(v){var w=who(),n={id:S.nid++,o:gg,n:S.admin?O(gg).n:w.n,r:S.admin?"Official \u2713":w.r,t:v,l:0,ts:"now",c:[]};if(k==="e")n.e="Sat 14 Nov, 10:00";if(k==="v")n.v=1;posts.unshift(n);S.draft="";toast(S.admin?"Published. Followers get an alert":"Posted in "+O(gg).n)}}}
+if(a==="lk"&&p&&need()){p.m=!p.m;p.l+=p.m?1:-1}
+if(a==="cm")S.open[id]=!S.open[id];
+if(a==="send"&&p&&need()){var i=$("#ci"+id),x=i.value.trim();if(x){var wo=who();p.c.push(S.admin?{n:O(p.o).n,o:"stars",t:x}:{n:wo.n,t:x});if(S.admin&&S.prof&&p.c.some(function(q){return q.n===S.prof.name}))note("Mamelodi Stars replied to you: "+x.slice(0,50));else toast("Reply sent")}}
+if(a==="sh")S.sh[id]=!S.sh[id];
+if(a==="cp"){try{navigator.clipboard.writeText(base+"#post-"+id);toast("Link copied")}catch(x2){toast("Copy the page address to share")}}
+if(a==="rp"&&p&&!p.x){p.x=1;queue.push(p);toast("Reported. A moderator will review it")}
+if(a==="del"&&p){posts.splice(posts.indexOf(p),1);toast("Removed")}
+if(a==="rs"){S.rs[id]=!S.rs[id];toast(S.rs[id]?"See you there":"RSVP removed")}
+if(a==="join")toast("Your video meeting link opens here");
+if(a==="pk"&&need()){if(!S.pk[t.dataset.id]){S.pts+=5;toast("Prediction locked in. +5 points")}S.pk[t.dataset.id]=t.dataset.v}
+if(a==="read"&&need()){var b=S.pages;S.pages+=10;S.pts+=2;[[20,"Bronze"],[50,"Silver"],[100,"Gold"]].forEach(function(m){if(b<m[0]&&S.pages>=m[0]){note("Unlocked: "+m[1]+" reader perk");if(S.prof)posts.unshift({id:S.nid++,o:S.prof.club,n:S.prof.name,r:"Member",t:"Just unlocked "+m[1]+" reader on Kick&Read.",l:0,ts:"now",c:[],pg:1})}})}
+if(a==="setup"){var nm=$("#pn").value.trim();if(!nm)toast("Add your name first");else{var ag=$("#pa").value,c=$("#pc").value;S.prof={name:nm,age:ag,club:c,bio:"",ok:ag!=="u13"};S.j[c]=1;S.f[c]=1;toast("Your page is live")}}
+if(a==="appr"){S.prof.ok=true;toast("Sign-off received. You can join in")}
+if(a==="bio"){S.prof.bio=$("#bio").value.trim();toast("Bio saved")}
+if(a==="ask"&&need()){var q=$("#ask").value.trim();if(q){inbox.push({id:S.nid++,o:o.id,n:who().n,q:q,a:""});toast("Question sent to "+o.n)}}
+if(a==="ans"){var it=inbox.filter(function(z){return z.id===id})[0],an=$("#an"+id).value.trim();if(an){it.a=an;if(S.prof&&it.n===S.prof.name)note("Mamelodi Stars answered: "+an.slice(0,60));else toast("Answer sent")}}
+if(a==="ok"){queue[+t.dataset.i].x=0;queue.splice(+t.dataset.i,1)}
+if(a==="rm"){var rp=queue[+t.dataset.i];posts.splice(posts.indexOf(rp),1);queue.splice(+t.dataset.i,1);toast("Removed")}
+render()});
+var APPS=[{n:'Soweto Chess Club',k:'Club'},{n:'Rosebank Reading Circle',k:'Library'},{n:'Dube Netball Academy',k:'Club'}],OPP=[{t:'Free book club at Hillcrest',at:20},{t:'Mentor chat with a Stars coach',at:50},{t:'Regional scouting day invite',at:100}],LINK=/https?:|www\.|\.(com|co|org|net)\b/i;
+function need(){if(S.admin||S.fnd)return 1;if(!S.prof){toast('Create your page first to join in');S.view='profile';S.org=null;return 0}if(S.prof.age==='u13'&&!S.prof.ok){toast('Waiting for parent or school sign-off');S.view='profile';S.org=null;return 0}return 1}
+function who(){return S.fnd?{n:'The Foundation',r:'Foundation ✓'}:S.admin?{n:'Coach Thabo',r:'Admin ✓'}:{n:S.prof.name,r:'Member'}}
+function note(m){S.notes.unshift(m);var h=new Date().getHours();if(S.quiet&&!S.admin&&!S.fnd&&(h>=21||h<6))return;S.un++;toast(m)}
+function pin(){return S.pin?'<div class="pinned"><span class="vf">Foundation ✓</span> <b>Pinned</b><p>'+esc(S.pin)+'</p></div>':''}
+function oppsV(){return '<h3 style="margin:14px 0 6px">Matched for you</h3><p class="mu">Every match is shown here. Nothing is hidden.</p><ul class="pg">'+OPP.map(function(o){var on=S.pages>=o.at;return '<li class="'+(on?'on':'')+'">'+esc(o.t)+(on?'':' (read '+o.at+' pages)')+'</li>'}).join('')+'</ul>'}
+function pageComp(){var u=S.prof.age==='u13';return '<h3 style="margin:14px 0 6px">Post to your page</h3>'+(u?'<p class="mu">Under-13 pages use templates only. No free text.</p><button class="pill" data-a="tpl" data-v="pg">Share my pages</button> <button class="pill" data-a="tpl" data-v="bd">Share my badge</button> <button class="pill" data-a="tpl" data-v="pt">Share my points</button>':'<div class="fld"><input id="pp" maxlength="140" placeholder="Share a win, a book or a take. No links" aria-label="Post to your page"><button class="pill on" data-a="pp">Post</button></div><p class="mu">Milestones post here on their own.</p>')+'<p><button class="pill" data-a="qt" aria-pressed="'+S.quiet+'">Quiet hours 9pm to 6am</button></p>'}
+function FV(){return '<div class="card"><h2>Foundation control</h2><span class="stat"><b>'+(1248+S.pages)+'</b>members</span><span class="stat"><b>'+orgs.length+'</b>verified groups</span><span class="stat"><b>'+(14200+S.pages)+'</b>pages read</span><span class="stat"><b>'+queue.length+'</b>reports</span></div><div class="card"><h2>Broadcast to everyone</h2><p class="mu">Pins to every feed and alerts every member.</p><select id="bk" aria-label="Type"><option value="pin">Pinned announcement</option><option value="op">Opportunity for members</option></select><textarea id="bc" maxlength="200" placeholder="Message" aria-label="Broadcast"></textarea><button class="btn" data-a="bc">Send</button></div><div class="card"><h2>Group applications</h2><p class="mu">Only verified groups can reach kids here.</p>'+(APPS.length?APPS.map(function(x,j){return '<div class="fx"><div><b>'+x.n+'</b><br><span class="mu">'+x.k+', registered, references checked</span></div><div><button class="pill" data-a="ap" data-i="'+j+'">Verify</button><button class="pill" data-a="rj" data-i="'+j+'">Decline</button></div></div>'}).join(''):'<p class="mu">No applications waiting.</p>')+'</div><div class="card"><h2>Reported posts, all groups</h2><p class="mu">You can also remove any post from its feed.</p>'+(queue.length?queue.map(function(p,j){return '<div class="fx"><div><b>'+esc(p.n)+'</b><br><span class="mu">'+esc(p.t)+'</span></div><div><button class="pill" data-a="ok" data-i="'+j+'">Keep</button><button class="pill" data-a="rm" data-i="'+j+'">Remove</button></div></div>'}).join(''):'<p class="mu">Nothing waiting.</p>')+'</div>'}
+function mk(t){posts.unshift({id:S.nid++,o:S.prof.club,n:S.prof.name,r:'Member',t:t,l:0,ts:'now',c:[],pg:1})}
+document.addEventListener('click',function(e){var t=e.target.closest('[data-a]');if(!t)return;var a=t.dataset.a,i=+t.dataset.i;
+if(a==='tpl'&&need()){var v=t.dataset.v;mk(v==='pg'?'I have read '+S.pages+' pages this month.':v==='pt'?'I am on '+S.pts+' points this season.':S.pages>=20?'Proud of my reader badge on Kick&Read.':'Working on my first reader badge.');toast('Shared on your page')}
+if(a==='pp'&&need()){var x=$('#pp').value.trim();if(x){if(LINK.test(x))toast('Links are not allowed on personal pages. Share inside a verified group.');else{mk(x);toast('Posted on your page')}}}
+if(a==='qt'){S.quiet=!S.quiet;toast(S.quiet?'Quiet hours on':'Quiet hours off')}
+if(a==='bc'){var m=$('#bc').value.trim(),k=$('#bk').value;if(m){if(k==='pin'){S.pin=m;note('Foundation: '+m.slice(0,60))}else{OPP.push({t:m,at:0});note('New opportunity: '+m.slice(0,50))}}}
+if(a==='ap'){var g=APPS.splice(i,1)[0];orgs.push({id:'g'+S.nid++,n:g.n,k:g.k,cat:'read',c:'#c4b5fd',a:'New admin',fl:0,b:'Newly verified by the Foundation.'});toast(g.n+' is now verified')}
+if(a==='rj'){APPS.splice(i,1);toast('Application declined')}
+render()});
+var COURSES=[
+{id:'c1',o:'lib',t:'Reading Club Foundations',tc:'Mrs Khumalo',cat:'Reading club',wk:4,enr:128,d:'Read more, remember more and enjoy it. The core course for our reading clubs.',L:['Find your reading rhythm','Active reading: notes that stick','Talking about books','Build your reading plan'],r:[{n:'Thandi K.',done:2},{n:'Lerato M.',done:4,score:68,note:'Thoughtful reading log.',cert:{id:'KR-C1-101',date:'2 Oct 2026'}}],m:[{n:'Mrs Khumalo',o:'lib',a:1,t:'Welcome. Lesson 1 is open. Post your questions here and I will reply within a day.'},{n:'Thandi K.',t:'Is a comic fine for the weekly reading log?'},{n:'Mrs Khumalo',o:'lib',t:'Yes, as long as you write two lines about what happened.'}],fb:[]},
+{id:'c2',o:'sun',t:'Study Skills for Teens',tc:'Ms Dlamini',cat:'Study',wk:3,enr:76,d:'Planning, focus and exam habits that work.',L:['Plan your week','Focus without your phone','Exam habits'],r:[],m:[{n:'Ms Dlamini',o:'sun',a:1,t:'Welcome. Start with lesson 1 and share your weekly plan here.'}],fb:[]},
+{id:'c3',o:'stars',t:'Sports Writing Club',tc:'Coach Thabo',cat:'Reading club',wk:4,enr:44,d:'Read great match reports, then write your own.',L:['Read a match report','Facts versus opinion','Write your first report','Edit and share'],r:[{n:'Lerato M.',done:1}],m:[{n:'Coach Thabo',o:'stars',a:1,t:'First task: read any match report and tell us the three key moments.'}],fb:[]},
+{id:'c4',o:'lions',t:'Story Time for Parents',tc:'Teacher Zoe',cat:'Parents',wk:2,enr:58,d:'Simple routines for reading with little ones every day.',L:['Pick the right book','A ten-minute story routine'],r:[],m:[{n:'Teacher Zoe',o:'lions',a:1,t:'Welcome. Share what you read with your little one this week.'}],fb:[]},
+{id:'c5',o:'hill',t:'Maths for Matchday',tc:'Mr Naidoo',cat:'Study',wk:3,enr:61,d:'Use league tables and match stats to practise real maths.',L:['Reading a league table','Averages and percentages','Predict the next result'],r:[],m:[{n:'Mr Naidoo',o:'hill',a:1,t:'Bring your favourite team stats to lesson 1.'}],fb:[]}];
+S.cr={};S.ct='learn';S.rt=5;
+function C(id){return COURSES.filter(function(c){return c.id===id})[0]}
+function canT(c){return S.fnd||(S.admin&&c.o==='stars')}
+function mine(c){return c.r.filter(function(x){return x.me})[0]}
+function dn(c,x){return x.me?(S.cr[c.id]?S.cr[c.id].d.length:0):(x.done||0)}
+function crow(c){var x=mine(c);return '<div class="fx"><div><button class="nm" data-a="oc" data-c="'+c.id+'">'+esc(c.t)+'</button> <span class="tag">'+c.cat+'</span><br><span class="mu">'+c.tc+', '+c.wk+' weeks, '+(c.enr+(x?1:0))+' learners'+(x?', '+dn(c,x)+' of '+c.L.length+' lessons done':'')+'</span></div><div><button class="pill'+(x?' on':'')+'" data-a="oc" data-c="'+c.id+'">'+(x?'Continue':'View')+'</button></div></div>'}
+function CV(){var my=COURSES.filter(function(c){return mine(c)}),h='<p><button class="pill" data-a="go" data-v="lib">Video library</button> <button class="pill" data-a="go" data-v="ev">Events</button></p>';
+if(my.length)h+='<div class="card"><h2>My courses</h2>'+my.map(crow).join('')+'</div>';
+h+=orgs.map(function(o){var cs=COURSES.filter(function(c){return c.o===o.id});return cs.length?'<div class="card"><div class="hd">'+A(ini(o.n),o.c)+'<h2>'+o.n+'</h2></div>'+cs.map(crow).join('')+'</div>':''}).join('');
+if(S.admin||S.fnd)h+='<div class="card"><h2>Add a course</h2><p class="mu">Listed under '+(S.fnd?'the group you choose':'Mamelodi Stars')+'. Learners can enrol straight away.</p>'+(S.fnd?'<select id="nco" aria-label="Group">'+orgs.map(function(o){return '<option value="'+o.id+'">'+o.n+'</option>'}).join('')+'</select>':'')+'<input id="nct" maxlength="60" placeholder="Course title" aria-label="Course title"><textarea id="ncl" placeholder="Lessons, separated by commas" aria-label="Lessons"></textarea><button class="btn" data-a="addc">Publish course</button></div>';
+return h}
+function CD(){var c=C(S.course),o=O(c.o),x=mine(c),T2=canT(c),d=S.cr[c.id]?S.cr[c.id].d:[],ct=S.ct,b='';
+var h='<div class="col"><div class="prof" style="padding-top:16px"><button class="pill" data-a="go" data-v="courses">All courses</button><h2 style="margin-top:12px">'+esc(c.t)+'</h2><p class="mu">'+o.n+', taught by '+c.tc+' ✓, '+c.wk+' weeks, '+c.L.length+' lessons</p><p>'+esc(c.d)+'</p>'+(x?'<span class="tag">Enrolled</span>':T2?'<span class="tag">You teach this course</span>':'<button class="btn" data-a="enr" data-c="'+c.id+'">Enrol for free</button>')+'</div><div class="tabs" role="tablist">'+[['learn','Lessons'],['talk','Discussion'],['res',T2?'Class':'My results']].map(function(k){return '<button role="tab" data-a="ctab" data-v="'+k[0]+'" aria-selected="'+(ct===k[0])+'">'+k[1]+'</button>'}).join('')+'</div><div class="prof" style="padding-top:14px">';
+if(ct==='learn'){b+='<div class="meter"><i style="width:'+Math.round(d.length/c.L.length*100)+'%"></i></div><p class="mu">'+(x?d.length+' of '+c.L.length+' lessons done':'Enrol to track your progress.')+'</p>'+c.L.map(function(l,i){return '<div class="fx"><div><b>Lesson '+(i+1)+'</b><br><span class="mu">'+esc(l)+'</span></div>'+(x?'<button class="pill" data-a="ls" data-i="'+i+'" aria-pressed="'+(d.indexOf(i)>-1)+'">Done</button>':'')+'</div>'}).join('')}
+if(ct==='talk'){b+=c.m.map(function(m){return '<div class="cm">'+A(ini(m.n),m.o?O(m.o).c:'#c9ccff')+'<div><b>'+esc(m.n)+'</b> '+(m.a?'<span class="vf">Announcement</span>':m.o?'<span class="vf">Teacher</span>':'')+'<p>'+esc(m.t)+'</p></div></div>'}).join('')+((x||T2)?'<div class="fld">'+(T2?'<select id="ck" style="width:auto" aria-label="Type"><option value="">Reply</option><option value="a">Announcement</option></select>':'')+'<input id="cmi" maxlength="160" placeholder="'+(T2?'Write to your learners':'Ask your teacher a question')+'" aria-label="Message"><button class="pill on" data-a="cmsg">Send</button></div>':'<p class="mu">Enrol to join the discussion.</p>')}
+if(ct==='res'&&T2){b+=c.r.map(function(y,i){return '<div class="fx"><div><b>'+esc(y.n)+'</b><br><span class="mu">'+dn(c,y)+' of '+c.L.length+' lessons'+(y.score!=null?', result '+y.score+'%':'')+(y.cert?', certificate issued':'')+'</span></div><div class="fld"><input id="sc'+i+'" type="number" min="0" max="100" placeholder="%" value="'+(y.score!=null?y.score:'')+'" aria-label="Score" style="width:72px"><input id="nt'+i+'" maxlength="80" placeholder="Feedback note" value="'+esc(y.note||'')+'" aria-label="Note"><button class="pill on" data-a="grade" data-i="'+i+'">Save</button></div></div>'}).join('')+'<h3 style="margin-top:14px">Learner feedback</h3>'+(c.fb.length?c.fb.map(function(f){return '<p>'+f.v+'/5, '+esc(f.n)+': '+esc(f.t)+'</p>'}).join(''):'<p class="mu">No feedback yet.</p>')}
+if(ct==='res'&&!T2){if(!x)b+='<p class="mu">Enrol to see your results.</p>';else{var sc=x.score,band=sc>=75?'Distinction':sc>=50?'Pass':'Not yet';b+='<p><b>Progress:</b> '+d.length+' of '+c.L.length+' lessons</p><p><b>Teacher result:</b> '+(sc!=null?sc+'% ('+band+')'+(x.note?', "'+esc(x.note)+'"':''):'Waiting for your teacher')+'</p>'+(x.cert?'<div class="certp"><p class="mu">Certificate of achievement</p><h2>'+esc(x.n)+'</h2><p>completed <b>'+esc(c.t)+'</b><br>with '+o.n+'</p><p>Result '+sc+'%, '+band+'</p><p class="mu">Taught by '+c.tc+', issued '+x.cert.date+', receipt '+x.cert.id+'</p></div><button class="btn" data-a="prt">Print or save as PDF</button> <button class="pill" data-a="cshare">Share on my page</button>':'<p class="mu">Your certificate and receipt appear here once your teacher issues them.</p>')+'<h3 style="margin-top:16px">Rate this course</h3><div>'+[1,2,3,4,5].map(function(n){return '<button class="pill" data-a="rate" data-v="'+n+'" aria-pressed="'+(S.rt===n)+'">'+n+'</button> '}).join('')+'</div><div class="fld"><input id="fbt" maxlength="140" placeholder="What worked, what should change?" aria-label="Feedback"><button class="pill on" data-a="fbk">Send</button></div>'}}
+return h+b+'</div></div>'}
+document.addEventListener('click',function(e){var t=e.target.closest('[data-a]');if(!t)return;var a=t.dataset.a,i=+t.dataset.i,c=C(t.dataset.c||S.course),x=c&&mine(c);
+if(a==='oc'){S.view='course';S.course=t.dataset.c;S.ct='learn';scrollTo(0,0)}
+if(a==='ctab')S.ct=t.dataset.v;
+if(a==='enr'){if(S.admin||S.fnd)toast('Switch to Member view to enrol');else if(need()&&!x){c.r.push({n:S.prof.name,me:1});S.cr[c.id]={d:[]};toast('You are enrolled in '+c.t)}}
+if(a==='ls'&&x){var d=S.cr[c.id].d,k=d.indexOf(i);if(k>-1)d.splice(k,1);else{d.push(i);if(d.length===c.L.length)note('All lessons done in '+c.t+'. Your teacher will send your result.')}}
+if(a==='cmsg'){var v=$('#cmi').value.trim();if(v&&(x||canT(c))){var an=$('#ck')&&$('#ck').value==='a';if(canT(c)){c.m.push({n:c.tc,o:c.o,a:an,t:v});if(x)note((an?'New announcement in ':'Your teacher replied in ')+c.t)}else c.m.push({n:S.prof.name,t:v});toast('Sent')}}
+if(a==='grade'){var y=c.r[i],sc2=parseInt($('#sc'+i).value,10);if(isNaN(sc2)||sc2<0||sc2>100)toast('Enter a score from 0 to 100');else{y.score=sc2;y.note=$('#nt'+i).value.trim();y.cert=sc2>=50?{id:'KR-'+c.id.toUpperCase()+'-'+(200+i),date:'16 Oct 2026'}:null;if(y.me)note('Your result for '+c.t+' is ready: '+sc2+'%');else toast('Saved'+(y.cert?'. Certificate issued':''))}}
+if(a==='rate')S.rt=+t.dataset.v;
+if(a==='fbk'&&x){if(x.fbd)toast('Thanks, you already sent feedback');else{c.fb.push({n:x.n,v:S.rt,t:$('#fbt').value.trim()||'No comment'});x.fbd=1;toast('Feedback sent to '+c.tc)}}
+if(a==='prt'){try{window.print()}catch(z){toast('Use your browser to print or save as PDF')}}
+if(a==='cshare'&&x&&x.cert){mk('I completed '+c.t+' with '+x.score+'%.');toast('Shared on your page')}
+if(a==='addc'){var ti=$('#nct').value.trim(),ls=$('#ncl').value.split(',').map(function(s){return s.trim()}).filter(Boolean);if(!ti||!ls.length)toast('Add a title and at least one lesson');else{var og=$('#nco')?$('#nco').value:'stars';COURSES.push({id:'c'+S.nid++,o:og,t:ti,tc:O(og).a,cat:'New',wk:ls.length,enr:0,d:'New course from '+O(og).n+'.',L:ls,r:[],m:[{n:O(og).a,o:og,a:1,t:'Welcome. Post your questions here.'}],fb:[]});if(S.f[og])note('New course from '+O(og).n+': '+ti);else toast('Course published')}}
+render()});
+function sv(p){return '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+p+'</svg>'}
+var ICON={home:sv('<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>'),courses:sv('<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M8 7h8"/>'),explore:sv('<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>'),match:sv('<circle cx="12" cy="12" r="9"/><path d="M12 8l3.5 2.5-1.3 4h-4.4l-1.3-4z"/>'),alerts:sv('<path d="M6 9a6 6 0 0 1 12 0c0 6 2 7 2 7H4s2-1 2-7"/><path d="M10 20a2 2 0 0 0 4 0"/>'),profile:sv('<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>'),admin:sv('<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>'),back:sv('<path d="M15 18l-6-6 6-6"/>'),play:'<svg viewBox="0 0 24 24" width="44" height="44" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>',heart:'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="vertical-align:-3px"><path d="M12 20s-7-4.6-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.4-7 10-7 10z"/></svg>'};
+function orgCourses(o){var cs=COURSES.filter(function(c){return c.o===o.id});return '<div class="prof" style="padding-top:0"><span class="stat"><b>'+(o.fl+(S.f[o.id]?1:0))+'</b>followers</span><span class="stat"><b>'+cs.length+'</b>courses</span><span class="stat"><b>'+posts.filter(function(p){return p.o===o.id}).length+'</b>posts</span></div><h2 style="padding:0 16px">Courses</h2>'+(cs.length?cs.map(function(c){return '<div class="fx" style="margin:0 16px"><div><button class="nm" data-a="oc" data-c="'+c.id+'">'+esc(c.t)+'</button><br><span class="mu">'+c.tc+', '+c.wk+' weeks</span></div><button class="pill" data-a="oc" data-c="'+c.id+'">View</button></div>'}).join(''):'<p class="mu" style="margin:0 16px">No courses yet.</p>')}
+var _cd=CD;CD=function(){var c=C(S.course),o=O(c.o),x=mine(c),oth=COURSES.filter(function(z){return z.o===c.o&&z.id!==c.id});return '<div class="two"><div>'+_cd()+'</div><aside class="side"><div class="card"><h2>About this course</h2><div class="hd">'+A(ini(o.n),o.c)+'<button class="nm" data-a="org" data-o="'+o.id+'">'+o.n+'</button></div><p class="mu">Taught by '+c.tc+' ✓</p><p>'+c.wk+' weeks<br>'+c.L.length+' lessons<br>'+(c.enr+(x?1:0))+' learners<br>Certificate with results</p>'+(x?'<span class="tag">Enrolled</span>':canT(c)?'<span class="tag">You teach this</span>':'<button class="btn" data-a="enr" data-c="'+c.id+'">Enrol for free</button>')+'</div>'+(oth.length?'<div class="card"><h2>More from '+o.n+'</h2>'+oth.map(function(z){return '<p><button class="nm" data-a="oc" data-c="'+z.id+'">'+esc(z.t)+'</button></p>'}).join('')+'</div>':'')+'</aside></div>'};
+var _cv=CV;CV=function(){var all=COURSES,cats=['all','Reading club','Study','Parents'];if(S.cf&&S.cf!=='all')COURSES=all.filter(function(c){return c.cat===S.cf});var h=_cv();COURSES=all;return '<section class="hero2"><h2>Learn with verified organizations</h2><p>Free courses from schools, clubs and libraries. Finish a course to earn a certificate with your results.</p><div>'+cats.map(function(k){return '<button class="pill" data-a="cf" data-v="'+k+'" aria-pressed="'+((S.cf||'all')===k)+'">'+(k==='all'?'All courses':k)+'</button>'}).join(' ')+'</div></section>'+h};
+document.addEventListener('click',function(e){var t=e.target.closest('[data-a="cf"]');if(t){S.cf=t.dataset.v;render()}});
+var _r4=render;render=function(){_r4();var s=S.view!=='home';document.body.classList.toggle('site',s);document.querySelectorAll('.nav button').forEach(function(x){var i=x.querySelector('.ic');if(i&&ICON[x.dataset.v])i.innerHTML=ICON[x.dataset.v]});
+var cr='',tl=null;if(S.view==='course'){cr='<button class="crumb" data-a="go" data-v="courses">'+ICON.back+' Courses</button>';tl=C(S.course).t}else if(S.view==='org')cr='<button class="crumb" data-a="go" data-v="explore">'+ICON.back+' Explore</button>';
+if(cr)$('#ttl').innerHTML=cr+esc(tl||$('#ttl').textContent);
+var m=$('#main');if(S.view==='explore')m.innerHTML='<section class="hero2"><h2>Verified groups</h2><p>Every group is checked by the Foundation before it can reach members. Follow for news, join to post.</p></section><div class="grid2">'+m.innerHTML+'</div>';
+if(S.view==='match')m.innerHTML='<div class="grid2">'+m.innerHTML+'</div>';
+if(s)m.insertAdjacentHTML('beforeend','<footer class="sfoot">Kick&amp;Read is a Foundation initiative for teens, parents and adults. Every group is verified. Ask your group admin for the code of conduct and safety contacts.</footer>')};
+function arrive(x){x.id=S.nid++;x.l=0;x.ts="now";x.c=[];posts.unshift(x);if(S.f[x.o])note("New from "+O(x.o).n+": "+x.t.slice(0,50));render()}
+setTimeout(function(){arrive({o:"lib",n:"Mrs Khumalo",r:"Librarian \u2713",t:"Homework help desk is open until 6pm today."})},12000);
+setTimeout(function(){arrive({o:"hill",n:"Mr Naidoo",r:"Coach \u2713",t:"Hillcrest trials are open to Grade 8 and 9 learners on Friday."})},28000);
+render();
+var m=location.hash.match(/^#post-(\d+)/);if(m){var el=document.getElementById("post-"+m[1]);if(el){el.classList.add("hl");el.scrollIntoView();toast("You opened a shared post. Create your page to reply")}}
+})();
+</script>
+</body>
+</html>
