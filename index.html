@@ -17,23 +17,21 @@
   <link rel="icon" href="/mini-circle-logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&family=Ubuntu:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: light;
       --blue: #0A3A9C;
       --red: #D62828;
       --yellow: #FFC929;
-      --cream: #FFF4D6;
       --ink: #14213D;
-      --paper: #fffdf8;
+      --paper: #f7f9fc;
       --surface: #fff;
-      --muted: #536079;
-      --line: #e4e0d4;
+      --muted: #526074;
+      --line: #e2e7ef;
       --green: #176c4b;
       --shadow: 0 16px 42px #14213d12;
       --sans: "Ubuntu", Arial, sans-serif;
-      --condensed: "Ubuntu Condensed", "Arial Narrow", sans-serif;
       font-family: var(--sans);
       scroll-behavior: smooth;
       scroll-padding-top: 6rem;
@@ -50,9 +48,9 @@
     .skip-link { position: fixed; top: .5rem; left: .5rem; z-index: 100; padding: .7rem 1rem; transform: translateY(-160%); background: var(--yellow); color: var(--ink); font-weight: 700; }
     .skip-link:focus { transform: none; }
     .wrap { width: min(1160px, calc(100% - 2.5rem)); margin-inline: auto; }
-    .eyebrow, .label, .tag { font: 1rem var(--condensed); letter-spacing: .09em; text-transform: uppercase; }
+    .eyebrow, .label, .tag { font: 700 .85rem/1.3 var(--sans); letter-spacing: .02em; }
     .eyebrow { display: inline-flex; align-items: center; gap: .55rem; color: var(--red); font-weight: 700; }
-    .eyebrow::before { content: ""; width: 1.8rem; height: .55rem; background: repeating-linear-gradient(135deg,var(--red) 0 5px,transparent 5px 9px); }
+    .eyebrow::before { content: ""; width: 1.5rem; height: 2px; background: currentColor; }
     h1, h2, h3, p { margin-top: 0; }
     h1, h2, h3 { line-height: 1.08; }
     h1, h2 { letter-spacing: -.045em; }
@@ -63,7 +61,7 @@
     .section-head { max-width: 760px; margin-bottom: 2.25rem; }
     .section-head p { max-width: 650px; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.2rem); }
     .section-head h2 { margin-block: .65rem 1rem; }
-    .btn { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: .6rem; padding: .75rem 1.15rem; border: 2px solid transparent; border-radius: 5px; background: var(--yellow); color: var(--ink); font-weight: 800; text-decoration: none; transition: transform .15s ease, background .15s ease; }
+    .btn { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: .6rem; padding: .75rem 1.15rem; border: 2px solid transparent; border-radius: 8px; background: var(--yellow); color: var(--ink); font-weight: 800; text-decoration: none; transition: transform .15s ease, background .15s ease; }
     .btn:hover { transform: translateY(-2px); background: #ffda66; }
     .btn-blue { background: var(--blue); color: #fff; }
     .btn-blue:hover { background: #082f7f; }
@@ -72,23 +70,21 @@
     .btn-small { min-height: 42px; padding: .55rem .85rem; font-size: .95rem; }
     .text-link { display: inline-flex; align-items: center; gap: .35rem; color: var(--blue); font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 3px; }
     .text-link:hover { color: var(--red); }
-    .band { height: 13px; background: repeating-linear-gradient(135deg,var(--red) 0 12px,var(--yellow) 12px 24px,var(--blue) 24px 36px,var(--cream) 36px 48px); }
     .site-header { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid #14213d17; background: color-mix(in srgb, var(--paper) 94%, transparent); backdrop-filter: blur(14px); }
     .header-row { display: flex; min-height: 76px; align-items: center; justify-content: space-between; gap: 1rem; }
     .brand { display: inline-flex; align-items: center; gap: .65rem; flex: 0 0 auto; color: var(--ink); font-size: 1.25rem; font-weight: 800; letter-spacing: -.04em; text-decoration: none; }
     .brand img { width: 54px; height: 44px; }
-    .brand small { display: block; margin-top: -.3rem; color: var(--muted); font: .75rem var(--condensed); letter-spacing: .12em; }
+    .brand small { display: block; margin-top: -.3rem; color: var(--muted); font-size: .72rem; font-weight: 500; }
     .nav { display: flex; align-items: center; gap: clamp(.6rem, 1.7vw, 1.4rem); }
     .nav a { padding-block: .5rem; color: var(--ink); font-size: .92rem; font-weight: 700; text-decoration: none; }
     .nav a:hover { color: var(--red); }
-    .nav .nav-cta { padding: .6rem .85rem; border-radius: 4px; background: var(--blue); color: #fff; }
+    .nav .nav-cta { padding: .6rem .85rem; border-radius: 6px; background: var(--blue); color: #fff; }
     .nav .nav-cta:hover { background: #082f7f; }
     .header-actions { display: flex; align-items: center; gap: .55rem; }
     .icon-btn, .menu-btn { display: inline-grid; width: 44px; height: 44px; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: var(--surface); cursor: pointer; }
     .menu-btn { display: none; border-radius: 4px; }
     .icon-btn svg, .menu-btn svg { width: 20px; height: 20px; }
     .hero { position: relative; overflow: hidden; padding-block: clamp(3.5rem, 8vw, 7rem); background: var(--blue); color: #fff; }
-    .hero::after { position: absolute; right: -5rem; bottom: -7rem; width: min(45vw, 540px); aspect-ratio: 1; border: 2px solid #ffffff22; border-radius: 50%; box-shadow: 0 0 0 35px #ffffff0b,0 0 0 80px #ffffff08; content: ""; pointer-events: none; }
     .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 2rem; }
     .hero-copy { max-width: 700px; }
     .hero .eyebrow { color: var(--yellow); }
@@ -97,41 +93,42 @@
     .hero-copy > p { max-width: 560px; color: #e4ecff; font-size: clamp(1.1rem, 2.1vw, 1.3rem); }
     .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.7rem; }
     .hero-art { position: relative; min-height: 360px; display: grid; place-items: center; }
-    .hero-art::before { position: absolute; width: min(100%, 410px); aspect-ratio: 1; border: 2px solid #ffc92975; border-radius: 50%; box-shadow: 0 0 0 23px #ffc92916,0 0 0 47px #ffffff0b; content: ""; }
-    .hero-art svg { position: relative; width: min(100%, 460px); filter: drop-shadow(0 18px 18px #071e4c60); }
-    .hero-stamp { position: absolute; right: 1%; bottom: 5%; display: grid; width: 112px; height: 112px; align-content: center; transform: rotate(8deg); border: 3px solid var(--blue); border-radius: 50%; background: var(--yellow); color: var(--ink); font: 1.05rem/1.05 var(--condensed); text-align: center; text-transform: uppercase; }
-    .hero-stamp strong { display: block; font-size: 1.65rem; }
-    .hero-tape { position: absolute; top: 0; right: 8%; width: 17%; height: 9px; background: repeating-linear-gradient(90deg,var(--red) 0 15px,var(--yellow) 15px 30px); }
+    .hero-art svg { position: relative; width: min(100%, 420px); }
+    .professional-intro { max-width: 760px; margin: 0 auto 2rem; color: var(--muted); text-align: center; }
+    .professional-intro h2 { margin-block: .65rem; font-size: clamp(2rem, 4vw, 3rem); }
+    .dashboard-preview { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 1rem; }
+    .dashboard-card { display: flex; min-height: 175px; flex-direction: column; align-items: flex-start; padding: 1.25rem; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+    .dashboard-card h3 { margin-bottom: .5rem; font-size: 1.15rem; }
+    .dashboard-card p { flex: 1; margin-bottom: 1rem; color: var(--muted); font-size: .95rem; }
+    .dashboard-status { margin-bottom: .6rem; color: var(--muted); font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
     .intro { display: grid; grid-template-columns: .85fr 1.15fr; gap: 3rem; align-items: start; }
-    .intro-note { padding: 1.6rem; border-left: 5px solid var(--red); background: var(--cream); }
+    .intro-note { padding: 1.4rem; border-left: 3px solid var(--blue); background: var(--surface); }
     .intro-note p { margin: 0; font-size: clamp(1.25rem, 2.8vw, 1.8rem); font-weight: 700; line-height: 1.3; }
     .wing-grid, .involvement-grid, .resource-grid, .level-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.15rem; }
-    .wing-card { position: relative; min-height: 300px; overflow: hidden; padding: clamp(1.35rem, 3vw, 2rem); border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); }
-    .wing-card::after { position: absolute; right: -45px; bottom: -50px; width: 190px; height: 190px; border: 17px solid #0a3a9c16; border-radius: 50%; content: ""; }
-    .wing-card.sport::after { border-color: #d628281a; }
+    .wing-card { min-height: 260px; padding: clamp(1.35rem, 3vw, 2rem); border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
     .wing-card h3 { margin-block: .5rem; }
     .wing-card p { max-width: 500px; color: var(--muted); }
-    .wing-card .tag { display: inline-block; padding: .3rem .55rem; background: var(--cream); color: var(--blue); font-weight: 700; }
-    .wing-card.sport .tag { background: #ffe5dd; color: #a91919; }
-    .wing-lockup { display: block; margin-top: 1.2rem; color: var(--ink); font: 1.1rem var(--condensed); letter-spacing: .05em; text-transform: uppercase; }
-    .numbers { padding-block: 2.4rem; background: var(--cream); }
+    .wing-card .tag { display: inline-block; color: var(--blue); font-weight: 700; }
+    .wing-card.sport .tag { color: #a91919; }
+    .wing-lockup { display: block; margin-top: 1.2rem; color: var(--ink); font-size: .95rem; font-weight: 700; }
+    .numbers { padding-block: 2.4rem; border-block: 1px solid var(--line); background: var(--surface); }
     .numbers-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
-    .number { padding: 1.2rem; border-left: 3px solid var(--red); }
+    .number { padding: 1.2rem; }
     .number strong { display: block; color: var(--blue); font-size: clamp(2.4rem, 5vw, 4.4rem); font-weight: 800; letter-spacing: -.06em; line-height: 1; }
-    .number span { display: block; margin-top: .5rem; font: 1.2rem var(--condensed); letter-spacing: .04em; text-transform: uppercase; }
+    .number span { display: block; margin-top: .5rem; font-size: 1.05rem; font-weight: 700; }
     .number small { color: var(--muted); }
     .partners { padding-block: 2rem; border-bottom: 1px solid var(--line); }
     .partner-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
-    .partner-row > span:first-child { color: var(--muted); font: 1rem var(--condensed); letter-spacing: .1em; text-transform: uppercase; }
-    .partner-name { padding: .6rem .9rem; border: 1px solid var(--line); background: var(--surface); font-weight: 800; }
+    .partner-row > span:first-child { color: var(--muted); font-size: .9rem; font-weight: 600; }
+    .partner-name { padding: .6rem .9rem; color: var(--ink); font-weight: 800; }
     .split { display: grid; grid-template-columns: 1fr 1fr; gap: 2.6rem; align-items: center; }
-    .split-visual { min-height: 320px; display: grid; place-items: center; overflow: hidden; background: var(--cream); }
-    .split-visual.blue { background: var(--blue); }
+    .split-visual { min-height: 300px; display: grid; place-items: center; overflow: hidden; border-radius: 12px; background: #eaf1fb; }
+    .split-visual.blue { background: #eaf1fb; }
     .split-visual svg { width: min(85%,380px); }
     .list-check { display: grid; gap: .65rem; padding: 0; list-style: none; }
     .list-check li { display: flex; gap: .7rem; align-items: flex-start; }
-    .list-check li::before { content: "✳"; flex: 0 0 auto; color: var(--red); font-weight: 800; }
-    .callout { padding: 1rem 1.2rem; border-left: 4px solid var(--yellow); background: #fff9e8; color: var(--ink); }
+    .list-check li::before { content: "✓"; flex: 0 0 auto; color: var(--blue); font-weight: 800; }
+    .callout { padding: 1rem 1.2rem; border-left: 3px solid var(--blue); background: var(--surface); color: var(--ink); }
     .callout p:last-child { margin-bottom: 0; }
     .dark-section { background: var(--ink); color: #fff; }
     .dark-section .section-head p { color: #d4daea; }
@@ -142,7 +139,7 @@
     .table-wrap { overflow-x: auto; }
     table { width: 100%; border-collapse: collapse; text-align: left; }
     th, td { padding: .8rem 1rem; border-bottom: 1px solid #ffffff20; white-space: nowrap; }
-    th { color: var(--yellow); font: 1rem var(--condensed); letter-spacing: .08em; text-transform: uppercase; }
+    th { color: var(--yellow); font: 600 .9rem var(--sans); }
     tr:last-child td { border-bottom: 0; }
     .empty-row { color: #d4daea; }
     .match-list { display: grid; }
@@ -153,7 +150,7 @@
     .league-foot { margin-top: 1rem; color: #d4daea; font-size: .95rem; }
     .event-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }
     .event-card { padding: 1.4rem; border: 1px solid var(--line); background: var(--surface); }
-    .event-card .term { display: inline-block; margin-bottom: .7rem; padding: .25rem .6rem; background: var(--cream); color: var(--blue); font: 1rem var(--condensed); letter-spacing: .07em; text-transform: uppercase; }
+    .event-card .term { display: inline-block; margin-bottom: .7rem; color: var(--blue); font-size: .9rem; font-weight: 700; }
     .event-card h3 { margin-bottom: .4rem; }
     .event-card p { color: var(--muted); }
     .event-date { display: block; margin-bottom: 1rem; font-weight: 700; }
@@ -161,40 +158,29 @@
     .btn:disabled { cursor: not-allowed; opacity: .55; transform: none; }
     .story-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
     .story-card { overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
-    .story-art { min-height: 160px; display: grid; place-items: center; background: var(--cream); }
+    .story-art { min-height: 160px; display: grid; place-items: center; background: #eef2f8; }
     .story-art svg { width: 130px; height: 120px; }
     .story-content { padding: 1.2rem; }
     .story-content h3 { margin-block: .5rem; }
     .story-content p { color: var(--muted); }
-    .level-card { position: relative; padding: 1.35rem; border: 2px solid var(--blue); background: var(--surface); }
-    .level-card:nth-child(2) { border-color: var(--red); }
-    .level-card:nth-child(3) { border-color: var(--yellow); }
-    .level-card:nth-child(4) { border-color: var(--red); }
-    .level-card:nth-child(5) { border-color: var(--yellow); }
-    .level-card:nth-child(6) { border-color: var(--blue); }
-    .level-card .patch { display: inline-grid; width: 53px; height: 53px; place-items: center; margin-bottom: .7rem; clip-path: polygon(50% 0,90% 18%,100% 63%,50% 100%,0 63%,10% 18%); background: var(--blue); color: #fff; font: 1.5rem var(--condensed); }
-    .level-card:nth-child(3n) .patch { background: var(--red); }
+    .level-card { padding: 1.35rem; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+    .level-number { display: block; margin-bottom: .7rem; color: var(--muted); font-size: .8rem; font-weight: 700; text-transform: uppercase; }
     .level-card h3 { margin-bottom: .3rem; }
     .level-card p { margin: 0; color: var(--muted); }
     .level-card .tag { color: var(--blue); }
-    .involvement-card { padding: 1.35rem; border: 1px solid var(--line); background: var(--surface); }
-    .involvement-card .card-letter { display: grid; width: 42px; height: 42px; place-items: center; margin-bottom: 1rem; background: var(--yellow); color: var(--ink); font: 1.5rem var(--condensed); }
+    .involvement-card { padding: 1.35rem; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+    .involvement-card .card-letter { display: block; margin-bottom: .6rem; color: var(--blue); font-size: .85rem; font-weight: 700; }
     .involvement-card p { color: var(--muted); }
-    .resource-card { display: flex; min-height: 200px; flex-direction: column; align-items: flex-start; padding: 1.35rem; border: 1px solid var(--line); background: var(--surface); }
+    .resource-card { display: flex; min-height: 200px; flex-direction: column; align-items: flex-start; padding: 1.35rem; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
     .resource-card .resource-icon { margin-bottom: 1rem; color: var(--red); font-size: 2rem; }
     .resource-card h3 { margin-bottom: .5rem; }
     .resource-card p { flex: 1; color: var(--muted); }
     .gallery-grid { display: grid; grid-template-columns: 1.2fr .8fr 1fr; gap: .75rem; }
-    .gallery-tile { min-height: 170px; display: grid; align-content: center; justify-items: center; padding: 1rem; background: var(--blue); color: white; text-align: center; }
-    .gallery-tile:nth-child(2) { background: var(--red); }
-    .gallery-tile:nth-child(3) { background: var(--yellow); color: var(--ink); }
-    .gallery-tile:nth-child(4) { background: var(--ink); }
-    .gallery-tile:nth-child(5) { background: var(--cream); color: var(--ink); }
-    .gallery-tile:nth-child(6) { background: #176c4b; }
+    .gallery-tile { min-height: 170px; display: grid; align-content: center; justify-items: center; padding: 1rem; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); text-align: center; }
     .gallery-tile svg { width: 55px; height: 55px; margin-bottom: .5rem; }
-    .gallery-tile span { font: 1.1rem var(--condensed); letter-spacing: .05em; text-transform: uppercase; }
+    .gallery-tile span { font-size: 1rem; font-weight: 700; }
     .story-origin { display: grid; grid-template-columns: .8fr 1.2fr; gap: 2.4rem; align-items: center; }
-    .origin-mark { display: grid; min-height: 290px; place-items: center; background: var(--blue); }
+    .origin-mark { display: grid; min-height: 240px; place-items: center; border-radius: 12px; background: #eaf1fb; }
     .origin-mark img { width: min(75%,300px); }
     .origin-mark .lettermark { width: min(75%,300px); }
     .faq { border-top: 1px solid var(--line); }
@@ -212,36 +198,37 @@
     .form-status.error { color: #a71919; }
     .form-status.success { color: var(--green); }
     .honeypot { position: absolute !important; width: 1px !important; height: 1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; }
-    .form-card { padding: 1.4rem; border: 1px solid var(--line); background: var(--surface); }
+    .form-card { padding: 1.4rem; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
     .form-card h3 { margin-bottom: .35rem; }
     .contact-links { display: flex; flex-wrap: wrap; gap: .65rem; margin-block: 1.2rem; }
-    .privacy-box { padding: 1rem 1.2rem; border: 1px solid var(--line); background: var(--cream); font-size: .95rem; }
+    .privacy-box { padding: 1rem 1.2rem; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); font-size: .95rem; }
     .privacy-box p:last-child { margin-bottom: 0; }
-    .site-footer { padding-top: 3rem; background: var(--ink); color: #fff; }
+    .site-footer { padding-top: 3rem; background: #eef2f8; color: var(--ink); }
     .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 2rem; padding-bottom: 2.3rem; }
     .footer-brand { display: flex; align-items: center; gap: .75rem; font-size: 1.35rem; font-weight: 800; }
     .footer-brand img { width: 58px; height: 48px; }
-    .footer-copy { max-width: 340px; margin-top: .8rem; color: #d4daea; }
-    .footer-title { margin-bottom: .75rem; color: var(--yellow); font: 1rem var(--condensed); letter-spacing: .1em; text-transform: uppercase; }
+    .footer-copy { max-width: 340px; margin-top: .8rem; color: var(--muted); }
+    .footer-title { margin-bottom: .75rem; color: var(--blue); font-size: 1rem; }
     .footer-links { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .4rem 1rem; }
-    .footer-links a, .social-links a { color: #fff; text-decoration: none; }
-    .footer-links a:hover, .social-links a:hover { color: var(--yellow); text-decoration: underline; }
+    .footer-links a, .social-links a { color: var(--ink); text-decoration: none; }
+    .footer-links a:hover, .social-links a:hover { color: var(--blue); text-decoration: underline; }
     .social-links { display: flex; flex-wrap: wrap; gap: .7rem; }
-    .footer-lockups { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.1rem; }
-    .footer-lockup { padding: .45rem .65rem; border: 1px solid #ffffff43; font: 1rem var(--condensed); letter-spacing: .04em; text-transform: uppercase; }
-    .foundation-line { padding-block: 1.1rem; border-top: 1px solid #ffffff2a; color: #d4daea; font-size: .9rem; }
-    .foundation-line strong { color: #fff; }
-    .back-top { float: right; color: var(--yellow); text-decoration: none; }
+    .footer-lockups { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin-top: 1.1rem; }
+    .footer-lockup { color: var(--muted); font-size: .9rem; }
+    .foundation-line { padding-block: 1.1rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+    .foundation-line strong { color: var(--ink); }
+    .back-top { float: right; color: var(--blue); text-decoration: none; }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
     [data-theme="dark"] { color-scheme: dark; --paper: #111a2c; --surface: #18253b; --ink: #f4f5fa; --muted: #c0c9dc; --line: #34425b; --cream: #332c1a; --shadow: 0 16px 42px #0004; }
     [data-theme="dark"] .brand, [data-theme="dark"] .nav a { color: var(--ink); }
     [data-theme="dark"] .nav .nav-cta { color: #fff; }
     [data-theme="dark"] .intro-note, [data-theme="dark"] .callout, [data-theme="dark"] .privacy-box { color: var(--ink); }
-    [data-theme="dark"] .numbers { background: #282d3a; }
+    [data-theme="dark"] .numbers { background: var(--surface); }
     [data-theme="dark"] .number strong { color: #a9c3ff; }
     [data-theme="dark"] .partner-name { color: var(--ink); }
-    [data-theme="dark"] .wing-card .tag, [data-theme="dark"] .event-card .term { background: #293657; color: #d8e4ff; }
-    [data-theme="dark"] .wing-card.sport .tag { background: #4a292c; color: #ffd4cb; }
+    [data-theme="dark"] .site-footer { background: #18253b; color: var(--ink); }
+    [data-theme="dark"] .footer-title, [data-theme="dark"] .back-top { color: #b4cbff; }
+    [data-theme="dark"] .split-visual, [data-theme="dark"] .origin-mark { background: #243450; }
     @media (max-width: 960px) {
       .nav { gap: .55rem; }
       .nav a { font-size: .84rem; }
@@ -260,10 +247,8 @@
       .hero-grid, .intro, .split, .story-origin { grid-template-columns: 1fr; }
       .hero { padding-block: 3.4rem 4rem; }
       .hero-art { min-height: 260px; }
-      .hero-art::before { width: 240px; }
       .hero-art svg { width: min(100%,320px); }
-      .hero-stamp { right: 8%; width: 85px; height: 85px; font-size: .88rem; }
-      .hero-stamp strong { font-size: 1.35rem; }
+      .dashboard-preview { grid-template-columns: 1fr 1fr; }
       .wing-grid, .event-grid, .involvement-grid { grid-template-columns: 1fr; }
       .numbers-grid { gap: .25rem; }
       .number { padding: .8rem .55rem; }
@@ -292,6 +277,9 @@
       .footer-grid { grid-template-columns: 1fr; }
       .footer-grid > :first-child { grid-column: auto; }
     }
+    @media (max-width: 540px) {
+      .dashboard-preview { grid-template-columns: 1fr; }
+    }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
     }
@@ -306,12 +294,12 @@
         <span>Mini Circles<small>READ. PLAY. REPEAT.</small></span>
       </a>
       <nav class="nav" id="site-nav" aria-label="Main navigation">
-        <a href="#read">Read</a>
-        <a href="#play">Play</a>
-        <a href="#league">Mini League</a>
+        <a href="/professionals/">Dashboard</a>
+        <a href="#programmes">Programmes</a>
         <a href="#events">Events</a>
-        <a href="#story">Our story</a>
-        <a href="#get-involved" class="nav-cta">Get involved <span aria-hidden="true">↗</span></a>
+        <a href="#resources">Resources</a>
+        <a href="#story">About us</a>
+        <a href="#get-involved" class="nav-cta">Work with us <span aria-hidden="true">→</span></a>
       </nav>
       <div class="header-actions">
         <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch colour theme">
@@ -323,18 +311,16 @@
       </div>
     </div>
   </header>
-  <div class="band" aria-hidden="true"></div>
   <main id="main">
     <section class="hero" id="home">
-      <div class="hero-tape" aria-hidden="true"></div>
       <div class="wrap hero-grid">
         <div class="hero-copy">
           <span class="eyebrow">A youth-led programme in South Africa</span>
           <h1>Read.<br>Play.<br><span>Repeat.</span></h1>
-          <p>Good stories. Big energy. Mini Circles gets children and young people reading for fun and playing sport, hand in hand.</p>
+          <p>Mini Circles brings young people, schools and community partners together through reading for fun and sport.</p>
           <div class="hero-actions">
-            <a class="btn" href="#what-we-do">Find your circle <span aria-hidden="true">↓</span></a>
-            <a class="btn btn-outline" href="#get-involved">Join the team <span aria-hidden="true">↗</span></a>
+            <a class="btn" href="/professionals/">Professional dashboard <span aria-hidden="true">→</span></a>
+            <a class="btn btn-outline" href="#programmes">Explore the programmes</a>
           </div>
         </div>
         <div class="hero-art" aria-label="A blue frog with a book and a ball">
@@ -356,14 +342,26 @@
             <circle cx="375" cy="206" r="38" fill="#fff" stroke="#14213d" stroke-width="6"/>
             <path d="m375 188 12 9-5 14h-15l-5-14zm-24 7-8-3m57 2 8-3m-56 32-5 10m53-10 6 10" fill="#14213d" stroke="#14213d" stroke-width="5" stroke-linejoin="round"/>
             <path d="m96 173 8-31 16 4 31 84-20 8-22-48-22 8-8-18z" fill="#ffc929" stroke="#14213d" stroke-width="6" stroke-linejoin="round"/>
-            <path d="M88 131q-12-18-26-9m304-60q21-12 31 4" fill="none" stroke="#ffc929" stroke-width="8" stroke-linecap="round"/>
-            <path d="m337 82 11-20 12 18 22-4-10 20 13 15-23-1-12 18-6-22-22-7 20-9z" fill="#d62828"/>
           </svg>
-          <span class="hero-stamp"><strong>Two wings</strong><br>One big<br>circle</span>
         </div>
       </div>
     </section>
-    <section class="section" id="what-we-do">
+    <section class="section" id="professional-dashboard" aria-labelledby="professional-dashboard-title">
+      <div class="wrap">
+        <div class="professional-intro">
+          <span class="eyebrow">For delivery teams and partners</span>
+          <h2 id="professional-dashboard-title">Professional dashboard</h2>
+          <p>A practical starting point for schools, ECDs, libraries, coaches, volunteers and sponsors. Useful tools are being planned with the people who use them.</p>
+          <a class="btn btn-blue" href="/professionals/">Open the professional dashboard <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="dashboard-preview">
+          <article class="dashboard-card"><span class="dashboard-status">Available now</span><h3>Programme resources</h3><p>Session cards and a volunteer welcome guide ready to use.</p><a class="text-link" href="#resources">Browse resources <span aria-hidden="true">→</span></a></article>
+          <article class="dashboard-card"><span class="dashboard-status">Available now</span><h3>Events &amp; fixtures</h3><p>Find term events and the Mini League fixtures and results.</p><a class="text-link" href="#events">See dates &amp; fixtures <span aria-hidden="true">→</span></a></article>
+          <article class="dashboard-card"><span class="dashboard-status">In development</span><h3>Professional tools</h3><p>Planning, programme and partner tools will be added as they are defined.</p><a class="text-link" href="/professionals/">View tool roadmap <span aria-hidden="true">→</span></a></article>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="programmes">
       <div class="wrap intro">
         <div>
           <span class="eyebrow">Not either-or. Both.</span>
@@ -420,11 +418,11 @@
         </div>
       </div>
     </section>
-    <section class="section" id="read" style="background:var(--cream)">
+    <section class="section" id="read">
       <div class="wrap split">
         <div class="split-visual" aria-hidden="true">
           <svg viewBox="0 0 360 290">
-            <circle cx="180" cy="135" r="100" fill="#0a3a9c"/>
+            <ellipse cx="177" cy="144" rx="83" ry="68" fill="#d6e6fb"/>
             <ellipse cx="177" cy="144" rx="63" ry="51" fill="#2185e5" stroke="#14213d" stroke-width="5"/>
             <ellipse cx="149" cy="105" rx="24" ry="29" fill="#2185e5" stroke="#14213d" stroke-width="5"/>
             <ellipse cx="205" cy="105" rx="24" ry="29" fill="#2185e5" stroke="#14213d" stroke-width="5"/>
@@ -433,7 +431,6 @@
             <path d="M149 153q28 26 56 0" fill="none" stroke="#14213d" stroke-width="5" stroke-linecap="round"/>
             <path d="M132 168h46v47h-46zm46 0h46v47h-46z" fill="#fff4d6" stroke="#14213d" stroke-width="4"/>
             <path d="M178 170v43" stroke="#d62828" stroke-width="4"/>
-            <path d="m64 79 9-25 12 20m200 4 8-18 11 19" fill="none" stroke="#ffc929" stroke-width="8" stroke-linecap="round"/>
           </svg>
         </div>
         <div>
@@ -521,7 +518,7 @@
         <p class="form-note" style="margin-top:1rem">Every confirmed event will have an Add to calendar file and a WhatsApp share link.</p>
       </div>
     </section>
-    <section class="section" id="stories" style="background:var(--cream)">
+    <section class="section" id="stories">
       <div class="wrap">
         <div class="section-head">
           <span class="eyebrow">Little moments. Big stories.</span>
@@ -541,19 +538,19 @@
         <div class="section-head">
           <span class="eyebrow">Effort gets its flowers</span>
           <h2>Earn your M.</h2>
-          <p>Rookie, Pro and Legend. The same three patch levels for reading and sport. Progress is personal—not a public leaderboard.</p>
+          <p>Rookie, Pro and Legend. The same three milestone levels for reading and sport. Progress is personal—not a public leaderboard.</p>
         </div>
         <div class="level-grid">
-          <article class="level-card"><span class="patch" aria-hidden="true">R</span><span class="tag">Boomerang · Read</span><h3>Rookie</h3><p>Show up, get curious and find a story you like.</p></article>
-          <article class="level-card"><span class="patch" aria-hidden="true">P</span><span class="tag">Boomerang · Read</span><h3>Pro</h3><p>Share stories, try new words and help the circle grow.</p></article>
-          <article class="level-card"><span class="patch" aria-hidden="true">L</span><span class="tag">Boomerang · Read</span><h3>Legend</h3><p>Bring your reading spirit and welcome others in.</p></article>
-          <article class="level-card"><span class="patch" aria-hidden="true">R</span><span class="tag">Splendid Sports · Play</span><h3>Rookie</h3><p>Step on the field, try a skill and cheer your team.</p></article>
-          <article class="level-card"><span class="patch" aria-hidden="true">P</span><span class="tag">Splendid Sports · Play</span><h3>Pro</h3><p>Keep practising, play fair and make a teammate's day.</p></article>
-          <article class="level-card"><span class="patch" aria-hidden="true">L</span><span class="tag">Splendid Sports · Play</span><h3>Legend</h3><p>Lead with effort, kindness and team spirit.</p></article>
+          <article class="level-card"><span class="level-number">Level 1</span><span class="tag">Boomerang · Read</span><h3>Rookie</h3><p>Show up, get curious and find a story you like.</p></article>
+          <article class="level-card"><span class="level-number">Level 2</span><span class="tag">Boomerang · Read</span><h3>Pro</h3><p>Share stories, try new words and help the circle grow.</p></article>
+          <article class="level-card"><span class="level-number">Level 3</span><span class="tag">Boomerang · Read</span><h3>Legend</h3><p>Bring your reading spirit and welcome others in.</p></article>
+          <article class="level-card"><span class="level-number">Level 1</span><span class="tag">Splendid Sports · Play</span><h3>Rookie</h3><p>Step on the field, try a skill and cheer your team.</p></article>
+          <article class="level-card"><span class="level-number">Level 2</span><span class="tag">Splendid Sports · Play</span><h3>Pro</h3><p>Keep practising, play fair and make a teammate's day.</p></article>
+          <article class="level-card"><span class="level-number">Level 3</span><span class="tag">Splendid Sports · Play</span><h3>Legend</h3><p>Lead with effort, kindness and team spirit.</p></article>
         </div>
       </div>
     </section>
-    <section class="section" id="get-involved" style="background:var(--cream)">
+    <section class="section" id="get-involved">
       <div class="wrap">
         <div class="section-head">
           <span class="eyebrow">Your people. Your skills. Your circle.</span>
@@ -636,7 +633,7 @@
         </div>
       </div>
     </section>
-    <section class="section" id="gallery" style="background:var(--cream)">
+    <section class="section" id="gallery">
       <div class="wrap">
         <div class="section-head">
           <span class="eyebrow">Our circles, our colours</span>
@@ -648,7 +645,7 @@
           <div class="gallery-tile"><svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="22" fill="none" stroke="currentColor" stroke-width="4"/><path d="m30 19 8 6-3 10h-10l-3-10z" fill="currentColor"/></svg><span>Game-day energy</span></div>
           <div class="gallery-tile"><svg viewBox="0 0 60 60" aria-hidden="true"><path d="M10 10h40v40H10zm10 10h20v20H20zm-10 0h10m20 20h10m-30-20v20m20-20v20" fill="none" stroke="currentColor" stroke-width="3"/></svg><span>Made in our colours</span></div>
           <div class="gallery-tile"><svg viewBox="0 0 60 60" aria-hidden="true"><path d="M30 6 49 16v28L30 54 11 44V16z" fill="none" stroke="#ffc929" stroke-width="4"/><path d="M18 30h24M30 18v24" stroke="#fff" stroke-width="4"/></svg><span>Community murals</span></div>
-          <div class="gallery-tile"><svg viewBox="0 0 60 60" aria-hidden="true"><path d="m30 5 6 17 18 1-14 11 5 18-15-10-15 10 5-18L6 23l18-1z" fill="#d62828"/></svg><span>Big effort, bright patches</span></div>
+          <div class="gallery-tile"><svg viewBox="0 0 60 60" aria-hidden="true"><path d="M10 15h40v32H10zM17 23h26M17 30h26M17 37h18" fill="none" stroke="#0a3a9c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Big effort, bright moments</span></div>
           <div class="gallery-tile"><svg viewBox="0 0 60 60" aria-hidden="true"><path d="M8 45q14-27 27-13l8-16 10 6-4 25H8z" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round"/><circle cx="43" cy="12" r="5" fill="#ffc929"/></svg><span>Every day, a new start</span></div>
         </div>
         <p class="form-note" style="margin-top:1rem">Illustrations only. Guardian-consented event and mural photos will appear here when approved.</p>
@@ -656,17 +653,17 @@
     </section>
     <section class="section" id="story">
       <div class="wrap story-origin">
-        <div class="origin-mark"><img src="/mini-circle-logo.svg" alt="Mini Circles red and yellow M arches"></div>
+        <div class="origin-mark"><img src="/mini-circle-logo.svg" alt="Mini Circles wordmark"></div>
         <div>
-          <span class="eyebrow">Two arches. One M.</span>
+          <span class="eyebrow">One name. One community.</span>
           <h2>Built from where we come from.</h2>
-          <p>The M in Mini Circles brings together Mini and Mlungisi Mashinini. Its two arches echo a welcome, a meeting place and a way forward. Red and yellow draw from the bold geometry and colour of Ndebele blankets; the blue frog brings a little curiosity to every circle.</p>
+          <p>The M in Mini Circles brings together Mini and Mlungisi Mashinini. The programme is rooted in its community and led by young people, with a welcoming blue frog to bring a little curiosity to every circle.</p>
           <p>Mini Circles is youth-led: rooted in community, proud of South Africa and open to what young people can make next.</p>
           <div class="intro-note"><p>Start small. Go limitless.</p></div>
         </div>
       </div>
     </section>
-    <section class="section" id="contact" style="background:var(--cream)">
+    <section class="section" id="contact">
       <div class="wrap split">
         <div>
           <span class="eyebrow">Say hello</span>
@@ -695,7 +692,6 @@
     </section>
   </main>
   <footer class="site-footer">
-    <div class="band" aria-hidden="true"></div>
     <div class="wrap footer-grid" style="padding-top:2.2rem">
       <div>
         <a class="footer-brand" href="#home"><img src="/mini-circle-logo.svg" alt=""><span>Mini Circles</span></a>
@@ -716,7 +712,7 @@
           <a href="https://www.youtube.com/@2MiniCircles" target="_blank" rel="noopener noreferrer">YouTube ↗</a>
           <a href="#contact" data-contact-channel="whatsapp">WhatsApp (add number)</a>
         </div>
-        <p style="margin-top:1.2rem"><a class="text-link" style="color:var(--yellow)" href="#contact">Contact &amp; FAQ <span aria-hidden="true">→</span></a></p>
+        <p style="margin-top:1.2rem"><a class="text-link" href="#contact">Contact &amp; FAQ <span aria-hidden="true">→</span></a></p>
       </div>
     </div>
     <div class="wrap foundation-line">

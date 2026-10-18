@@ -23,6 +23,7 @@ def main() -> int:
     base = urlunsplit((parts.scheme, parts.netloc, parts.path.rstrip("/"), "", ""))
     pages = (
         "/",
+        "/professionals/",
         "/resources/read-and-play-session-cards/",
         "/resources/volunteer-welcome-guide/",
     )

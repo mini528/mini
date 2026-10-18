@@ -1,5 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" role="img" aria-labelledby="title">
-  <title id="title">Mini Circles M arches</title>
-  <path d="M7 70V43a30 30 0 0 1 60 0v27H52V43a15 15 0 0 0-30 0v27z" fill="#D62828"/>
-  <path d="M53 70V43a30 30 0 0 1 60 0v27H98V43a15 15 0 0 0-30 0v27z" fill="#FFC929"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Mini Circles</title>
+  <path d="M8 50V16h8l16 20 16-20h8v34h-9V29L32 47 17 29v21z" fill="#0A3A9C"/>
+  <circle cx="12" cy="56" r="3" fill="#D62828"/>
+  <circle cx="22" cy="56" r="3" fill="#FFC929"/>
 </svg>

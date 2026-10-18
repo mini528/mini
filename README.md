@@ -2,13 +2,14 @@
 
 A fast, mobile-first public website for **Mini Circles**, a youth-led programme of The Mlungisi Mashinini Foundation. It brings reading for fun and sport together under the line **Read. Play. Repeat.**
 
-The website is a static HTML/CSS/JavaScript site with no visitor accounts, public comments, child profiles, tracking pixels, or user uploads. Run it behind any static web server from the repository root; the Mini League data is loaded from `data/mini-league.csv`, so opening `index.html` directly as a `file://` URL will not load that data.
+The website is a static HTML/CSS/JavaScript site with no visitor accounts, public comments, child profiles, tracking pixels, or user uploads. The public, no-login professional dashboard is at `/professionals/`; it links to available resources, events and league information and clearly labels future tools as planned, not live. Run the site behind any static web server from the repository root; the Mini League data is loaded from `data/mini-league.csv`, so opening `index.html` directly as a `file://` URL will not load that data.
 
 ## Volunteer editing
 
 - Edit the term-by-term event titles, dates and locations in `data/events.json`. Leave a date as `null` until it is confirmed; the calendar download remains disabled until then.
 - Update fixtures and scores in `data/mini-league.csv`. Keep the header row. Use ISO dates (`YYYY-MM-DD`) and leave both score cells empty until a match is played. The site calculates a team table from results (3 points for a win, 1 for a draw).
 - Update programme descriptions, volunteer resources, FAQs and stories directly in `index.html`.
+- Update the professional dashboard content and planned tool areas in `professionals/index.html` as tool requirements are confirmed.
 - Replace the illustrated gallery placeholders only with approved photographs; obtain guardian consent and do not publish children's full names or identifying details.
 - The printable session cards and welcome guide are standalone HTML files in `resources/`; print them from a browser. The year plan is a spreadsheet-friendly CSV.
 
@@ -30,4 +31,4 @@ Until the form endpoint is set, the forms explain that enquiries are not connect
 4. Publish the site over HTTPS. Set the absolute Open Graph image URL in `index.html`, then generate `sitemap.xml` with `python3 tools/generate_sitemap.py https://your-confirmed-domain`. A public domain was not provided, so no unverified domain is embedded here.
 5. Review POPIA wording and safeguarding arrangements with the Foundation. Keep the two-adult-at-every-session standard and guardian photo consent in place.
 
-Ubuntu and Ubuntu Condensed are loaded from Google Fonts. If the site needs to avoid third-party font requests, self-host licensed font files and remove the Google Fonts links from `index.html`.
+Ubuntu is loaded from Google Fonts. If the site needs to avoid third-party font requests, self-host licensed font files and remove the Google Fonts links from `index.html`.
