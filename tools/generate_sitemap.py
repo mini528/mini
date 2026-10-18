@@ -24,8 +24,13 @@ def main() -> int:
     pages = (
         "/",
         "/professionals/",
+        "/programmes/",
+        "/events/",
         "/resources/read-and-play-session-cards/",
         "/resources/volunteer-welcome-guide/",
+        "/resources/",
+        "/about/",
+        "/get-involved/",
     )
     register_namespace("", SITEMAP_NAMESPACE)
     sitemap = Element(f"{{{SITEMAP_NAMESPACE}}}urlset")
