@@ -1,0 +1,964 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0A3A9C">
+  <meta name="description" content="Mini Circles gets children and young people reading for fun and playing sport, hand in hand. Read. Play. Repeat.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mini Circles — Read. Play. Repeat.">
+  <meta property="og:description" content="A youth-led programme of The Mlungisi Mashinini Foundation. Reading and sport, hand in hand.">
+  <meta property="og:image" content="/mini-circles-social.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mini Circles — Read. Play. Repeat.">
+  <meta name="twitter:description" content="Reading and sport, hand in hand. A youth-led programme of The Mlungisi Mashinini Foundation.">
+  <meta name="twitter:image" content="/mini-circles-social.svg">
+  <title>Mini Circles — Read. Play. Repeat.</title>
+  <link rel="icon" href="/mini-circle-logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&family=Ubuntu:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --blue: #0A3A9C;
+      --red: #D62828;
+      --yellow: #FFC929;
+      --cream: #FFF4D6;
+      --ink: #14213D;
+      --paper: #fffdf8;
+      --surface: #fff;
+      --muted: #536079;
+      --line: #e4e0d4;
+      --green: #176c4b;
+      --shadow: 0 16px 42px #14213d12;
+      --sans: "Ubuntu", Arial, sans-serif;
+      --condensed: "Ubuntu Condensed", "Arial Narrow", sans-serif;
+      font-family: var(--sans);
+      scroll-behavior: smooth;
+      scroll-padding-top: 6rem;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font: 400 1rem/1.55 var(--sans); }
+    ::selection { color: var(--ink); background: var(--yellow); }
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { color: inherit; }
+    img, svg { max-width: 100%; }
+    :focus-visible { outline: 3px solid var(--red); outline-offset: 4px; }
+    .skip-link { position: fixed; top: .5rem; left: .5rem; z-index: 100; padding: .7rem 1rem; transform: translateY(-160%); background: var(--yellow); color: var(--ink); font-weight: 700; }
+    .skip-link:focus { transform: none; }
+    .wrap { width: min(1160px, calc(100% - 2.5rem)); margin-inline: auto; }
+    .eyebrow, .label, .tag { font: 1rem var(--condensed); letter-spacing: .09em; text-transform: uppercase; }
+    .eyebrow { display: inline-flex; align-items: center; gap: .55rem; color: var(--red); font-weight: 700; }
+    .eyebrow::before { content: ""; width: 1.8rem; height: .55rem; background: repeating-linear-gradient(135deg,var(--red) 0 5px,transparent 5px 9px); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { line-height: 1.08; }
+    h1, h2 { letter-spacing: -.045em; }
+    h1 { font-size: clamp(3.2rem, 10vw, 7.5rem); }
+    h2 { margin-bottom: 1rem; font-size: clamp(2.25rem, 5.7vw, 4.25rem); }
+    h3 { font-size: clamp(1.3rem, 3vw, 1.7rem); }
+    .section { padding-block: clamp(4rem, 8vw, 7.5rem); }
+    .section-head { max-width: 760px; margin-bottom: 2.25rem; }
+    .section-head p { max-width: 650px; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.2rem); }
+    .section-head h2 { margin-block: .65rem 1rem; }
+    .btn { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: .6rem; padding: .75rem 1.15rem; border: 2px solid transparent; border-radius: 5px; background: var(--yellow); color: var(--ink); font-weight: 800; text-decoration: none; transition: transform .15s ease, background .15s ease; }
+    .btn:hover { transform: translateY(-2px); background: #ffda66; }
+    .btn-blue { background: var(--blue); color: #fff; }
+    .btn-blue:hover { background: #082f7f; }
+    .btn-outline { border-color: currentColor; background: transparent; color: inherit; }
+    .btn-outline:hover { background: #ffffff19; }
+    .btn-small { min-height: 42px; padding: .55rem .85rem; font-size: .95rem; }
+    .text-link { display: inline-flex; align-items: center; gap: .35rem; color: var(--blue); font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+    .text-link:hover { color: var(--red); }
+    .band { height: 13px; background: repeating-linear-gradient(135deg,var(--red) 0 12px,var(--yellow) 12px 24px,var(--blue) 24px 36px,var(--cream) 36px 48px); }
+    .site-header { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid #14213d17; background: color-mix(in srgb, var(--paper) 94%, transparent); backdrop-filter: blur(14px); }
+    .header-row { display: flex; min-height: 76px; align-items: center; justify-content: space-between; gap: 1rem; }
+    .brand { display: inline-flex; align-items: center; gap: .65rem; flex: 0 0 auto; color: var(--ink); font-size: 1.25rem; font-weight: 800; letter-spacing: -.04em; text-decoration: none; }
+    .brand img { width: 54px; height: 44px; }
+    .brand small { display: block; margin-top: -.3rem; color: var(--muted); font: .75rem var(--condensed); letter-spacing: .12em; }
+    .nav { display: flex; align-items: center; gap: clamp(.6rem, 1.7vw, 1.4rem); }
+    .nav a { padding-block: .5rem; color: var(--ink); font-size: .92rem; font-weight: 700; text-decoration: none; }
+    .nav a:hover { color: var(--red); }
+    .nav .nav-cta { padding: .6rem .85rem; border-radius: 4px; background: var(--blue); color: #fff; }
+    .nav .nav-cta:hover { background: #082f7f; }
+    .header-actions { display: flex; align-items: center; gap: .55rem; }
+    .icon-btn, .menu-btn { display: inline-grid; width: 44px; height: 44px; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: var(--surface); cursor: pointer; }
+    .menu-btn { display: none; border-radius: 4px; }
+    .icon-btn svg, .menu-btn svg { width: 20px; height: 20px; }
+    .hero { position: relative; overflow: hidden; padding-block: clamp(3.5rem, 8vw, 7rem); background: var(--blue); color: #fff; }
+    .hero::after { position: absolute; right: -5rem; bottom: -7rem; width: min(45vw, 540px); aspect-ratio: 1; border: 2px solid #ffffff22; border-radius: 50%; box-shadow: 0 0 0 35px #ffffff0b,0 0 0 80px #ffffff08; content: ""; pointer-events: none; }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 2rem; }
+    .hero-copy { max-width: 700px; }
+    .hero .eyebrow { color: var(--yellow); }
+    .hero h1 { max-width: 720px; margin-block: 1rem; }
+    .hero h1 span { color: var(--yellow); }
+    .hero-copy > p { max-width: 560px; color: #e4ecff; font-size: clamp(1.1rem, 2.1vw, 1.3rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.7rem; }
+    .hero-art { position: relative; min-height: 360px; display: grid; place-items: center; }
+    .hero-art::before { position: absolute; width: min(100%, 410px); aspect-ratio: 1; border: 2px solid #ffc92975; border-radius: 50%; box-shadow: 0 0 0 23px #ffc92916,0 0 0 47px #ffffff0b; content: ""; }
+    .hero-art svg { position: relative; width: min(100%, 460px); filter: drop-shadow(0 18px 18px #071e4c60); }
+    .hero-stamp { position: absolute; right: 1%; bottom: 5%; display: grid; width: 112px; height: 112px; align-content: center; transform: rotate(8deg); border: 3px solid var(--blue); border-radius: 50%; background: var(--yellow); color: var(--ink); font: 1.05rem/1.05 var(--condensed); text-align: center; text-transform: uppercase; }
+    .hero-stamp strong { display: block; font-size: 1.65rem; }
+    .hero-tape { position: absolute; top: 0; right: 8%; width: 17%; height: 9px; background: repeating-linear-gradient(90deg,var(--red) 0 15px,var(--yellow) 15px 30px); }
+    .intro { display: grid; grid-template-columns: .85fr 1.15fr; gap: 3rem; align-items: start; }
+    .intro-note { padding: 1.6rem; border-left: 5px solid var(--red); background: var(--cream); }
+    .intro-note p { margin: 0; font-size: clamp(1.25rem, 2.8vw, 1.8rem); font-weight: 700; line-height: 1.3; }
+    .wing-grid, .involvement-grid, .resource-grid, .level-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.15rem; }
+    .wing-card { position: relative; min-height: 300px; overflow: hidden; padding: clamp(1.35rem, 3vw, 2rem); border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); }
+    .wing-card::after { position: absolute; right: -45px; bottom: -50px; width: 190px; height: 190px; border: 17px solid #0a3a9c16; border-radius: 50%; content: ""; }
+    .wing-card.sport::after { border-color: #d628281a; }
+    .wing-card h3 { margin-block: .5rem; }
+    .wing-card p { max-width: 500px; color: var(--muted); }
+    .wing-card .tag { display: inline-block; padding: .3rem .55rem; background: var(--cream); color: var(--blue); font-weight: 700; }
+    .wing-card.sport .tag { background: #ffe5dd; color: #a91919; }
+    .wing-lockup { display: block; margin-top: 1.2rem; color: var(--ink); font: 1.1rem var(--condensed); letter-spacing: .05em; text-transform: uppercase; }
+    .numbers { padding-block: 2.4rem; background: var(--cream); }
+    .numbers-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+    .number { padding: 1.2rem; border-left: 3px solid var(--red); }
+    .number strong { display: block; color: var(--blue); font-size: clamp(2.4rem, 5vw, 4.4rem); font-weight: 800; letter-spacing: -.06em; line-height: 1; }
+    .number span { display: block; margin-top: .5rem; font: 1.2rem var(--condensed); letter-spacing: .04em; text-transform: uppercase; }
+    .number small { color: var(--muted); }
+    .partners { padding-block: 2rem; border-bottom: 1px solid var(--line); }
+    .partner-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+    .partner-row > span:first-child { color: var(--muted); font: 1rem var(--condensed); letter-spacing: .1em; text-transform: uppercase; }
+    .partner-name { padding: .6rem .9rem; border: 1px solid var(--line); background: var(--surface); font-weight: 800; }
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 2.6rem; align-items: center; }
+    .split-visual { min-height: 320px; display: grid; place-items: center; overflow: hidden; background: var(--cream); }
+    .split-visual.blue { background: var(--blue); }
+    .split-visual svg { width: min(85%,380px); }
+    .list-check { display: grid; gap: .65rem; padding: 0; list-style: none; }
+    .list-check li { display: flex; gap: .7rem; align-items: flex-start; }
+    .list-check li::before { content: "✳"; flex: 0 0 auto; color: var(--red); font-weight: 800; }
+    .callout { padding: 1rem 1.2rem; border-left: 4px solid var(--yellow); background: #fff9e8; color: var(--ink); }
+    .callout p:last-child { margin-bottom: 0; }
+    .dark-section { background: var(--ink); color: #fff; }
+    .dark-section .section-head p { color: #d4daea; }
+    .dark-section .eyebrow { color: var(--yellow); }
+    .league-panel { overflow: hidden; border: 1px solid #ffffff38; background: #ffffff09; }
+    .league-panel + .league-panel { margin-top: 1rem; }
+    .league-panel h3 { margin: 0; padding: 1rem 1.15rem; border-bottom: 1px solid #ffffff25; font-size: 1.2rem; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th, td { padding: .8rem 1rem; border-bottom: 1px solid #ffffff20; white-space: nowrap; }
+    th { color: var(--yellow); font: 1rem var(--condensed); letter-spacing: .08em; text-transform: uppercase; }
+    tr:last-child td { border-bottom: 0; }
+    .empty-row { color: #d4daea; }
+    .match-list { display: grid; }
+    .match { display: grid; grid-template-columns: minmax(95px,.6fr) 1fr auto; gap: 1rem; align-items: center; padding: 1rem 1.15rem; border-bottom: 1px solid #ffffff20; }
+    .match:last-child { border-bottom: 0; }
+    .match time, .match .match-meta { color: #d4daea; font-size: .9rem; }
+    .match-score { font-weight: 800; }
+    .league-foot { margin-top: 1rem; color: #d4daea; font-size: .95rem; }
+    .event-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }
+    .event-card { padding: 1.4rem; border: 1px solid var(--line); background: var(--surface); }
+    .event-card .term { display: inline-block; margin-bottom: .7rem; padding: .25rem .6rem; background: var(--cream); color: var(--blue); font: 1rem var(--condensed); letter-spacing: .07em; text-transform: uppercase; }
+    .event-card h3 { margin-bottom: .4rem; }
+    .event-card p { color: var(--muted); }
+    .event-date { display: block; margin-bottom: 1rem; font-weight: 700; }
+    .event-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .btn:disabled { cursor: not-allowed; opacity: .55; transform: none; }
+    .story-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
+    .story-card { overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
+    .story-art { min-height: 160px; display: grid; place-items: center; background: var(--cream); }
+    .story-art svg { width: 130px; height: 120px; }
+    .story-content { padding: 1.2rem; }
+    .story-content h3 { margin-block: .5rem; }
+    .story-content p { color: var(--muted); }
+    .level-card { position: relative; padding: 1.35rem; border: 2px solid var(--blue); background: var(--surface); }
+    .level-card:nth-child(2) { border-color: var(--red); }
+    .level-card:nth-child(3) { border-color: var(--yellow); }
+    .level-card:nth-child(4) { border-color: var(--red); }
+    .level-card:nth-child(5) { border-color: var(--yellow); }
+    .level-card:nth-child(6) { border-color: var(--blue); }
+    .level-card .patch { display: inline-grid; width: 53px; height: 53px; place-items: center; margin-bottom: .7rem; clip-path: polygon(50% 0,90% 18%,100% 63%,50% 100%,0 63%,10% 18%); background: var(--blue); color: #fff; font: 1.5rem var(--condensed); }
+    .level-card:nth-child(3n) .patch { background: var(--red); }
+    .level-card h3 { margin-bottom: .3rem; }
+    .level-card p { margin: 0; color: var(--muted); }
+    .level-card .tag { color: var(--blue); }
+    .involvement-card { padding: 1.35rem; border: 1px solid var(--line); background: var(--surface); }
+    .involvement-card .card-letter { display: grid; width: 42px; height: 42px; place-items: center; margin-bottom: 1rem; background: var(--yellow); color: var(--ink); font: 1.5rem var(--condensed); }
+    .involvement-card p { color: var(--muted); }
+    .resource-card { display: flex; min-height: 200px; flex-direction: column; align-items: flex-start; padding: 1.35rem; border: 1px solid var(--line); background: var(--surface); }
+    .resource-card .resource-icon { margin-bottom: 1rem; color: var(--red); font-size: 2rem; }
+    .resource-card h3 { margin-bottom: .5rem; }
+    .resource-card p { flex: 1; color: var(--muted); }
+    .gallery-grid { display: grid; grid-template-columns: 1.2fr .8fr 1fr; gap: .75rem; }
+    .gallery-tile { min-height: 170px; display: grid; align-content: center; justify-items: center; padding: 1rem; background: var(--blue); color: white; text-align: center; }
+    .gallery-tile:nth-child(2) { background: var(--red); }
+    .gallery-tile:nth-child(3) { background: var(--yellow); color: var(--ink); }
+    .gallery-tile:nth-child(4) { background: var(--ink); }
+    .gallery-tile:nth-child(5) { background: var(--cream); color: var(--ink); }
+    .gallery-tile:nth-child(6) { background: #176c4b; }
+    .gallery-tile svg { width: 55px; height: 55px; margin-bottom: .5rem; }
+    .gallery-tile span { font: 1.1rem var(--condensed); letter-spacing: .05em; text-transform: uppercase; }
+    .story-origin { display: grid; grid-template-columns: .8fr 1.2fr; gap: 2.4rem; align-items: center; }
+    .origin-mark { display: grid; min-height: 290px; place-items: center; background: var(--blue); }
+    .origin-mark img { width: min(75%,300px); }
+    .origin-mark .lettermark { width: min(75%,300px); }
+    .faq { border-top: 1px solid var(--line); }
+    .faq details { border-bottom: 1px solid var(--line); }
+    .faq summary { padding: 1rem 0; cursor: pointer; font-size: 1.1rem; font-weight: 700; }
+    .faq details p { max-width: 750px; color: var(--muted); }
+    .form-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .85rem; }
+    .form-grid label { display: grid; gap: .35rem; font-weight: 700; }
+    .form-grid .wide { grid-column: 1/-1; }
+    input, select, textarea { width: 100%; min-height: 46px; padding: .65rem .75rem; border: 1px solid #b9bdc8; border-radius: 3px; background: var(--surface); color: var(--ink); }
+    textarea { min-height: 100px; resize: vertical; }
+    .form-grid input:focus, .form-grid select:focus, .form-grid textarea:focus { outline: 3px solid #0a3a9c38; border-color: var(--blue); }
+    .form-note { color: var(--muted); font-size: .92rem; }
+    .form-status { min-height: 1.5em; margin: .75rem 0 0; font-weight: 700; }
+    .form-status.error { color: #a71919; }
+    .form-status.success { color: var(--green); }
+    .honeypot { position: absolute !important; width: 1px !important; height: 1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; }
+    .form-card { padding: 1.4rem; border: 1px solid var(--line); background: var(--surface); }
+    .form-card h3 { margin-bottom: .35rem; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: .65rem; margin-block: 1.2rem; }
+    .privacy-box { padding: 1rem 1.2rem; border: 1px solid var(--line); background: var(--cream); font-size: .95rem; }
+    .privacy-box p:last-child { margin-bottom: 0; }
+    .site-footer { padding-top: 3rem; background: var(--ink); color: #fff; }
+    .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 2rem; padding-bottom: 2.3rem; }
+    .footer-brand { display: flex; align-items: center; gap: .75rem; font-size: 1.35rem; font-weight: 800; }
+    .footer-brand img { width: 58px; height: 48px; }
+    .footer-copy { max-width: 340px; margin-top: .8rem; color: #d4daea; }
+    .footer-title { margin-bottom: .75rem; color: var(--yellow); font: 1rem var(--condensed); letter-spacing: .1em; text-transform: uppercase; }
+    .footer-links { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .4rem 1rem; }
+    .footer-links a, .social-links a { color: #fff; text-decoration: none; }
+    .footer-links a:hover, .social-links a:hover { color: var(--yellow); text-decoration: underline; }
+    .social-links { display: flex; flex-wrap: wrap; gap: .7rem; }
+    .footer-lockups { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.1rem; }
+    .footer-lockup { padding: .45rem .65rem; border: 1px solid #ffffff43; font: 1rem var(--condensed); letter-spacing: .04em; text-transform: uppercase; }
+    .foundation-line { padding-block: 1.1rem; border-top: 1px solid #ffffff2a; color: #d4daea; font-size: .9rem; }
+    .foundation-line strong { color: #fff; }
+    .back-top { float: right; color: var(--yellow); text-decoration: none; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    [data-theme="dark"] { color-scheme: dark; --paper: #111a2c; --surface: #18253b; --ink: #f4f5fa; --muted: #c0c9dc; --line: #34425b; --cream: #332c1a; --shadow: 0 16px 42px #0004; }
+    [data-theme="dark"] .brand, [data-theme="dark"] .nav a { color: var(--ink); }
+    [data-theme="dark"] .nav .nav-cta { color: #fff; }
+    [data-theme="dark"] .intro-note, [data-theme="dark"] .callout, [data-theme="dark"] .privacy-box { color: var(--ink); }
+    [data-theme="dark"] .numbers { background: #282d3a; }
+    [data-theme="dark"] .number strong { color: #a9c3ff; }
+    [data-theme="dark"] .partner-name { color: var(--ink); }
+    [data-theme="dark"] .wing-card .tag, [data-theme="dark"] .event-card .term { background: #293657; color: #d8e4ff; }
+    [data-theme="dark"] .wing-card.sport .tag { background: #4a292c; color: #ffd4cb; }
+    @media (max-width: 960px) {
+      .nav { gap: .55rem; }
+      .nav a { font-size: .84rem; }
+      .nav .nav-cta { display: none; }
+      .header-row { min-height: 68px; }
+    }
+    @media (max-width: 760px) {
+      :root { scroll-padding-top: 5rem; }
+      .wrap { width: min(100% - 1.5rem, 620px); }
+      .header-row { min-height: 64px; }
+      .menu-btn { display: inline-grid; }
+      .nav { position: absolute; top: calc(100% + 1px); left: 0; right: 0; display: none; align-items: stretch; gap: 0; padding: .5rem .75rem 1rem; border-bottom: 1px solid var(--line); background: var(--paper); box-shadow: var(--shadow); }
+      .nav.open { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .nav a { min-height: 46px; display: flex; align-items: center; padding: .7rem .8rem; font-size: .96rem; }
+      .nav .nav-cta { display: flex; grid-column: 1/-1; justify-content: center; }
+      .hero-grid, .intro, .split, .story-origin { grid-template-columns: 1fr; }
+      .hero { padding-block: 3.4rem 4rem; }
+      .hero-art { min-height: 260px; }
+      .hero-art::before { width: 240px; }
+      .hero-art svg { width: min(100%,320px); }
+      .hero-stamp { right: 8%; width: 85px; height: 85px; font-size: .88rem; }
+      .hero-stamp strong { font-size: 1.35rem; }
+      .wing-grid, .event-grid, .involvement-grid { grid-template-columns: 1fr; }
+      .numbers-grid { gap: .25rem; }
+      .number { padding: .8rem .55rem; }
+      .number strong { font-size: clamp(2rem,9vw,3.4rem); }
+      .number span { font-size: 1rem; }
+      .story-grid { grid-template-columns: 1fr 1fr; }
+      .level-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid > :first-child { grid-column: 1/-1; }
+      .split-visual { min-height: 230px; }
+    }
+    @media (max-width: 440px) {
+      h1 { font-size: clamp(3.2rem,16vw,4.7rem); }
+      .brand { font-size: 1.12rem; }
+      .brand img { width: 46px; }
+      .story-grid, .level-grid, .form-grid { grid-template-columns: 1fr; }
+      .form-grid .wide { grid-column: auto; }
+      .numbers-grid { grid-template-columns: 1fr; }
+      .number { display: flex; align-items: baseline; gap: .65rem; }
+      .number strong { min-width: 3.6rem; }
+      .number span { margin-top: 0; }
+      .match { grid-template-columns: 1fr auto; }
+      .match time { grid-column: 1/-1; }
+      .gallery-tile { min-height: 135px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-grid > :first-child { grid-column: auto; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="#home" aria-label="Mini Circles home">
+        <img src="/mini-circle-logo.svg" alt="">
+        <span>Mini Circles<small>READ. PLAY. REPEAT.</small></span>
+      </a>
+      <nav class="nav" id="site-nav" aria-label="Main navigation">
+        <a href="#read">Read</a>
+        <a href="#play">Play</a>
+        <a href="#league">Mini League</a>
+        <a href="#events">Events</a>
+        <a href="#story">Our story</a>
+        <a href="#get-involved" class="nav-cta">Get involved <span aria-hidden="true">↗</span></a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch colour theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg>
+        </button>
+        <button class="menu-btn" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="band" aria-hidden="true"></div>
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="hero-tape" aria-hidden="true"></div>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">A youth-led programme in South Africa</span>
+          <h1>Read.<br>Play.<br><span>Repeat.</span></h1>
+          <p>Good stories. Big energy. Mini Circles gets children and young people reading for fun and playing sport, hand in hand.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#what-we-do">Find your circle <span aria-hidden="true">↓</span></a>
+            <a class="btn btn-outline" href="#get-involved">Join the team <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="A blue frog with a book and a ball">
+          <svg viewBox="0 0 470 360" role="img" aria-labelledby="frog-title frog-desc">
+            <title id="frog-title">Meet the Mini Circles frog</title>
+            <desc id="frog-desc">A cheerful blue frog surrounded by a book, a football and a cricket bat.</desc>
+            <path d="M82 300 55 318l40 9 26-20m214-7 26 19 37-12-26-14" fill="#ffc929" stroke="#14213d" stroke-width="7" stroke-linejoin="round"/>
+            <ellipse cx="232" cy="240" rx="128" ry="94" fill="#2185e5" stroke="#14213d" stroke-width="8"/>
+            <ellipse cx="174" cy="147" rx="48" ry="53" fill="#2185e5" stroke="#14213d" stroke-width="8"/>
+            <ellipse cx="286" cy="147" rx="48" ry="53" fill="#2185e5" stroke="#14213d" stroke-width="8"/>
+            <ellipse cx="177" cy="143" rx="19" ry="25" fill="#fff"/>
+            <ellipse cx="285" cy="143" rx="19" ry="25" fill="#fff"/>
+            <ellipse cx="181" cy="146" rx="8" ry="13" fill="#14213d"/>
+            <ellipse cx="281" cy="146" rx="8" ry="13" fill="#14213d"/>
+            <path d="M181 211q51 55 102 0" fill="none" stroke="#14213d" stroke-width="8" stroke-linecap="round"/>
+            <path d="m107 230-43 33 24 36 49-23m167 4 51 27 25-36-47-34" fill="#2185e5" stroke="#14213d" stroke-width="8" stroke-linejoin="round"/>
+            <path d="M173 246h57v57h-57zm57 0h57v57h-57z" fill="#fff4d6" stroke="#14213d" stroke-width="5" stroke-linejoin="round"/>
+            <path d="M230 248v54" stroke="#d62828" stroke-width="5"/>
+            <circle cx="375" cy="206" r="38" fill="#fff" stroke="#14213d" stroke-width="6"/>
+            <path d="m375 188 12 9-5 14h-15l-5-14zm-24 7-8-3m57 2 8-3m-56 32-5 10m53-10 6 10" fill="#14213d" stroke="#14213d" stroke-width="5" stroke-linejoin="round"/>
+            <path d="m96 173 8-31 16 4 31 84-20 8-22-48-22 8-8-18z" fill="#ffc929" stroke="#14213d" stroke-width="6" stroke-linejoin="round"/>
+            <path d="M88 131q-12-18-26-9m304-60q21-12 31 4" fill="none" stroke="#ffc929" stroke-width="8" stroke-linecap="round"/>
+            <path d="m337 82 11-20 12 18 22-4-10 20 13 15-23-1-12 18-6-22-22-7 20-9z" fill="#d62828"/>
+          </svg>
+          <span class="hero-stamp"><strong>Two wings</strong><br>One big<br>circle</span>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="what-we-do">
+      <div class="wrap intro">
+        <div>
+          <span class="eyebrow">Not either-or. Both.</span>
+          <h2>Books and balls.<br>Same circle.</h2>
+        </div>
+        <div>
+          <p>Mini Circles makes room for young people to get lost in a story, find their feet on the field, and feel part of something bigger. Two wings, moving together.</p>
+          <div class="intro-note"><p>“Start small. Go limitless.” That's the whole idea.</p></div>
+        </div>
+      </div>
+      <div class="wrap wing-grid" style="margin-top:2.2rem">
+        <article class="wing-card" id="read-card">
+          <span class="tag">Read · Indoors · Led by teachers</span>
+          <h3>Boomerang</h3>
+          <p>Easy-going reading circles where stories travel, languages belong and reading is something you choose for fun.</p>
+          <a class="text-link" href="#read">Find your reading circle <span aria-hidden="true">→</span></a>
+          <span class="wing-lockup">Boomerang by Mini Circles</span>
+        </article>
+        <article class="wing-card sport">
+          <span class="tag">Play · Outdoors · Led by coaches</span>
+          <h3>Splendid Sports</h3>
+          <p>Cricket, soccer and more. Big effort, kind coaching, and space to find your game.</p>
+          <a class="text-link" href="#play">Meet the sports wing <span aria-hidden="true">→</span></a>
+          <span class="wing-lockup">Splendid Sports by Mini Circles</span>
+        </article>
+      </div>
+    </section>
+    <section class="numbers" aria-label="Mini Circles at a glance">
+      <div class="wrap numbers-grid">
+        <div class="number"><strong>8</strong><span>ECDs</span><small>In the circle</small></div>
+        <div class="number"><strong>4</strong><span>Schools</span><small>In the circle</small></div>
+        <div class="number"><strong>2027</strong><span>Mini League</span><small>Launching in 2027</small></div>
+      </div>
+    </section>
+    <section class="partners" aria-label="Programme partners">
+      <div class="wrap partner-row">
+        <span>In good company</span>
+        <span class="partner-name">Nal'ibali</span>
+        <span class="partner-name">KFC Mini Cricket</span>
+      </div>
+    </section>
+    <section class="section" aria-labelledby="get-started-title">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">There's a place for you</span>
+          <h2 id="get-started-title">Make your move.</h2>
+          <p>Come read, come play, or bring the good energy behind the scenes.</p>
+        </div>
+        <div class="involvement-grid">
+          <article class="involvement-card"><span class="card-letter" aria-hidden="true">01</span><h3>For young people &amp; families</h3><p>Find out about a nearby reading circle or sports session.</p><a class="text-link" href="#contact">Get in touch <span aria-hidden="true">→</span></a></article>
+          <article class="involvement-card"><span class="card-letter" aria-hidden="true">02</span><h3>For schools, ECDs &amp; libraries</h3><p>Bring a Mini Circles programme to your community.</p><a class="text-link" href="#get-involved">Start a conversation <span aria-hidden="true">→</span></a></article>
+          <article class="involvement-card"><span class="card-letter" aria-hidden="true">03</span><h3>For coaches, readers &amp; creatives</h3><p>Share your skills as a coach, reader, mentor, media or design helper.</p><a class="text-link" href="#get-involved">Lend your talent <span aria-hidden="true">→</span></a></article>
+          <article class="involvement-card"><span class="card-letter" aria-hidden="true">04</span><h3>For partners &amp; sponsors</h3><p>Back the next term, team or big moment.</p><a class="text-link" href="#get-involved">Partner with us <span aria-hidden="true">→</span></a></article>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="read" style="background:var(--cream)">
+      <div class="wrap split">
+        <div class="split-visual" aria-hidden="true">
+          <svg viewBox="0 0 360 290">
+            <circle cx="180" cy="135" r="100" fill="#0a3a9c"/>
+            <ellipse cx="177" cy="144" rx="63" ry="51" fill="#2185e5" stroke="#14213d" stroke-width="5"/>
+            <ellipse cx="149" cy="105" rx="24" ry="29" fill="#2185e5" stroke="#14213d" stroke-width="5"/>
+            <ellipse cx="205" cy="105" rx="24" ry="29" fill="#2185e5" stroke="#14213d" stroke-width="5"/>
+            <ellipse cx="151" cy="103" rx="9" ry="13" fill="#fff"/><ellipse cx="203" cy="103" rx="9" ry="13" fill="#fff"/>
+            <circle cx="153" cy="105" r="4" fill="#14213d"/><circle cx="201" cy="105" r="4" fill="#14213d"/>
+            <path d="M149 153q28 26 56 0" fill="none" stroke="#14213d" stroke-width="5" stroke-linecap="round"/>
+            <path d="M132 168h46v47h-46zm46 0h46v47h-46z" fill="#fff4d6" stroke="#14213d" stroke-width="4"/>
+            <path d="M178 170v43" stroke="#d62828" stroke-width="4"/>
+            <path d="m64 79 9-25 12 20m200 4 8-18 11 19" fill="none" stroke="#ffc929" stroke-width="8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <span class="eyebrow">Boomerang by Mini Circles</span>
+          <h2>Stories go further together.</h2>
+          <p>Our reading clubs are warm, lively spaces led by teachers. Read aloud, share a story, try a new word and enjoy the moment. There is no test at the end.</p>
+          <ul class="list-check">
+            <li>Reading for pleasure, with time to listen and imagine.</li>
+            <li>Teachers lead the circle and make room for young voices.</li>
+            <li>Languages are shaped by the local group; ask us what is spoken near you.</li>
+          </ul>
+          <p><a class="text-link" href="https://nalibali.org/story-resources" target="_blank" rel="noopener noreferrer">Explore free Nal'ibali stories <span aria-hidden="true">↗</span></a></p>
+          <a class="btn btn-blue" href="#get-involved">Bring Boomerang to your place</a>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="play">
+      <div class="wrap split">
+        <div>
+          <span class="eyebrow">Splendid Sports by Mini Circles</span>
+          <h2>Find your game. Find your people.</h2>
+          <p>We take the good stuff outside. Coaches lead cricket, soccer and more, with teamwork at the centre and every young person welcome to have a go.</p>
+          <ul class="list-check">
+            <li>KFC Mini Cricket brings cricket skills and game-day fun.</li>
+            <li>Soccer and more, shaped around the local group.</li>
+            <li><strong>Tough on effort, soft on kids.</strong> Every time.</li>
+          </ul>
+          <div class="callout"><p><strong>Our coaching standard:</strong> We challenge effort and protect the joy. No humiliation, no pressure to be perfect, and no child left out of the team.</p></div>
+          <p style="margin-top:1.2rem"><a class="btn btn-blue" href="#league">See the Mini League <span aria-hidden="true">→</span></a></p>
+        </div>
+        <div class="split-visual blue" aria-hidden="true">
+          <svg viewBox="0 0 360 290">
+            <path d="M75 228q35-45 65-35l31 18 29-41q13-18 30-3l35 33 35 25v33H75z" fill="#2185e5" stroke="#14213d" stroke-width="6" stroke-linejoin="round"/>
+            <ellipse cx="179" cy="133" rx="76" ry="64" fill="#2185e5" stroke="#14213d" stroke-width="6"/>
+            <ellipse cx="142" cy="84" rx="30" ry="35" fill="#2185e5" stroke="#14213d" stroke-width="6"/>
+            <ellipse cx="219" cy="82" rx="30" ry="35" fill="#2185e5" stroke="#14213d" stroke-width="6"/>
+            <ellipse cx="144" cy="82" rx="11" ry="15" fill="#fff"/><ellipse cx="217" cy="80" rx="11" ry="15" fill="#fff"/>
+            <circle cx="147" cy="84" r="5" fill="#14213d"/><circle cx="214" cy="82" r="5" fill="#14213d"/>
+            <path d="M148 144q32 25 62-2" fill="none" stroke="#14213d" stroke-width="6" stroke-linecap="round"/>
+            <circle cx="290" cy="93" r="32" fill="#fff" stroke="#14213d" stroke-width="5"/>
+            <path d="m290 78 10 8-4 12h-13l-4-12z" fill="#14213d"/>
+            <path d="M67 88q-10-29-2-46m0 0-13 13m13-13 15 12M272 54q7-24 26-31m0 0-16 1m16-1-3 16" fill="none" stroke="#ffc929" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M93 206q-16-28-36-24m203 31q24-30 42-22" fill="none" stroke="#ffc929" stroke-width="8" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+    <section class="section dark-section" id="league">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Game on · Launching 2027</span>
+          <h2>Mini League.</h2>
+          <p>Fixtures, results and a simple table. Team points only: 3 for a win, 1 for a draw. Never rankings of children.</p>
+        </div>
+        <div class="league-panel">
+          <h3>Fixtures &amp; results</h3>
+          <div class="match-list" id="league-matches" aria-live="polite"><p class="empty-row" style="padding:1rem 1.15rem">Loading fixtures…</p></div>
+        </div>
+        <div class="league-panel">
+          <h3>Team table</h3>
+          <div class="table-wrap">
+            <table>
+              <caption class="sr-only">Mini League team points table</caption>
+              <thead><tr><th scope="col">Team</th><th scope="col">P</th><th scope="col">W</th><th scope="col">D</th><th scope="col">L</th><th scope="col">Pts</th></tr></thead>
+              <tbody id="league-table"><tr><td colspan="6" class="empty-row">Loading table…</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+        <p class="league-foot">Fixture data is published by the team. Updates coming soon. The table sorts teams only; young people are never publicly ranked.</p>
+      </div>
+    </section>
+    <section class="section" id="events">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Circle the good stuff</span>
+          <h2>One big moment each term.</h2>
+          <p>Our year has a moment to come together every term. Dates and details are shared here as soon as they're confirmed.</p>
+        </div>
+        <div class="event-grid" id="event-list">
+          <article class="event-card"><span class="term">Term 1</span><h3>Big circle moment</h3><span class="event-date">Date to be announced</span><p>Watch this space for the first get-together of the year.</p><div class="event-actions"><button class="btn btn-small" disabled>Add to calendar — date TBC</button><a class="btn btn-small btn-outline" href="https://wa.me/?text=Mini%20Circles%20Term%201%20big%20circle%20moment" target="_blank" rel="noopener noreferrer">Share on WhatsApp ↗</a></div></article>
+          <article class="event-card"><span class="term">Term 2</span><h3>Big circle moment</h3><span class="event-date">Date to be announced</span><p>Watch this space for the next get-together of the year.</p><div class="event-actions"><button class="btn btn-small" disabled>Add to calendar — date TBC</button><a class="btn btn-small btn-outline" href="https://wa.me/?text=Mini%20Circles%20Term%202%20big%20circle%20moment" target="_blank" rel="noopener noreferrer">Share on WhatsApp ↗</a></div></article>
+          <article class="event-card"><span class="term">Term 3</span><h3>Big circle moment</h3><span class="event-date">Date to be announced</span><p>Watch this space for the next get-together of the year.</p><div class="event-actions"><button class="btn btn-small" disabled>Add to calendar — date TBC</button><a class="btn btn-small btn-outline" href="https://wa.me/?text=Mini%20Circles%20Term%203%20big%20circle%20moment" target="_blank" rel="noopener noreferrer">Share on WhatsApp ↗</a></div></article>
+          <article class="event-card"><span class="term">Term 4</span><h3>Big circle moment</h3><span class="event-date">Date to be announced</span><p>Watch this space for the last get-together of the year.</p><div class="event-actions"><button class="btn btn-small" disabled>Add to calendar — date TBC</button><a class="btn btn-small btn-outline" href="https://wa.me/?text=Mini%20Circles%20Term%204%20big%20circle%20moment" target="_blank" rel="noopener noreferrer">Share on WhatsApp ↗</a></div></article>
+        </div>
+        <p class="form-note" style="margin-top:1rem">Every confirmed event will have an Add to calendar file and a WhatsApp share link.</p>
+      </div>
+    </section>
+    <section class="section" id="stories" style="background:var(--cream)">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Little moments. Big stories.</span>
+          <h2>From the circle.</h2>
+          <p>Fresh updates and stories from reading circles, sports days and the people who make them happen.</p>
+        </div>
+        <div class="story-grid">
+          <article class="story-card"><div class="story-art" aria-hidden="true"><svg viewBox="0 0 140 120"><path d="M19 37h48v61H19zm48 0h48v61H67z" fill="#fff" stroke="#14213d" stroke-width="5"/><path d="M67 39v56" stroke="#d62828" stroke-width="4"/><path d="M27 49h28m-28 9h24m24-9h29m-29 9h24" stroke="#0a3a9c" stroke-width="3"/><circle cx="111" cy="23" r="10" fill="#ffc929"/></svg></div><div class="story-content"><span class="label">Boomerang · Read</span><h3>Every story starts somewhere.</h3><p>A peek at what reading for joy can look like in a Mini Circles club.</p></div></article>
+          <article class="story-card"><div class="story-art" aria-hidden="true" style="background:#dff0ff"><svg viewBox="0 0 140 120"><circle cx="70" cy="59" r="38" fill="#fff" stroke="#14213d" stroke-width="5"/><path d="m70 42 13 10-5 16H62l-5-16zm-30-2 10 5m41-2 12-6m-55 45 10-11m39 11L86 70" fill="none" stroke="#d62828" stroke-width="4" stroke-linecap="round"/><path d="m24 25 10 10m73 41 10 10" stroke="#0a3a9c" stroke-width="6" stroke-linecap="round"/></svg></div><div class="story-content"><span class="label">Splendid Sports · Play</span><h3>Show up. Have a go.</h3><p>Good coaching starts with effort, encouragement and making room for everyone.</p></div></article>
+          <article class="story-card"><div class="story-art" aria-hidden="true" style="background:#ffe7dc"><svg viewBox="0 0 140 120"><path d="M70 16 105 34v43L70 99 35 77V34z" fill="#ffc929" stroke="#14213d" stroke-width="5"/><path d="M48 57h44M70 39v36" stroke="#d62828" stroke-width="6"/><circle cx="70" cy="58" r="10" fill="#0a3a9c"/></svg></div><div class="story-content"><span class="label">Mini Circles · Together</span><h3>The circle is bigger with you.</h3><p>Meet the readers, coaches, schools and neighbours who bring the programme to life.</p></div></article>
+        </div>
+        <p style="margin-top:1.3rem"><a class="btn btn-blue" href="https://www.youtube.com/@2MiniCircles" target="_blank" rel="noopener noreferrer">Watch us on YouTube <span aria-hidden="true">↗</span></a></p>
+      </div>
+    </section>
+    <section class="section" id="earn-your-m">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Effort gets its flowers</span>
+          <h2>Earn your M.</h2>
+          <p>Rookie, Pro and Legend. The same three patch levels for reading and sport. Progress is personal—not a public leaderboard.</p>
+        </div>
+        <div class="level-grid">
+          <article class="level-card"><span class="patch" aria-hidden="true">R</span><span class="tag">Boomerang · Read</span><h3>Rookie</h3><p>Show up, get curious and find a story you like.</p></article>
+          <article class="level-card"><span class="patch" aria-hidden="true">P</span><span class="tag">Boomerang · Read</span><h3>Pro</h3><p>Share stories, try new words and help the circle grow.</p></article>
+          <article class="level-card"><span class="patch" aria-hidden="true">L</span><span class="tag">Boomerang · Read</span><h3>Legend</h3><p>Bring your reading spirit and welcome others in.</p></article>
+          <article class="level-card"><span class="patch" aria-hidden="true">R</span><span class="tag">Splendid Sports · Play</span><h3>Rookie</h3><p>Step on the field, try a skill and cheer your team.</p></article>
+          <article class="level-card"><span class="patch" aria-hidden="true">P</span><span class="tag">Splendid Sports · Play</span><h3>Pro</h3><p>Keep practising, play fair and make a teammate's day.</p></article>
+          <article class="level-card"><span class="patch" aria-hidden="true">L</span><span class="tag">Splendid Sports · Play</span><h3>Legend</h3><p>Lead with effort, kindness and team spirit.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="get-involved" style="background:var(--cream)">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Your people. Your skills. Your circle.</span>
+          <h2>Get involved.</h2>
+          <p>Choose the best fit and tell us a little. Our team will be in touch when the contact forms are connected.</p>
+        </div>
+        <div class="involvement-grid">
+          <article class="form-card">
+            <h3>Schools, ECDs &amp; libraries</h3><p class="form-note">Interested in bringing a circle to your community?</p>
+            <form class="interest-form" data-form-kind="school">
+              <input type="hidden" name="interest" value="School, ECD or library">
+              <label class="honeypot" aria-hidden="true">Leave this field empty<input name="_gotcha" tabindex="-1" autocomplete="off"></label>
+              <div class="form-grid">
+                <label>Name<input name="name" autocomplete="name" required maxlength="100"></label>
+                <label>Email<input name="email" type="email" autocomplete="email" required maxlength="160"></label>
+                <label class="wide">School, ECD or library<input name="organisation" required maxlength="140"></label>
+                <label class="wide">What are you interested in?<select name="programme" required><option value="">Choose one</option><option>Boomerang reading</option><option>Splendid Sports</option><option>Both</option></select></label>
+                <label class="wide">A short note<textarea name="message" maxlength="800" required></textarea></label>
+                <div class="wide"><button class="btn btn-blue" type="submit">Send an enquiry <span aria-hidden="true">→</span></button><p class="form-status" aria-live="polite"></p></div>
+              </div>
+            </form>
+          </article>
+          <article class="form-card">
+            <h3>Volunteers &amp; professionals</h3><p class="form-note">Coach, read, mentor, make media or lend a design hand.</p>
+            <form class="interest-form" data-form-kind="volunteer">
+              <input type="hidden" name="interest" value="Volunteer or professional">
+              <label class="honeypot" aria-hidden="true">Leave this field empty<input name="_gotcha" tabindex="-1" autocomplete="off"></label>
+              <div class="form-grid">
+                <label>Name<input name="name" autocomplete="name" required maxlength="100"></label>
+                <label>Email<input name="email" type="email" autocomplete="email" required maxlength="160"></label>
+                <label class="wide">I'm interested in<select name="skill" required><option value="">Choose one</option><option>Coaching</option><option>Reading</option><option>Mentoring</option><option>Media</option><option>Design</option><option>Something else</option></select></label>
+                <label class="wide">A short note<textarea name="message" maxlength="800" required></textarea></label>
+                <div class="wide"><button class="btn btn-blue" type="submit">Raise my hand <span aria-hidden="true">→</span></button><p class="form-status" aria-live="polite"></p></div>
+              </div>
+            </form>
+          </article>
+          <article class="form-card">
+            <h3>Sponsors &amp; partners</h3><p class="form-note">Back a term, a team or a big moment.</p>
+            <form class="interest-form" data-form-kind="partner">
+              <input type="hidden" name="interest" value="Sponsor or partner">
+              <label class="honeypot" aria-hidden="true">Leave this field empty<input name="_gotcha" tabindex="-1" autocomplete="off"></label>
+              <div class="form-grid">
+                <label>Name<input name="name" autocomplete="name" required maxlength="100"></label>
+                <label>Email<input name="email" type="email" autocomplete="email" required maxlength="160"></label>
+                <label class="wide">Organisation<input name="organisation" maxlength="140"></label>
+                <label class="wide">How would you like to partner?<textarea name="message" maxlength="800" required></textarea></label>
+                <div class="wide"><button class="btn btn-blue" type="submit">Let's talk <span aria-hidden="true">→</span></button><p class="form-status" aria-live="polite"></p></div>
+              </div>
+            </form>
+          </article>
+          <article class="form-card">
+            <h3>Families &amp; young people</h3><p class="form-note">Ask about a reading club or sports session in your area.</p>
+            <form class="interest-form" data-form-kind="family">
+              <input type="hidden" name="interest" value="Family or young person enquiry">
+              <label class="honeypot" aria-hidden="true">Leave this field empty<input name="_gotcha" tabindex="-1" autocomplete="off"></label>
+              <div class="form-grid">
+                <label>Name<input name="name" autocomplete="name" required maxlength="100"></label>
+                <label>Email<input name="email" type="email" autocomplete="email" required maxlength="160"></label>
+                <label class="wide">Area (no street address, please)<input name="area" autocomplete="address-level2" maxlength="100"></label>
+                <label class="wide">What would you like to know?<textarea name="message" maxlength="800" required></textarea></label>
+                <div class="wide"><button class="btn btn-blue" type="submit">Ask the team <span aria-hidden="true">→</span></button><p class="form-status" aria-live="polite"></p></div>
+              </div>
+            </form>
+          </article>
+        </div>
+        <p class="form-note" style="margin-top:1rem">Please don't include children's full names, health details or other private information in these forms.</p>
+      </div>
+    </section>
+    <section class="section" id="resources">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">For the good people who show up</span>
+          <h2>Circle kit.</h2>
+          <p>Free, practical downloads for volunteers. Print, share with your team and make them your own.</p>
+        </div>
+        <div class="resource-grid">
+          <article class="resource-card"><span class="resource-icon" aria-hidden="true">▤</span><h3>Read &amp; Play session cards</h3><p>Simple print-at-home prompts to get a circle started.</p><a class="text-link" href="/resources/read-and-play-session-cards/">Open printable cards <span aria-hidden="true">↗</span></a></article>
+          <article class="resource-card"><span class="resource-icon" aria-hidden="true">✳</span><h3>Volunteer welcome guide</h3><p>The Mini Circles approach, session basics and safeguarding promise.</p><a class="text-link" href="/resources/volunteer-welcome-guide/">Open volunteer guide <span aria-hidden="true">↗</span></a></article>
+          <article class="resource-card"><span class="resource-icon" aria-hidden="true">▦</span><h3>Year plan</h3><p>A simple term-by-term worksheet for your circle's big moments.</p><a class="text-link" href="/resources/year-plan.csv" download>Download the year plan <span aria-hidden="true">↓</span></a></article>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="gallery" style="background:var(--cream)">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Our circles, our colours</span>
+          <h2>Gallery.</h2>
+          <p>A space for event moments and community murals. Real photos are added only with guardian consent—no names or identifying details.</p>
+        </div>
+        <div class="gallery-grid" aria-label="Gallery image slots. No photographs have been published yet.">
+          <div class="gallery-tile"><svg viewBox="0 0 60 60" aria-hidden="true"><path d="M8 14h18v34H8zm18 0h18v34H26z" fill="none" stroke="currentColor" stroke-width="4"/><path d="M26 16v30" stroke="#ffc929" stroke-width="3"/></svg><span>Stories in the making</span></div>
+          <div class="gallery-tile"><svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="22" fill="none" stroke="currentColor" stroke-width="4"/><path d="m30 19 8 6-3 10h-10l-3-10z" fill="currentColor"/></svg><span>Game-day energy</span></div>
+          <div class="gallery-tile"><svg viewBox="0 0 60 60" aria-hidden="true"><path d="M10 10h40v40H10zm10 10h20v20H20zm-10 0h10m20 20h10m-30-20v20m20-20v20" fill="none" stroke="currentColor" stroke-width="3"/></svg><span>Made in our colours</span></div>
+          <div class="gallery-tile"><svg viewBox="0 0 60 60" aria-hidden="true"><path d="M30 6 49 16v28L30 54 11 44V16z" fill="none" stroke="#ffc929" stroke-width="4"/><path d="M18 30h24M30 18v24" stroke="#fff" stroke-width="4"/></svg><span>Community murals</span></div>
+          <div class="gallery-tile"><svg viewBox="0 0 60 60" aria-hidden="true"><path d="m30 5 6 17 18 1-14 11 5 18-15-10-15 10 5-18L6 23l18-1z" fill="#d62828"/></svg><span>Big effort, bright patches</span></div>
+          <div class="gallery-tile"><svg viewBox="0 0 60 60" aria-hidden="true"><path d="M8 45q14-27 27-13l8-16 10 6-4 25H8z" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round"/><circle cx="43" cy="12" r="5" fill="#ffc929"/></svg><span>Every day, a new start</span></div>
+        </div>
+        <p class="form-note" style="margin-top:1rem">Illustrations only. Guardian-consented event and mural photos will appear here when approved.</p>
+      </div>
+    </section>
+    <section class="section" id="story">
+      <div class="wrap story-origin">
+        <div class="origin-mark"><img src="/mini-circle-logo.svg" alt="Mini Circles red and yellow M arches"></div>
+        <div>
+          <span class="eyebrow">Two arches. One M.</span>
+          <h2>Built from where we come from.</h2>
+          <p>The M in Mini Circles brings together Mini and Mlungisi Mashinini. Its two arches echo a welcome, a meeting place and a way forward. Red and yellow draw from the bold geometry and colour of Ndebele blankets; the blue frog brings a little curiosity to every circle.</p>
+          <p>Mini Circles is youth-led: rooted in community, proud of South Africa and open to what young people can make next.</p>
+          <div class="intro-note"><p>Start small. Go limitless.</p></div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="contact" style="background:var(--cream)">
+      <div class="wrap split">
+        <div>
+          <span class="eyebrow">Say hello</span>
+          <h2>Let's make a circle.</h2>
+          <p>Ask a question, find out what's happening nearby or share a good idea. WhatsApp is our first hello.</p>
+          <div class="contact-links">
+            <a class="btn btn-blue" id="whatsapp-contact" href="#get-involved">WhatsApp contact details coming soon</a>
+            <a class="btn btn-outline" id="email-contact" href="#get-involved">Email contact details coming soon</a>
+          </div>
+          <div class="faq">
+            <details><summary>Where do Mini Circles meet?</summary><p>Mini Circles is currently working with 8 ECDs and 4 schools. Contact the team to ask which reading and sports circles are active in your area.</p></details>
+            <details><summary>Who can volunteer?</summary><p>Coaches, readers, mentors, media and design helpers are welcome to get in touch. All sessions follow the safeguarding standard of two adults present.</p></details>
+            <details><summary>Can my organisation partner with Mini Circles?</summary><p>Yes. Schools, ECDs, libraries, professionals and sponsors can use the forms above to start a conversation.</p></details>
+            <details><summary>How are photos and personal information handled?</summary><p>We publish event photos only with guardian consent, never show children's full names, and do not use tracking pixels or public comments.</p></details>
+          </div>
+        </div>
+        <div>
+          <div class="privacy-box">
+            <h3>Care comes first.</h3>
+            <p><strong>Safeguarding:</strong> Two adults at every session. No child accounts, public comments, individual rankings or user uploads.</p>
+            <p><strong>Privacy:</strong> We collect only what is needed to respond to an enquiry. We do not publish children's full names or identifying details. Photos are used only with guardian consent. This site uses no tracking pixels or advertising trackers.</p>
+            <p><strong>POPIA:</strong> You can ask to access, correct or remove personal information shared with us. Contact details for privacy requests will be added when the team email is configured.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="band" aria-hidden="true"></div>
+    <div class="wrap footer-grid" style="padding-top:2.2rem">
+      <div>
+        <a class="footer-brand" href="#home"><img src="/mini-circle-logo.svg" alt=""><span>Mini Circles</span></a>
+        <p class="footer-copy">Good stories. Big energy. A youth-led programme getting children and young people reading for fun and playing sport, hand in hand.</p>
+        <div class="footer-lockups"><span class="footer-lockup">Boomerang by Mini Circles</span><span class="footer-lockup">Splendid Sports by Mini Circles</span></div>
+      </div>
+      <div>
+        <h2 class="footer-title">Explore</h2>
+        <div class="footer-links">
+          <a href="#read">Boomerang · Read</a><a href="#play">Splendid Sports · Play</a><a href="#league">Mini League</a><a href="#events">Events</a><a href="#stories">Stories</a><a href="#earn-your-m">Earn your M</a><a href="#resources">Resources</a><a href="#gallery">Gallery</a><a href="#story">Our story</a><a href="#get-involved">Get involved</a>
+        </div>
+      </div>
+      <div>
+        <h2 class="footer-title">Find us</h2>
+        <div class="social-links">
+          <a href="#contact" data-profile="facebook">Facebook (add link)</a>
+          <a href="#contact" data-profile="instagram">Instagram (add link)</a>
+          <a href="https://www.youtube.com/@2MiniCircles" target="_blank" rel="noopener noreferrer">YouTube ↗</a>
+          <a href="#contact" data-contact-channel="whatsapp">WhatsApp (add number)</a>
+        </div>
+        <p style="margin-top:1.2rem"><a class="text-link" style="color:var(--yellow)" href="#contact">Contact &amp; FAQ <span aria-hidden="true">→</span></a></p>
+      </div>
+    </div>
+    <div class="wrap foundation-line">
+      <a class="back-top" href="#home">Back to top ↑</a>
+      <strong>Mini Circles is a programme of The Mlungisi Mashinini Foundation.</strong>
+    </div>
+  </footer>
+  <script>
+    const MINI_CIRCLES_CONFIG = {
+      whatsappNumber: "27607714822",
+      teamEmail: "",
+      formEndpoint: "",
+      facebookUrl: "https://www.facebook.com/profile.php?id=61590757922760",
+      instagramUrl: ""
+    };
+
+    const menuButton = document.querySelector("#menu-toggle");
+    const siteNav = document.querySelector("#site-nav");
+    menuButton.addEventListener("click", () => {
+      const open = menuButton.getAttribute("aria-expanded") !== "true";
+      menuButton.setAttribute("aria-expanded", String(open));
+      menuButton.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+      siteNav.classList.toggle("open", open);
+    });
+    siteNav.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        siteNav.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation");
+      }
+    });
+
+    const themeButton = document.querySelector("#theme-toggle");
+    let savedTheme = null;
+    try { savedTheme = localStorage.getItem("mini-circles-theme"); } catch (error) { console.warn("Theme preference could not be loaded.", error); }
+    if (savedTheme === "dark") document.documentElement.dataset.theme = "dark";
+    const updateThemeLabel = () => {
+      const dark = document.documentElement.dataset.theme === "dark";
+      themeButton.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    };
+    updateThemeLabel();
+    themeButton.addEventListener("click", () => {
+      const dark = document.documentElement.dataset.theme !== "dark";
+      if (dark) document.documentElement.dataset.theme = "dark";
+      else delete document.documentElement.dataset.theme;
+      try { localStorage.setItem("mini-circles-theme", dark ? "dark" : "light"); } catch (error) { console.warn("Theme preference could not be saved.", error); }
+      updateThemeLabel();
+    });
+
+    const waContact = document.querySelector("#whatsapp-contact");
+    const emailContact = document.querySelector("#email-contact");
+    if (MINI_CIRCLES_CONFIG.whatsappNumber) {
+      waContact.href = `https://wa.me/${MINI_CIRCLES_CONFIG.whatsappNumber}?text=${encodeURIComponent("Hi Mini Circles! I'd like to get in touch.")}`;
+      waContact.target = "_blank";
+      waContact.rel = "noopener noreferrer";
+      waContact.textContent = "WhatsApp the team ↗";
+      document.querySelector('[data-contact-channel="whatsapp"]').href = waContact.href;
+      document.querySelector('[data-contact-channel="whatsapp"]').textContent = "WhatsApp ↗";
+    }
+    if (MINI_CIRCLES_CONFIG.teamEmail) {
+      emailContact.href = `mailto:${MINI_CIRCLES_CONFIG.teamEmail}`;
+      emailContact.textContent = "Email the team";
+    }
+    for (const network of ["facebook", "instagram"]) {
+      if (MINI_CIRCLES_CONFIG[`${network}Url`]) {
+        const link = document.querySelector(`[data-profile="${network}"]`);
+        link.href = MINI_CIRCLES_CONFIG[`${network}Url`];
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = `${network[0].toUpperCase()}${network.slice(1)} ↗`;
+      }
+    }
+
+    document.querySelectorAll(".interest-form").forEach((form) => {
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const status = form.querySelector(".form-status");
+        status.className = "form-status";
+        status.textContent = "";
+        const data = new FormData(form);
+        if (data.get("_gotcha")) return;
+        if (!MINI_CIRCLES_CONFIG.formEndpoint) {
+          status.classList.add("error");
+          status.textContent = "Enquiries aren't connected yet. The team is setting up its secure contact service; please check back soon.";
+          return;
+        }
+        const submit = form.querySelector('button[type="submit"]');
+        submit.disabled = true;
+        status.textContent = "Sending your enquiry…";
+        try {
+          const response = await fetch(MINI_CIRCLES_CONFIG.formEndpoint, {
+            method: "POST",
+            body: data,
+            headers: { Accept: "application/json" }
+          });
+          if (!response.ok) throw new Error(`Form service responded with ${response.status}.`);
+          form.reset();
+          status.classList.add("success");
+          status.textContent = "Thanks for reaching out. Your message has been sent.";
+        } catch (error) {
+          status.classList.add("error");
+          status.textContent = "We couldn't send that just now. Please try again or contact the team on WhatsApp.";
+          console.error("Mini Circles enquiry could not be sent.", error);
+        } finally {
+          submit.disabled = false;
+        }
+      });
+    });
+
+    const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (char) => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+    })[char]);
+    const parseCsv = (text) => {
+      const rows = [];
+      let row = [];
+      let cell = "";
+      let quoted = false;
+      for (let index = 0; index < text.length; index += 1) {
+        const char = text[index];
+        if (quoted && char === '"' && text[index + 1] === '"') { cell += '"'; index += 1; }
+        else if (char === '"') quoted = !quoted;
+        else if (char === "," && !quoted) { row.push(cell); cell = ""; }
+        else if ((char === "\n" || char === "\r") && !quoted) {
+          if (char === "\r" && text[index + 1] === "\n") index += 1;
+          row.push(cell);
+          if (row.some((value) => value.trim())) rows.push(row);
+          row = [];
+          cell = "";
+        } else cell += char;
+      }
+      if (cell || row.length) { row.push(cell); rows.push(row); }
+      if (!rows.length) throw new Error("League spreadsheet is empty.");
+      const headers = rows.shift().map((header) => header.trim());
+      return rows.map((values) => Object.fromEntries(headers.map((header, index) => [header, (values[index] || "").trim()])));
+    };
+    const validScore = (value) => /^\d+$/.test(value);
+    const loadLeague = async () => {
+      const matchesElement = document.querySelector("#league-matches");
+      const tableElement = document.querySelector("#league-table");
+      try {
+        const response = await fetch("/data/mini-league.csv", { cache: "no-store" });
+        if (!response.ok) throw new Error(`League spreadsheet responded with ${response.status}.`);
+        const matches = parseCsv(await response.text());
+        const validMatches = matches.filter((match) => match.home && match.away);
+        const teams = new Map();
+        validMatches.forEach((match) => {
+          [match.home, match.away].forEach((name) => {
+            if (!teams.has(name)) teams.set(name, { name, played: 0, wins: 0, draws: 0, losses: 0, points: 0 });
+          });
+          const played = validScore(match.homeScore) && validScore(match.awayScore);
+          if (played) {
+            const home = teams.get(match.home);
+            const away = teams.get(match.away);
+            const homeScore = Number(match.homeScore);
+            const awayScore = Number(match.awayScore);
+            home.played += 1;
+            away.played += 1;
+            if (homeScore > awayScore) { home.wins += 1; home.points += 3; away.losses += 1; }
+            else if (homeScore < awayScore) { away.wins += 1; away.points += 3; home.losses += 1; }
+            else { home.draws += 1; away.draws += 1; home.points += 1; away.points += 1; }
+          }
+        });
+        const upcoming = validMatches.filter((match) =>
+          !(validScore(match.homeScore) && validScore(match.awayScore))
+        );
+        matchesElement.innerHTML = upcoming.length ? upcoming.map((match) => {
+          const date = match.date ? new Date(`${match.date}T12:00:00`) : null;
+          const dateLabel = date && !Number.isNaN(date.valueOf())
+            ? `${date.toLocaleDateString("en-ZA", { day: "numeric", month: "short", year: "numeric" })}${match.time ? ` · ${escapeHtml(match.time)}` : ""}`
+            : "Date to be announced";
+          return `<article class="match"><time>${dateLabel}</time><strong>${escapeHtml(match.home)} <span aria-hidden="true">v</span> ${escapeHtml(match.away)}</strong><span class="match-meta">${escapeHtml(match.venue || "Venue to be announced")}</span></article>`;
+        }).join("") : '<p class="empty-row" style="padding:1rem 1.15rem">Fixtures will be published here soon.</p>';
+        const ranked = [...teams.values()].sort((a, b) => b.points - a.points || b.wins - a.wins || a.name.localeCompare(b.name));
+        tableElement.innerHTML = ranked.length ? ranked.map((team) =>
+          `<tr><td>${escapeHtml(team.name)}</td><td>${team.played}</td><td>${team.wins}</td><td>${team.draws}</td><td>${team.losses}</td><td><strong>${team.points}</strong></td></tr>`
+        ).join("") : '<tr><td colspan="6" class="empty-row">The table will appear when the league begins.</td></tr>';
+      } catch (error) {
+        matchesElement.innerHTML = '<p class="empty-row" style="padding:1rem 1.15rem">Fixtures are temporarily unavailable. Please check back soon.</p>';
+        tableElement.innerHTML = '<tr><td colspan="6" class="empty-row">The table is temporarily unavailable.</td></tr>';
+        console.error("Mini League data could not be loaded.", error);
+      }
+    };
+    loadLeague();
+
+    const eventList = document.querySelector("#event-list");
+    const calendarDateTime = (date, time) => {
+      const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(date || "");
+      const clock = /^(\d{2}):(\d{2})$/.exec(time || "");
+      if (!match || !clock || Number(clock[1]) > 23 || Number(clock[2]) > 59) return null;
+      const year = Number(match[1]);
+      const month = Number(match[2]);
+      const day = Number(match[3]);
+      const check = new Date(Date.UTC(year, month - 1, day));
+      if (check.getUTCFullYear() !== year || check.getUTCMonth() !== month - 1 || check.getUTCDate() !== day) return null;
+      return new Date(Date.UTC(year, month - 1, day, Number(clock[1]) - 2, Number(clock[2])));
+    };
+    const icsEscape = (value) => String(value || "")
+      .replace(/\\/g, "\\\\").replace(/\n/g, "\\n").replace(/,/g, "\\,").replace(/;/g, "\\;");
+    const icsStamp = (date) => date.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+    const makeCalendar = (event) => {
+      const start = calendarDateTime(event.date, event.startTime);
+      const end = calendarDateTime(event.date, event.endTime);
+      if (!start || !end || end <= start) return;
+      const ics = [
+        "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Mini Circles//Events//EN",
+        "CALSCALE:GREGORIAN", "BEGIN:VEVENT", `UID:${crypto.randomUUID()}@minicircles`,
+        `DTSTAMP:${icsStamp(new Date())}`, `DTSTART:${icsStamp(start)}`, `DTEND:${icsStamp(end)}`,
+        `SUMMARY:${icsEscape(event.title)}`, `DESCRIPTION:${icsEscape(event.description)}`,
+        ...(event.location ? [`LOCATION:${icsEscape(event.location)}`] : []),
+        "END:VEVENT", "END:VCALENDAR"
+      ].join("\r\n");
+      const url = URL.createObjectURL(new Blob([ics], { type: "text/calendar;charset=utf-8" }));
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `${String(event.term || "mini-circles-event").toLowerCase().replace(/[^a-z0-9]+/g, "-")}.ics`;
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    };
+    const renderEvents = (events) => {
+      if (!Array.isArray(events) || !events.length) throw new Error("No Mini Circles events are configured.");
+      eventList.innerHTML = events.map((event, index) => {
+        const confirmedDate = calendarDateTime(event.date, event.startTime);
+        const confirmedEnd = calendarDateTime(event.date, event.endTime);
+        const calendarReady = confirmedDate && confirmedEnd && confirmedEnd > confirmedDate;
+        const dateLabel = confirmedDate
+          ? `${confirmedDate.toLocaleDateString("en-ZA", { day: "numeric", month: "long", year: "numeric" })} · ${escapeHtml(event.startTime)}`
+          : "Date to be announced";
+        const calendarLabel = calendarReady ? "Add to calendar" : "Add to calendar — date TBC";
+        const shareText = encodeURIComponent(`${event.term}: ${event.title}${confirmedDate ? ` · ${dateLabel}` : ""} — Mini Circles`);
+        return `<article class="event-card"><span class="term">${escapeHtml(event.term)}</span><h3>${escapeHtml(event.title)}</h3><span class="event-date">${dateLabel}</span><p>${escapeHtml(event.description || "More details to come.")}${event.location ? ` · ${escapeHtml(event.location)}` : ""}</p><div class="event-actions"><button class="btn btn-small" type="button" data-calendar-event="${index}" ${calendarReady ? "" : "disabled"}>${calendarLabel}</button><a class="btn btn-small btn-outline" href="https://wa.me/?text=${shareText}" target="_blank" rel="noopener noreferrer">Share on WhatsApp ↗</a></div></article>`;
+      }).join("");
+      eventList.querySelectorAll("[data-calendar-event]").forEach((button) => {
+        button.addEventListener("click", () => makeCalendar(events[Number(button.dataset.calendarEvent)]));
+      });
+    };
+    fetch("/data/events.json", { cache: "no-store" })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Events file responded with ${response.status}.`);
+        return response.json();
+      })
+      .then(renderEvents)
+      .catch((error) => console.error("Mini Circles events could not be loaded.", error));
+  </script>
+</body>
+</html>

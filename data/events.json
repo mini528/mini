@@ -1,0 +1,38 @@
+[
+  {
+    "term": "Term 1",
+    "title": "Big circle moment",
+    "date": null,
+    "startTime": "09:00",
+    "endTime": "12:00",
+    "location": "",
+    "description": "The first Mini Circles get-together of the year."
+  },
+  {
+    "term": "Term 2",
+    "title": "Big circle moment",
+    "date": null,
+    "startTime": "09:00",
+    "endTime": "12:00",
+    "location": "",
+    "description": "A term-time moment to read, play and celebrate together."
+  },
+  {
+    "term": "Term 3",
+    "title": "Big circle moment",
+    "date": null,
+    "startTime": "09:00",
+    "endTime": "12:00",
+    "location": "",
+    "description": "A term-time moment to read, play and celebrate together."
+  },
+  {
+    "term": "Term 4",
+    "title": "Big circle moment",
+    "date": null,
+    "startTime": "09:00",
+    "endTime": "12:00",
+    "location": "",
+    "description": "The last Mini Circles get-together of the year."
+  }
+]
