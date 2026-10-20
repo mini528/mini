@@ -49,8 +49,33 @@ const MINI_CIRCLES_CONFIG = {
   whatsappNumber: "27607714822",
   teamEmail: "",
   formEndpoint: "",
+  supabaseUrl: "",
+  supabaseAnonKey: "",
   facebookUrl: "https://www.facebook.com/profile.php?id=61590757922760",
   instagramUrl: ""
+};
+
+const hasSupabaseConfig = () => {
+  const hasUrl = Boolean(MINI_CIRCLES_CONFIG.supabaseUrl);
+  const hasKey = Boolean(MINI_CIRCLES_CONFIG.supabaseAnonKey);
+  if (hasUrl !== hasKey) throw new Error("Both Supabase URL and anon key must be configured.");
+  return hasUrl;
+};
+
+const fetchSupabaseTable = async (table, query) => {
+  if (!hasSupabaseConfig()) throw new Error("Supabase is not configured.");
+  const baseUrl = MINI_CIRCLES_CONFIG.supabaseUrl.replace(/\/+$/, "");
+  const url = new URL(`${baseUrl}/rest/v1/${table}`);
+  url.search = new URLSearchParams(query);
+  const response = await fetch(url, {
+    headers: {
+      apikey: MINI_CIRCLES_CONFIG.supabaseAnonKey,
+      Authorization: `Bearer ${MINI_CIRCLES_CONFIG.supabaseAnonKey}`,
+      Accept: "application/json"
+    }
+  });
+  if (!response.ok) throw new Error(`Supabase ${table} request responded with ${response.status}.`);
+  return response.json();
 };
 
 document.querySelectorAll("[data-whatsapp]").forEach((link) => {
@@ -155,9 +180,27 @@ const loadLeague = async () => {
   const matches = document.querySelector("#league-matches");
   if (!table || !matches) return;
   try {
-    const response = await fetch("/data/mini-league.csv", { cache: "no-store" });
-    if (!response.ok) throw new Error(`League spreadsheet responded with ${response.status}.`);
-    const fixtures = parseCsv(await response.text());
+    let fixtures;
+    if (hasSupabaseConfig()) {
+      const rows = await fetchSupabaseTable("league_fixtures", {
+        select: "home_team,away_team,match_date,kickoff_time,venue,home_score,away_score",
+        is_published: "eq.true",
+        order: "match_date.asc.nullslast,kickoff_time.asc.nullslast"
+      });
+      fixtures = rows.map((fixture) => ({
+        home: fixture.home_team,
+        away: fixture.away_team,
+        date: fixture.match_date || "",
+        time: fixture.kickoff_time ? fixture.kickoff_time.slice(0, 5) : "",
+        venue: fixture.venue || "",
+        homeScore: fixture.home_score === null ? "" : String(fixture.home_score),
+        awayScore: fixture.away_score === null ? "" : String(fixture.away_score)
+      }));
+    } else {
+      const response = await fetch("/data/mini-league.csv", { cache: "no-store" });
+      if (!response.ok) throw new Error(`League spreadsheet responded with ${response.status}.`);
+      fixtures = parseCsv(await response.text());
+    }
     const teams = new Map();
     const validFixtures = fixtures.filter((fixture) => fixture.home && fixture.away);
     for (const fixture of validFixtures) {
@@ -256,11 +299,28 @@ const renderEvents = (events, container) => {
 
 const eventContainer = document.querySelector("#event-list");
 if (eventContainer) {
-  fetch("/data/events.json", { cache: "no-store" })
-    .then((response) => {
-      if (!response.ok) throw new Error(`Events file responded with ${response.status}.`);
-      return response.json();
-    })
+  const loadEvents = async () => {
+    if (hasSupabaseConfig()) {
+      const rows = await fetchSupabaseTable("events", {
+        select: "term,title,event_date,start_time,end_time,location,description",
+        is_published: "eq.true",
+        order: "term_order.asc,event_date.asc.nullslast"
+      });
+      return rows.map((event) => ({
+        term: event.term,
+        title: event.title,
+        date: event.event_date,
+        startTime: event.start_time.slice(0, 5),
+        endTime: event.end_time.slice(0, 5),
+        location: event.location || "",
+        description: event.description || ""
+      }));
+    }
+    const response = await fetch("/data/events.json", { cache: "no-store" });
+    if (!response.ok) throw new Error(`Events file responded with ${response.status}.`);
+    return response.json();
+  };
+  loadEvents()
     .then((events) => renderEvents(events, eventContainer))
     .catch((error) => {
       eventContainer.innerHTML = '<p class="status-note">Event details are temporarily unavailable.</p>';

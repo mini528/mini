@@ -2,12 +2,24 @@
 
 A fast, mobile-first public website for **Mini Circles**, a youth-led programme of The Mlungisi Mashinini Foundation. It brings reading for fun and sport together under the line **Read. Play. Repeat.**
 
-The website is a static HTML/CSS/JavaScript site with no visitor accounts, public comments, child profiles, tracking pixels, or user uploads. The homepage is the full public-facing organisation showcase, with the programme story, impact figures, team league table, term event calendar, partner names, story highlights, safeguarding promise and audience-specific calls to action. Full reference details are also organized into clean-URL tabs: `/programmes/`, `/events/`, `/resources/`, `/about/`, `/get-involved/`, and the public professional dashboard at `/professionals/`. Original graphic-novel-inspired shapes add a playful edge while keeping the site professional; no third-party characters or artwork are used. Run the site behind any static web server from the repository root; the Mini League and event details are loaded from `data/mini-league.csv` and `data/events.json`, so opening `index.html` directly as a `file://` URL will not load them.
+The website is a static HTML/CSS/JavaScript site with no visitor accounts, public comments, child profiles, tracking pixels, or user uploads. The homepage is the full public-facing organisation showcase, with the programme story, impact figures, team league table, term event calendar, partner names, story highlights, safeguarding promise and audience-specific calls to action. Full reference details are also organized into clean-URL tabs: `/programmes/`, `/events/`, `/resources/`, `/about/`, `/get-involved/`, and the public professional dashboard at `/professionals/`. Original graphic-novel-inspired shapes add a playful edge while keeping the site professional; no third-party characters or artwork are used. Run the site behind any static web server from the repository root; unless Supabase is configured, the Mini League and event details load from `data/mini-league.csv` and `data/events.json`, so opening `index.html` directly as a `file://` URL will not load them.
+
+## Content repository
+
+Term events and Mini League fixtures/results can be served from Supabase. The migration in `supabase/migrations/` creates the tables, seeds the four current term events, and allows public read-only access to records marked as published. It does not store children's personal information, and the public website cannot create, update, or delete records.
+
+To connect a Supabase project:
+
+1. Apply the migration with the Supabase CLI (`supabase link --project-ref YOUR_PROJECT_REF`, then `supabase db push`), or run the migration SQL in the project's SQL Editor.
+2. Copy the project's Project URL and anon key into `supabaseUrl` and `supabaseAnonKey` in `assets/site.js`. These are public browser credentials; never put a service-role key in the site.
+3. Add and edit events and league fixtures in the Supabase Table Editor. Set `is_published` to `true` when a record is ready to appear on the public site. Keep unpublished or draft records private.
+
+Until both Supabase values are configured, the site continues to load `data/events.json` and `data/mini-league.csv`, so local previews and existing deployments keep working. Once configured, Supabase is the source for both event and league data; a failed Supabase request is shown as unavailable rather than silently switching to stale local data.
 
 ## Volunteer editing
 
-- Edit the term-by-term event titles, dates and locations in `data/events.json`. Leave a date as `null` until it is confirmed; the calendar download remains disabled until then.
-- Update fixtures and scores in `data/mini-league.csv`. Keep the header row. Use ISO dates (`YYYY-MM-DD`) and leave both score cells empty until a match is played. The site calculates a team table from results (3 points for a win, 1 for a draw).
+- Before Supabase is configured, edit event titles, dates and locations in `data/events.json`; leave a date as `null` until confirmed. After connecting Supabase, manage events in its Table Editor instead.
+- Before Supabase is configured, update fixtures and scores in `data/mini-league.csv`; keep the header row, use ISO dates (`YYYY-MM-DD`), and leave both score cells empty until a match is played. After connecting Supabase, manage fixtures/results in its Table Editor. The site calculates a team table from results (3 points for a win, 1 for a draw).
 - Update programme descriptions and league information in `programmes/index.html`.
 - Update event stories in `events/index.html`, and term event details in `data/events.json`.
 - Update FAQs, the programme story and privacy information in `about/index.html`.
@@ -30,7 +42,7 @@ Until the form endpoint is set, the forms explain that enquiries are not connect
 
 1. Confirm the official public domain, Foundation contact details, social profile URLs, locations, languages and event dates.
 2. Configure and test the form endpoint, spam filtering, team notification and automatic thank-you email.
-3. Add the confirmed term dates to `data/events.json`; calendar downloads and WhatsApp shares are generated for each event.
+3. Add confirmed term dates to `data/events.json` or the Supabase events table, depending on the configured data source; calendar downloads and WhatsApp shares are generated for each event.
 4. Publish the site over HTTPS. Set the absolute Open Graph image URL in `index.html`, then generate `sitemap.xml` with `python3 tools/generate_sitemap.py https://your-confirmed-domain`. The sitemap includes each public detail page. A public domain was not provided, so no unverified domain is embedded here.
 5. Review POPIA wording and safeguarding arrangements with the Foundation. Keep the two-adult-at-every-session standard and guardian photo consent in place.
 
