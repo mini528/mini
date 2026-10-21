@@ -1,0 +1,86 @@
+{
+  "hero": {
+    "src": null,
+    "suggestedPath": "/assets/images/hero.webp",
+    "alt": "Teenage participants reading and playing sport together at a Foundation event.",
+    "consentConfirmed": false
+  },
+  "reading": {
+    "src": null,
+    "suggestedPath": "/assets/images/reading-programme.webp",
+    "alt": "Teenagers reading together in a welcoming community space.",
+    "consentConfirmed": false
+  },
+  "sport": {
+    "src": null,
+    "suggestedPath": "/assets/images/sport-programme.webp",
+    "alt": "Young people taking part in a cricket training session.",
+    "consentConfirmed": false
+  },
+  "founder": {
+    "src": null,
+    "suggestedPath": "/assets/images/founder-and-community.webp",
+    "alt": "The Foundation founder alongside community members.",
+    "consentConfirmed": false
+  },
+  "story-reading": {
+    "src": null,
+    "suggestedPath": "/assets/images/reading-story.webp",
+    "alt": "A young reader sharing a book or learning milestone.",
+    "consentConfirmed": false
+  },
+  "story-sport": {
+    "src": null,
+    "suggestedPath": "/assets/images/sport-story.webp",
+    "alt": "Youth teammates celebrating a sports achievement.",
+    "consentConfirmed": false
+  },
+  "story-leadership": {
+    "src": null,
+    "suggestedPath": "/assets/images/leadership-story.webp",
+    "alt": "A young person leading or mentoring a community activity.",
+    "consentConfirmed": false
+  },
+  "event-reading": {
+    "src": null,
+    "suggestedPath": "/assets/images/reading-event.webp",
+    "alt": "Participants at a Foundation reading campaign or book event.",
+    "consentConfirmed": false
+  },
+  "event-sport": {
+    "src": null,
+    "suggestedPath": "/assets/images/sports-event.webp",
+    "alt": "An action moment from a youth sports clinic or match.",
+    "consentConfirmed": false
+  },
+  "event-community": {
+    "src": null,
+    "suggestedPath": "/assets/images/community-event.webp",
+    "alt": "Volunteers and community partners working together at an event.",
+    "consentConfirmed": false
+  },
+  "volunteer": {
+    "src": null,
+    "suggestedPath": "/assets/images/volunteer-activity.webp",
+    "alt": "A volunteer or mentor supporting a youth reading or sports activity.",
+    "consentConfirmed": false
+  },
+  "gallery-reading": {
+    "src": null,
+    "suggestedPath": "/assets/images/gallery-reading.webp",
+    "alt": "A candid moment from a Foundation reading circle.",
+    "consentConfirmed": false
+  },
+  "gallery-sport": {
+    "src": null,
+    "suggestedPath": "/assets/images/gallery-sport.webp",
+    "alt": "A dynamic photo from a Foundation sports session.",
+    "consentConfirmed": false
+  },
+  "gallery-community": {
+    "src": null,
+    "suggestedPath": "/assets/images/gallery-community.webp",
+    "alt": "A community moment featuring Foundation volunteers and youth.",
+    "consentConfirmed": false
+  }
+}

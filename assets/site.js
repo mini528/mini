@@ -54,6 +54,15 @@ const MINI_CIRCLES_CONFIG = {
   facebookUrl: "https://www.facebook.com/profile.php?id=61590757922760",
   instagramUrl: ""
 };
+window.MINI_CIRCLES_CONFIG = MINI_CIRCLES_CONFIG;
+
+if (siteNavigation && !siteNavigation.querySelector("[data-stakeholder-nav]")) {
+  const dropdown = document.createElement("details");
+  dropdown.className = "nav-dropdown";
+  dropdown.innerHTML = '<summary>Stakeholders</summary><div class="nav-dropdown-menu"><a href="/stakeholders/">All stakeholders</a><div data-stakeholder-nav><span class="nav-menu-loading">Loading partners…</span></div></div>';
+  const cta = siteNavigation.querySelector(".nav-cta");
+  siteNavigation.insertBefore(dropdown, cta || null);
+}
 
 const hasSupabaseConfig = () => {
   const hasUrl = Boolean(MINI_CIRCLES_CONFIG.supabaseUrl);
@@ -77,6 +86,54 @@ const fetchSupabaseTable = async (table, query) => {
   if (!response.ok) throw new Error(`Supabase ${table} request responded with ${response.status}.`);
   return response.json();
 };
+
+let stakeholderDirectoryRequest;
+window.loadStakeholderDirectory = () => {
+  if (!stakeholderDirectoryRequest) {
+    stakeholderDirectoryRequest = (async () => {
+      if (hasSupabaseConfig()) {
+        return fetchSupabaseTable("stakeholder_profiles", {
+          select: "id,slug,name,category,tagline,description,logo_url,banner_url,website_url,contact_email,contact_phone,programmes,news,gallery",
+          is_published: "eq.true",
+          order: "name.asc"
+        });
+      }
+      const response = await fetch("/data/stakeholders.json", { cache: "no-store" });
+      if (!response.ok) throw new Error(`Stakeholder directory file responded with ${response.status}.`);
+      return response.json();
+    })();
+  }
+  return stakeholderDirectoryRequest;
+};
+
+const stakeholderNav = siteNavigation?.querySelector("[data-stakeholder-nav]");
+if (stakeholderNav) {
+  window.loadStakeholderDirectory()
+    .then((partners) => {
+      stakeholderNav.replaceChildren();
+      for (const partner of partners) {
+        if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(partner.slug || "")) continue;
+        const link = document.createElement("a");
+        link.href = `/stakeholders/profile.html?slug=${encodeURIComponent(partner.slug)}`;
+        link.textContent = partner.name;
+        stakeholderNav.append(link);
+      }
+      if (!stakeholderNav.childElementCount) {
+        const emptyMessage = document.createElement("span");
+        emptyMessage.className = "nav-menu-loading";
+        emptyMessage.textContent = "No profiles published yet.";
+        stakeholderNav.append(emptyMessage);
+      }
+    })
+    .catch((error) => {
+      stakeholderNav.replaceChildren();
+      const directoryLink = document.createElement("a");
+      directoryLink.href = "/stakeholders/";
+      directoryLink.textContent = "Browse stakeholder directory";
+      stakeholderNav.append(directoryLink);
+      console.error("Stakeholder navigation could not be loaded.", error);
+    });
+}
 
 document.querySelectorAll("[data-whatsapp]").forEach((link) => {
   const message = link.dataset.whatsapp || "Hi Mini Circles! I'd like to get in touch.";

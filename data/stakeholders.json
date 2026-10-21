@@ -1,0 +1,47 @@
+[
+  {
+    "slug": "reading-materials-trust",
+    "name": "Reading Materials Trust",
+    "category": "Reading",
+    "tagline": "Book distribution and library supply partnership.",
+    "description": "Supporting access to reading materials and library supplies.",
+    "logo_url": "",
+    "banner_url": "",
+    "website_url": "",
+    "contact_email": "",
+    "contact_phone": "",
+    "programmes": [],
+    "news": [],
+    "gallery": []
+  },
+  {
+    "slug": "sunrise-creche",
+    "name": "Sunrise Creche",
+    "category": "Early Learning",
+    "tagline": "Early learning, big futures.",
+    "description": "An early-learning partner supporting young children and their communities.",
+    "logo_url": "",
+    "banner_url": "",
+    "website_url": "",
+    "contact_email": "",
+    "contact_phone": "",
+    "programmes": [],
+    "news": [],
+    "gallery": []
+  },
+  {
+    "slug": "township-sports-council",
+    "name": "Township Sports Council",
+    "category": "Sport",
+    "tagline": "Coaching facilities and match fixtures.",
+    "description": "A community sports partner supporting coaching access and match opportunities.",
+    "logo_url": "",
+    "banner_url": "",
+    "website_url": "",
+    "contact_email": "",
+    "contact_phone": "",
+    "programmes": [],
+    "news": [],
+    "gallery": []
+  }
+]

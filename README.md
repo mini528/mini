@@ -1,8 +1,10 @@
-# Mini Circles
+# The Mlungisi Mashinini Foundation
 
-A fast, mobile-first public website for **Mini Circles**, a youth-led programme of The Mlungisi Mashinini Foundation. It brings reading for fun and sport together under the line **Read. Play. Repeat.**
+A fast, mobile-first public website for **The Mlungisi Mashinini Foundation** and its youth program, Mini Circles. It brings literacy, sport and leadership together under the line **Read. Play. Grow. Lead.**
 
-The website is a static HTML/CSS/JavaScript site with no visitor accounts, public comments, child profiles, tracking pixels, or user uploads. The homepage is the full public-facing organisation showcase, with the programme story, impact figures, team league table, term event calendar, partner names, story highlights, safeguarding promise and audience-specific calls to action. Full reference details are also organized into clean-URL tabs: `/programmes/`, `/events/`, `/resources/`, `/about/`, `/get-involved/`, and the public professional dashboard at `/professionals/`. Original graphic-novel-inspired shapes add a playful edge while keeping the site professional; no third-party characters or artwork are used. Run the site behind any static web server from the repository root; unless Supabase is configured, the Mini League and event details load from `data/mini-league.csv` and `data/events.json`, so opening `index.html` directly as a `file://` URL will not load them.
+The website is a static HTML/CSS/JavaScript site with no public child accounts, comments, tracking pixels, or user uploads. Its Foundation homepage covers the mission, literacy and sport, leadership, impact stories, events, volunteer opportunities, partnerships, photo gallery, program-interest form, and donation pledges. Real Foundation photos are managed through `data/homepage-media.json`; empty slots remain clearly labelled until approved photographs are supplied. The pledge form does not process payments, and enquiry forms remain inactive until a secure form endpoint is configured.
+
+The stakeholder directory and standardized profile pages are available at `/stakeholders/`; partner profile editing and sign-in live at `/professionals/`. These features require Supabase Auth and the row-level-security migration described below. Public self-registration is not implemented. Mini Circles program and reference details remain available at `/programmes/`, `/events/`, `/resources/`, `/about/`, and `/get-involved/`. Run the site behind any static web server from the repository root; unless Supabase is configured, Mini League and event details load from `data/mini-league.csv` and `data/events.json`, and the stakeholder directory uses the local seed profiles.
 
 ## Content repository
 
@@ -16,6 +18,24 @@ To connect a Supabase project:
 
 Until both Supabase values are configured, the site continues to load `data/events.json` and `data/mini-league.csv`, so local previews and existing deployments keep working. Once configured, Supabase is the source for both event and league data; a failed Supabase request is shown as unavailable rather than silently switching to stale local data.
 
+## Stakeholder dashboard setup
+
+The migration `supabase/migrations/20261021120000_stakeholder_profiles.sql` creates stakeholder profiles and memberships, seeds the three supplied organizations, and limits profile changes to authenticated owners and editors through row-level security. Only published profiles are visible publicly. Users can view their own memberships; public self-registration and membership changes from the website are not allowed.
+
+1. Apply both Supabase migrations and configure the Project URL and public anon key in `assets/site.js`.
+2. Disable public sign-ups in Supabase Auth. Invite or create stakeholder users from the Supabase dashboard after verifying their organization.
+3. Add a membership for each approved user in the Supabase SQL Editor. Use the profile UUID from the Table Editor and assign only the appropriate role:
+
+   ```sql
+   insert into public.stakeholder_memberships (user_id, stakeholder_id, role)
+   values ('AUTH_USER_UUID', 'STAKEHOLDER_PROFILE_UUID', 'owner');
+   ```
+
+   Supported roles are `owner`, `editor`, and `viewer`. Only owners/editors can update profile content; publication state and membership roles remain administrator-controlled.
+4. Serve the site over HTTPS in production and test sign-in, sign-out, session expiry, public profile visibility, and role restrictions with non-production accounts before inviting partners.
+
+Profile editors can update text, public contact fields, programs, news, and photo/video gallery entries. Owners and editors can upload JPEG, PNG or WebP images up to 10 MB into the public stakeholder-media bucket. Public bucket images are accessible to anyone with the URL, so upload only media approved for publication; add descriptive alt text and captions to gallery entries. Videos are added as approved HTTPS links using gallery JSON entries with `"type": "video"`.
+
 ## Volunteer editing
 
 - Before Supabase is configured, edit event titles, dates and locations in `data/events.json`; leave a date as `null` until confirmed. After connecting Supabase, manage events in its Table Editor instead.
@@ -25,7 +45,7 @@ Until both Supabase values are configured, the site continues to load `data/even
 - Update FAQs, the programme story and privacy information in `about/index.html`.
 - Update the professional dashboard content and planned tool areas in `professionals/index.html` as tool requirements are confirmed.
 - Update enquiry options in `get-involved/index.html`.
-- Replace the illustrated gallery placeholders only with approved photographs; obtain guardian consent and do not publish children's full names or identifying details.
+- Add approved photo files to `assets/images/` and update `data/homepage-media.json`; obtain guardian consent and do not publish children's full names or identifying details. See `assets/images/README.md` for the photo key list and image guidance.
 - The printable session cards and welcome guide are standalone HTML files in `resources/`; print them from a browser. The year plan is a spreadsheet-friendly CSV.
 
 ## Contact and forms before launch
