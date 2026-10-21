@@ -1,33 +1,6 @@
 const menuButton = document.querySelector(".menu-btn");
 const siteNavigation = document.querySelector("#site-nav");
 
-const themeButton = document.querySelector(".theme-button");
-if (themeButton) {
-  let savedTheme = null;
-  try {
-    savedTheme = localStorage.getItem("mini-circles-theme");
-  } catch (error) {
-    console.warn("Theme preference could not be loaded.", error);
-  }
-  if (savedTheme === "dark") document.documentElement.dataset.theme = "dark";
-  const updateThemeLabel = () => {
-    const dark = document.documentElement.dataset.theme === "dark";
-    themeButton.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
-  };
-  updateThemeLabel();
-  themeButton.addEventListener("click", () => {
-    const dark = document.documentElement.dataset.theme !== "dark";
-    if (dark) document.documentElement.dataset.theme = "dark";
-    else delete document.documentElement.dataset.theme;
-    try {
-      localStorage.setItem("mini-circles-theme", dark ? "dark" : "light");
-    } catch (error) {
-      console.warn("Theme preference could not be saved.", error);
-    }
-    updateThemeLabel();
-  });
-}
-
 if (menuButton && siteNavigation) {
   menuButton.addEventListener("click", () => {
     const open = menuButton.getAttribute("aria-expanded") !== "true";
